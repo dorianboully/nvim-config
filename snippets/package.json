@@ -1,0 +1,29 @@
+{
+  "categories": [
+    "Snippets"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "typst",
+        "path": "./typst/greek.json"
+      },
+      {
+        "language": "typst",
+        "path": "./typst/math.json"
+      },
+      {
+        "language": "typst",
+        "path": "./typst/space.json"
+      },
+      {
+        "language": "typst",
+        "path": "./typst/symbol.json"
+      },
+      {
+        "language": "typst",
+        "path": "./typst/thenv.json"
+      }
+    ]
+  }
+}

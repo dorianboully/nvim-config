@@ -1,0 +1,352 @@
+{
+  "ℏ": {
+    "prefix": "hb",
+    "body": "ℏ",
+    "description": "Reduced Planck constant (h-bar)"
+  },
+  "ℵ": {
+    "prefix": "aleph",
+    "body": "ℵ",
+    "description": "Aleph (cardinality)"
+  },
+  "∇": {
+    "prefix": "nabla",
+    "body": "∇",
+    "description": "Nabla/Del (gradient)"
+  },
+  "∂": {
+    "prefix": "part",
+    "body": "∂",
+    "description": "Partial derivative"
+  },
+  "∞": {
+    "prefix": "oo",
+    "body": "∞",
+    "description": "Infinity"
+  },
+  "∀": {
+    "prefix": ";A",
+    "body": "∀",
+    "description": "Universal quantifier (forall)"
+  },
+  "∃": {
+    "prefix": ";E",
+    "body": "∃",
+    "description": "Existential quantifier (exists)"
+  },
+  "∈": {
+    "prefix": "in",
+    "body": "∈",
+    "description": "Element of"
+  },
+  "∋": {
+    "prefix": "ni",
+    "body": "in.rev",
+    "description": "Element of"
+  },
+  "∉": {
+    "prefix": "nin",
+    "body": "∉",
+    "description": "Not element of"
+  },
+  "⊂": {
+    "prefix": "sub",
+    "body": "⊂",
+    "description": "Subset"
+  },
+  "⊃": {
+    "prefix": "sup",
+    "body": "⊃",
+    "description": "Superset"
+  },
+  "⊆": {
+    "prefix": "sube",
+    "body": "⊆",
+    "description": "Subset or equal"
+  },
+  "⊇": {
+    "prefix": "supe",
+    "body": "⊇",
+    "description": "Superset or equal"
+  },
+  "⊄": {
+    "prefix": "nsub",
+    "body": "⊄",
+    "description": "Not subset"
+  },
+  "⊅": {
+    "prefix": "nsup",
+    "body": "⊅",
+    "description": "Not superset"
+  },
+  "∩": {
+    "prefix": "cap",
+    "body": "∩",
+    "description": "Intersection"
+  },
+  "∪": {
+    "prefix": "cup",
+    "body": "∪",
+    "description": "Union"
+  },
+  "∧": {
+    "prefix": "we",
+    "body": "∧",
+    "description": "Logical AND"
+  },
+  "∨": {
+    "prefix": "ve",
+    "body": "∨",
+    "description": "Logical OR"
+  },
+  "¬": {
+    "prefix": "not",
+    "body": "¬",
+    "description": "Logical NOT"
+  },
+  "∅": {
+    "prefix": "em",
+    "body": "∅",
+    "description": "Empty set"
+  },
+  "ℝ": {
+    "prefix": "RR",
+    "body": "ℝ",
+    "description": "Real numbers"
+  },
+  "ℂ": {
+    "prefix": "CC",
+    "body": "ℂ",
+    "description": "Complex numbers"
+  },
+  "ℤ": {
+    "prefix": "ZZ",
+    "body": "ℤ",
+    "description": "Integers"
+  },
+  "ℕ": {
+    "prefix": "NN",
+    "body": "ℕ",
+    "description": "Natural numbers"
+  },
+  "ℚ": {
+    "prefix": "QQ",
+    "body": "ℚ",
+    "description": "Rational numbers"
+  },
+  "⩽": {
+    "prefix": "le",
+    "body": "⩽",
+    "description": "Less than or equal"
+  },
+  "⩾": {
+    "prefix": "ge",
+    "body": "⩾",
+    "description": "Greater than or equal"
+  },
+  "≪": {
+    "prefix": "<<",
+    "body": "≪",
+    "description": "Much less than"
+  },
+  "≫": {
+    "prefix": ">>",
+    "body": "≫",
+    "description": "Much greater than"
+  },
+  "≠": {
+    "prefix": "ne",
+    "body": "≠",
+    "description": "Not equal"
+  },
+  "≈": {
+    "prefix": "appr",
+    "body": "≈",
+    "description": "Approximately equal"
+  },
+  "∼": {
+    "prefix": "sim",
+    "body": "∼",
+    "description": "Similar to"
+  },
+  "≃": {
+    "prefix": "simeq",
+    "body": "≃",
+    "description": "Simeq (similar and equal)"
+  },
+  "⋍": {
+    "prefix": "backsim",
+    "body": "⋍",
+    "description": "Backsimeq"
+  },
+  "≅": {
+    "prefix": "cong",
+    "body": "≅",
+    "description": "Congruent"
+  },
+  "∝": {
+    "prefix": "prop",
+    "body": "∝",
+    "description": "Proportional to"
+  },
+  "≡": {
+    "prefix": "equiv",
+    "body": "≡",
+    "description": "Congruent/Equivalent"
+  },
+  "≔": {
+    "prefix": ":=",
+    "body": "≔",
+    "description": "Colon equals (defined as)"
+  },
+  "⊥": {
+    "prefix": "perp",
+    "body": "⊥",
+    "description": "Perpendicular"
+  },
+  "∥": {
+    "prefix": "para",
+    "body": "∥",
+    "description": "Parallel"
+  },
+  "±": {
+    "prefix": "pm",
+    "body": "±",
+    "description": "Plus or minus"
+  },
+  "∓": {
+    "prefix": "mp",
+    "body": "∓",
+    "description": "Minus or plus"
+  },
+  "÷": {
+    "prefix": "div",
+    "body": "÷",
+    "description": "Division"
+  },
+  "×": {
+    "prefix": "xx",
+    "body": "×",
+    "description": "Multiplication"
+  },
+  "⋅": {
+    "prefix": "dot",
+    "body": "⋅",
+    "description": "Dot product"
+  },
+  "⋯": {
+    "prefix": "cd",
+    "body": "⋯",
+    "description": "Centered horizontal dots"
+  },
+  "∖": {
+    "prefix": "sm",
+    "body": "∖",
+    "description": "Set difference"
+  },
+  "⊗": {
+    "prefix": "ox",
+    "body": "⊗",
+    "description": "Tensor product"
+  },
+  "⊕": {
+    "prefix": "op",
+    "body": "⊕",
+    "description": "Direct sum"
+  },
+  "⊙": {
+    "prefix": "odot",
+    "body": "⊙",
+    "description": "Odot"
+  },
+  "→": {
+    "prefix": "to",
+    "body": "→",
+    "description": "Right arrow"
+  },
+  "←": {
+    "prefix": "from",
+    "body": "←",
+    "description": "Left arrow"
+  },
+  "↔": {
+    "prefix": "lra",
+    "body": "↔",
+    "description": "Bidirectional arrow"
+  },
+  "⇒": {
+    "prefix": "imp",
+    "body": "⇒",
+    "description": "Right double arrow (implies)"
+  },
+  "⇐": {
+    "prefix": "implied",
+    "body": "⇐",
+    "description": "Left double arrow (implied by)"
+  },
+  "⇔": {
+    "prefix": "iff",
+    "body": "⇔",
+    "description": "Bidirectional double arrow (if and only if)"
+  },
+  "↑": {
+    "prefix": "ua",
+    "body": "↑",
+    "description": "Up arrow"
+  },
+  "↓": {
+    "prefix": "da",
+    "body": "↓",
+    "description": "Down arrow"
+  },
+  "↦": {
+    "prefix": "ma",
+    "body": "↦",
+    "description": "Maps to"
+  },
+  "∴": {
+    "prefix": "therefore",
+    "body": "∴",
+    "description": "Therefore"
+  },
+  "∵": {
+    "prefix": "because",
+    "body": "∵",
+    "description": "Because"
+  },
+  "°": {
+    "prefix": "deg",
+    "body": "°",
+    "description": "Degree"
+  },
+  "†": {
+    "prefix": "dag",
+    "body": "†",
+    "description": "Dagger"
+  },
+  "‡": {
+    "prefix": "ddag",
+    "body": "‡",
+    "description": "Double dagger"
+  },
+  "ℓ": {
+    "prefix": "ll",
+    "body": "ℓ",
+    "description": "Ell (script l)"
+  },
+  "♭": {
+    "prefix": "flat",
+    "body": "♭",
+    "description": "Flat symbol"
+  },
+  "♮": {
+    "prefix": "nat",
+    "body": "♮",
+    "description": "Natural symbol"
+  },
+  "♯": {
+    "prefix": "sharp",
+    "body": "♯",
+    "description": "Sharp symbol"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "def": {
+    "prefix": "def",
+    "body": [
+      "#definition${1}[",
+      "\t$0",
+      "]"
+    ],
+    "description": "Definition"
+  },
+  "rem": {
+    "prefix": "rem",
+    "body": [
+      "#remark${1}[",
+      "\t$0",
+      "]"
+    ],
+    "description": "Remark"
+  },
+  "thm": {
+    "prefix": "thm",
+    "body": [
+      "#theorem${1}[",
+      "\t$0",
+      "]"
+    ],
+    "description": "Theorem"
+  },
+  "lem": {
+    "prefix": "lem",
+    "body": [
+      "#lemma${1}[",
+      "\t$0",
+      "]"
+    ],
+    "description": "Lemma"
+  },
+  "cor": {
+    "prefix": "cor",
+    "body": [
+      "#corollary${1}[",
+      "\t$0",
+      "]"
+    ],
+    "description": "Corollary"
+  },
+  "exercise": {
+    "prefix": "exr",
+    "body": [
+      "#exercise${1}[",
+      "\t$0",
+      "]"
+    ],
+    "description": "Exercise"
+  },
+  "example": {
+    "prefix": "exp",
+    "body": [
+      "#example${1}[",
+      "\t$0",
+      "]"
+    ],
+    "description": "Example"
+  },
+  "prop": {
+    "prefix": "prp",
+    "body": [
+      "#proposition${1}[",
+      "\t$0",
+      "]"
+    ],
+    "description": "Proposition"
+  }
+}

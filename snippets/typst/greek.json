@@ -1,0 +1,262 @@
+{
+  "α": {
+    "prefix": ";a",
+    "body": "α",
+    "description": "Greek letter alpha"
+  },
+  "β": {
+    "prefix": ";b",
+    "body": "β",
+    "description": "Greek letter beta"
+  },
+  "γ": {
+    "prefix": ";g",
+    "body": "γ",
+    "description": "Greek letter gamma"
+  },
+  "δ": {
+    "prefix": ";d",
+    "body": "δ",
+    "description": "Greek letter delta"
+  },
+  "ε": {
+    "prefix": ";e",
+    "body": "ε",
+    "description": "Greek letter epsilon"
+  },
+  "ϵ": {
+    "prefix": ";ev",
+    "body": "ϵ",
+    "description": "Greek letter epsilon (variant)"
+  },
+  "ζ": {
+    "prefix": ";z",
+    "body": "ζ",
+    "description": "Greek letter zeta"
+  },
+  "η": {
+    "prefix": ";h",
+    "body": "η",
+    "description": "Greek letter eta"
+  },
+  "θ": {
+    "prefix": ";q",
+    "body": "θ",
+    "description": "Greek letter theta"
+  },
+  "ϑ": {
+    "prefix": ";qv",
+    "body": "ϑ",
+    "description": "Greek letter theta (variant)"
+  },
+  "ι": {
+    "prefix": ";i",
+    "body": "ι",
+    "description": "Greek letter iota"
+  },
+  "κ": {
+    "prefix": ";k",
+    "body": "κ",
+    "description": "Greek letter kappa"
+  },
+  "λ": {
+    "prefix": ";l",
+    "body": "λ",
+    "description": "Greek letter lambda"
+  },
+  "μ": {
+    "prefix": ";m",
+    "body": "μ",
+    "description": "Greek letter mu"
+  },
+  "ν": {
+    "prefix": ";n",
+    "body": "ν",
+    "description": "Greek letter nu"
+  },
+  "ξ": {
+    "prefix": ";x",
+    "body": "ξ",
+    "description": "Greek letter xi"
+  },
+  "ο": {
+    "prefix": ";o",
+    "body": "ο",
+    "description": "Greek letter omicron"
+  },
+  "π": {
+    "prefix": ";p",
+    "body": "π",
+    "description": "Greek letter pi"
+  },
+  "ϖ": {
+    "prefix": ";pv",
+    "body": "ϖ",
+    "description": "Greek letter pi (variant)"
+  },
+  "ρ": {
+    "prefix": ";r",
+    "body": "ρ",
+    "description": "Greek letter rho"
+  },
+  "ϼ": {
+    "prefix": ";rv",
+    "body": "ϼ",
+    "description": "Greek letter rho (variant)"
+  },
+  "σ": {
+    "prefix": ";s",
+    "body": "σ",
+    "description": "Greek letter sigma"
+  },
+  "ς": {
+    "prefix": ";sv",
+    "body": "ς",
+    "description": "Greek letter sigma (final)"
+  },
+  "τ": {
+    "prefix": ";t",
+    "body": "τ",
+    "description": "Greek letter tau"
+  },
+  "υ": {
+    "prefix": ";u",
+    "body": "υ",
+    "description": "Greek letter upsilon"
+  },
+  "φ": {
+    "prefix": ";f",
+    "body": "φ",
+    "description": "Greek letter phi"
+  },
+  "ϕ": {
+    "prefix": ";fv",
+    "body": "ϕ",
+    "description": "Greek letter phi (variant)"
+  },
+  "χ": {
+    "prefix": ";c",
+    "body": "χ",
+    "description": "Greek letter chi"
+  },
+  "ψ": {
+    "prefix": ";y",
+    "body": "ψ",
+    "description": "Greek letter psi"
+  },
+  "ω": {
+    "prefix": ";w",
+    "body": "ω",
+    "description": "Greek letter omega"
+  },
+  "Β": {
+    "prefix": ";B",
+    "body": "Β",
+    "description": "Greek letter Beta (uppercase)"
+  },
+  "Γ": {
+    "prefix": ";G",
+    "body": "Γ",
+    "description": "Greek letter Gamma (uppercase)"
+  },
+  "Δ": {
+    "prefix": ";D",
+    "body": "Δ",
+    "description": "Greek letter Delta (uppercase)"
+  },
+  "Ζ": {
+    "prefix": ";Z",
+    "body": "Ζ",
+    "description": "Greek letter Zeta (uppercase)"
+  },
+  "Η": {
+    "prefix": ";H",
+    "body": "Η",
+    "description": "Greek letter Eta (uppercase)"
+  },
+  "Θ": {
+    "prefix": ";Q",
+    "body": "Θ",
+    "description": "Greek letter Theta (uppercase)"
+  },
+  "Ι": {
+    "prefix": ";I",
+    "body": "Ι",
+    "description": "Greek letter Iota (uppercase)"
+  },
+  "Κ": {
+    "prefix": ";K",
+    "body": "Κ",
+    "description": "Greek letter Kappa (uppercase)"
+  },
+  "Λ": {
+    "prefix": ";L",
+    "body": "Λ",
+    "description": "Greek letter Lambda (uppercase)"
+  },
+  "Μ": {
+    "prefix": ";M",
+    "body": "Μ",
+    "description": "Greek letter Mu (uppercase)"
+  },
+  "Ν": {
+    "prefix": ";N",
+    "body": "Ν",
+    "description": "Greek letter Nu (uppercase)"
+  },
+  "Ξ": {
+    "prefix": ";X",
+    "body": "Ξ",
+    "description": "Greek letter Xi (uppercase)"
+  },
+  "Ο": {
+    "prefix": ";O",
+    "body": "Ο",
+    "description": "Greek letter Omicron (uppercase)"
+  },
+  "Π": {
+    "prefix": ";P",
+    "body": "Π",
+    "description": "Greek letter Pi (uppercase)"
+  },
+  "Ρ": {
+    "prefix": ";R",
+    "body": "Ρ",
+    "description": "Greek letter Rho (uppercase)"
+  },
+  "Σ": {
+    "prefix": ";S",
+    "body": "Σ",
+    "description": "Greek letter Sigma (uppercase)"
+  },
+  "Τ": {
+    "prefix": ";T",
+    "body": "Τ",
+    "description": "Greek letter Tau (uppercase)"
+  },
+  "Υ": {
+    "prefix": ";U",
+    "body": "Υ",
+    "description": "Greek letter Upsilon (uppercase)"
+  },
+  "Φ": {
+    "prefix": ";F",
+    "body": "Φ",
+    "description": "Greek letter Phi (uppercase)"
+  },
+  "Χ": {
+    "prefix": ";C",
+    "body": "Χ",
+    "description": "Greek letter Chi (uppercase)"
+  },
+  "Ψ": {
+    "prefix": ";Y",
+    "body": "Ψ",
+    "description": "Greek letter Psi (uppercase)"
+  },
+  "Ω": {
+    "prefix": ";W",
+    "body": "Ω",
+    "description": "Greek letter Omega (uppercase)"
+  }
+}

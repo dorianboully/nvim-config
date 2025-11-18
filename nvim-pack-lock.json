@@ -1,0 +1,20 @@
+{
+  "plugins": {
+    "lualine": [],
+    "luasnip": [],
+    "mini.nvim": [],
+    "nvim-surround": {
+      "rev": "fcfa7e02323d57bfacc3a141f8a74498e1522064",
+      "src": "https://github.com/kylechui/nvim-surround"
+    },
+    "nvim-treesitter": {
+      "version": "'main'"
+    },
+    "nvim-web-devicons": [],
+    "rose-pine": [],
+    "snacks.nvim": [],
+    "surround": [],
+    "vimtex": [],
+    "which-key": []
+  }
+}

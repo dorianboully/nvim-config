@@ -1,0 +1,186 @@
+{
+  "inline_math": {
+    "prefix": "mm",
+    "body": "$${1}$$0",
+    "description": "Inline math mode"
+  },
+  "display_math": {
+    "prefix": "dm",
+    "body": [
+      "$",
+      "\t$0",
+      "$"
+    ],
+    "description": "Display math mode"
+  },
+  "binomial": {
+    "prefix": "binom",
+    "body": "binom(${1:n}, ${2:k})$0",
+    "description": "Binomial coefficient"
+  },
+  "summation": {
+    "prefix": "sum",
+    "body": "${1|sum_(${2:i=1})^${3:n} ,sum_(${2:i=1}) ,sum |}${4:a_i}$0",
+    "description": "Summation"
+  },
+  "product": {
+    "prefix": "pr",
+    "body": "${1|product_(${2:i=1})^${3:n} ,product_(${2:i=1}) ,product |}${4:a_i}$0",
+    "description": "Product"
+  },
+  "coproduct": {
+    "prefix": "cpr",
+    "body": "${1|coproduct_(${2:i in I})^${3:n} ,coproduct_(${2:i in I}) ,coproduct |}${4}$0",
+    "description": "Coproduct"
+  },
+  "direct_sum": {
+    "prefix": "bop",
+    "body": "${1|bigoplus_(${2:i in I})^${3:n} ,bigoplus_(${2:i in I}) ,bigoplus |}${4}$0",
+    "description": "Direct sum"
+  },
+  "big_intersection": {
+    "prefix": "bcap",
+    "body": "${1|bigcap_(${2:i in I})^${3:n} ,bigcap_(${2:i in I}) ,bigcap |}${4}$0",
+    "description": "Big intersection"
+  },
+  "big_union": {
+    "prefix": "bcup",
+    "body": "${1|bigcup_(${2:i in I})^${3:n} ,bigcup_(${2:i in I}) ,bigcup |}${4}$0",
+    "description": "Big union"
+  },
+  "big_wedge": {
+    "prefix": "bwe",
+    "body": "${1|bigwedge_(${2:i in I})^${3:n} ,bigwedge_(${2:i in I}) ,bigwedge |}${4}$0",
+    "description": "Big wedge"
+  },
+  "big_vee": {
+    "prefix": "bve",
+    "body": "${1|bigvee_(${2:i in I})^${3:n} ,bigvee_(${2:i in I}) ,bigvee |}${4}$0",
+    "description": "Big vee"
+  },
+  "integral": {
+    "prefix": "int",
+    "body": "${1|integral_(${2:a})^${3:b} ,integral_(${2:omega in Omega}) ,integral |}${4:f(x)} d x$0",
+    "description": "Integral"
+  },
+  "limit": {
+    "prefix": "lim",
+    "body": "lim_(${1:x to a}) ${2:f(x)}$0",
+    "description": "Limit"
+  },
+  "subscript": {
+    "prefix": "sb",
+    "body": "_(${1})$0",
+    "description": "Subscript"
+  },
+  "superscript": {
+    "prefix": "sp",
+    "body": "^(${1})$0",
+    "description": "Superscript"
+  },
+  "bar_accent": {
+    "prefix": "bar",
+    "body": "bar(${1})$0",
+    "description": "Bar accent"
+  },
+  "hat_accent": {
+    "prefix": "hat",
+    "body": "hat(${1})$0",
+    "description": "Hat accent"
+  },
+  "vec_accent": {
+    "prefix": "vec",
+    "body": "vec(${1})$0",
+    "description": "Vector accent"
+  },
+  "tilde_accent": {
+    "prefix": "tilde",
+    "body": "tilde(${1})$0",
+    "description": "Tilde accent"
+  },
+  "overline_accent": {
+    "prefix": "overline",
+    "body": "overline(${1})$0",
+    "description": "Overline accent"
+  },
+  "root": {
+    "prefix": "sqrt",
+    "body": "root(${1:n}, ${2:x})$0",
+    "description": "Root"
+  },
+  "matrix": {
+    "prefix": "mat",
+    "body": "mat(\n\t${1:a}, ${2:b};\n\t${3:c}, ${4:d}\n)$0",
+    "description": "Matrix"
+  },
+  "cases": {
+    "prefix": "cases",
+    "body": "cases(\n\t${1:expr_1} &if ${2:condition_1},\n\t${3:expr_2} &if ${4:condition_2}\n)$0",
+    "description": "Cases/piecewise"
+  },
+  "absolute_value": {
+    "prefix": "abs",
+    "body": "abs(${1})$0",
+    "description": "Absolute value"
+  },
+  "norm": {
+    "prefix": "norm",
+    "body": "norm(${1})$0",
+    "description": "Norm"
+  },
+  "floor": {
+    "prefix": "floor",
+    "body": "floor(${1})$0",
+    "description": "Floor function"
+  },
+  "ceil": {
+    "prefix": "ceil",
+    "body": "ceil(${1})$0",
+    "description": "Ceiling function"
+  },
+  "cal_font": {
+    "prefix": "mc",
+    "body": "cal(${1})$0",
+    "description": "Calligraphic font"
+  },
+  "bold_font": {
+    "prefix": "mb",
+    "body": "bold(${1})$0",
+    "description": "Bold font"
+  },
+  "italic_font": {
+    "prefix": "mi",
+    "body": "italic(${1})$0",
+    "description": "Italic font"
+  },
+  "fraktur_font": {
+    "prefix": "mf",
+    "body": "frak(${1})$0",
+    "description": "Fraktur font"
+  },
+  "script_font": {
+    "prefix": "ms",
+    "body": "scripts(${1})$0",
+    "description": "Script font"
+  },
+  "double_struck_font": {
+    "prefix": "md",
+    "body": "double-struck(${1})$0",
+    "description": "Double-struck font"
+  },
+  "roman_font": {
+    "prefix": "mr",
+    "body": "upright(${1})$0",
+    "description": "Roman (upright) font"
+  },
+  "sans_serif_font": {
+    "prefix": "mss",
+    "body": "sans(${1})$0",
+    "description": "Sans-serif font"
+  },
+  "monospace_font": {
+    "prefix": "mmf",
+    "body": "mono(${1})$0",
+    "description": "Monospace font"
+  }
+}
