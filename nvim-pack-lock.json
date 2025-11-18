@@ -10,6 +10,11 @@
     "nvim-treesitter": {
       "version": "'main'"
     },
+    "nvim-treesitter-textobjects": {
+      "rev": "227165aaeb07b567fb9c066f224816aa8f3ce63f",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
+      "version": "'main'"
+    },
     "nvim-web-devicons": [],
     "rose-pine": [],
     "snacks.nvim": [],
