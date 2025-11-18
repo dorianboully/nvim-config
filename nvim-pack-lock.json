@@ -3,6 +3,10 @@
     "lualine": [],
     "luasnip": [],
     "mini.nvim": [],
+    "nvim-autopairs": {
+      "rev": "7a2c97cccd60abc559344042fefb1d5a85b3e33b",
+      "src": "https://github.com/windwp/nvim-autopairs"
+    },
     "nvim-surround": {
       "rev": "fcfa7e02323d57bfacc3a141f8a74498e1522064",
       "src": "https://github.com/kylechui/nvim-surround"
