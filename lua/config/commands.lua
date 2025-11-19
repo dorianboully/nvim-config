@@ -37,7 +37,71 @@ vim.api.nvim_create_autocmd("FileType", {
 ---@return string
 local function pickTemplate()
   local template = ""
-  -- TODO : complete this function
+  local local_packages = vim.fs.normalize(vim.fn.expand("~/.local/share/typst/packages/local"))
+  local function list_dirs(path)
+    local ok, entries = pcall(vim.fn.readdir, path)
+    if not ok then
+      return {}
+    end
+    return vim.tbl_filter(function(entry)
+      return vim.fn.isdirectory(path .. "/" .. entry) == 1
+    end, entries)
+  end
+
+  ---@class TypstTemplate
+  ---@field template string
+  ---@field version string
+  ---@field value string
+  local templates = {}
+  if vim.fn.isdirectory(local_packages) == 1 then
+    for _, name in ipairs(list_dirs(local_packages)) do
+      for _, version in ipairs(list_dirs(local_packages .. "/" .. name)) do
+        templates[#templates + 1] = {
+          template = name,
+          version = version,
+          value = string.format("@local/%s:%s", name, version),
+        }
+      end
+    end
+  end
+
+  table.sort(templates, function(a, b)
+    if a.template == b.template then
+      return a.version < b.version
+    end
+    return a.template < b.template
+  end)
+
+  local ok, snacks = pcall(require, "snacks")
+  if ok and snacks.picker and snacks.picker.select and #templates > 0 then
+    local choice
+    local done = false
+    snacks.picker.select(
+      templates,
+      {
+        prompt = "Typst template",
+        format_item = function(item)
+          return string.format("%s (%s)", item.template, item.version)
+        end,
+      },
+      function(item)
+        choice = item and item.value or nil
+        done = true
+      end
+    )
+    vim.wait(24 * 60 * 60 * 1000, function()
+      return done
+    end, 100)
+    if choice and choice ~= "" then
+      return choice
+    end
+  end
+
+  local default = templates[1] and templates[1].value or "@local/"
+  local ok_input, input = pcall(vim.fn.input, "Typst template (@local/<name>:<version>): ", default)
+  if ok_input then
+    template = vim.trim(input)
+  end
   return template
 end
 
@@ -46,7 +110,14 @@ end
 --- @return string
 local function getName()
   local name = ""
-  -- TODO : complete this function
+  local default = vim.fn.expand("%:t:r")
+  if default == "" then
+    default = vim.fs.basename(vim.loop.cwd() or vim.fn.getcwd())
+  end
+  local ok, input = pcall(vim.fn.input, "Typst project name: ", default)
+  if ok then
+    name = vim.trim(input)
+  end
   return name
 end
 
@@ -59,7 +130,35 @@ end
 --- c) Else, return nil
 --- @return string | nil
 local function getCwd()
-  -- TODO : complete this function
+  local function explorer_dir()
+    local ok, snacks = pcall(require, "snacks")
+    if not ok or not snacks.picker then
+      return nil
+    end
+
+    local explorers = snacks.picker.get({ source = "explorer" })
+    for _, picker in ipairs(explorers) do
+      if picker:is_focused() then
+        local dir = picker:dir()
+        if dir and dir ~= "" then
+          return dir
+        end
+      end
+    end
+  end
+
+  local dir = explorer_dir()
+  if dir and dir ~= "" then
+    return dir
+  end
+
+  local bufname = vim.api.nvim_buf_get_name(0)
+  if bufname ~= "" then
+    local parent = vim.fn.fnamemodify(bufname, ":p:h")
+    if parent ~= "" then
+      return parent
+    end
+  end
 end
 
 local function typstInit(template, name, cwd)
