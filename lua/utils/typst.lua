@@ -11,7 +11,8 @@ function TypstProj:new(opts)
     options = opts.options or {},
     input = opts.input or "main.typ",
     output = (opts.output and opts.output ~= "") and opts.output or nil,
-    viewer = opts.options and opts.options.open or nil
+    viewer = opts.options and opts.options.open or nil,
+    root = opts.root
   }, TypstProj)
 end
 
@@ -83,7 +84,7 @@ function TypstProj:compile(cmd)
     end)
   end
 
-  vim.system(argv, { detach = true, text = true }, onExit)
+  vim.system(argv, { detach = true, text = true, cwd = self.root }, onExit)
 end
 
 function TypstProj:view()
@@ -101,9 +102,13 @@ function TypstProj:view()
 
   local default = input:gsub(".typ", "." .. format)
 
-  local output = (self.output and not self.output == "") and self.output or default
+  local output = (self.output and not (self.output == "")) and self.output or default
 
-  vim.system({ viewer, output }, { detach = true })
+  if not vim.fn.filereadable(output) then
+    vim.notify("File '" .. output .. "' not readable.", vim.log.levels.ERROR)
+  end
+
+  vim.system({ viewer, output }, { detach = true, cwd = self.root })
 end
 
 local findRoot = function(bufnr)
@@ -113,6 +118,9 @@ end
 
 return {
   initProject = function(bufnr)
-    return TypstProj:new(readJson(findRoot(bufnr) .. "/" .. CONFIG_FILE))
+    local root = findRoot(bufnr)
+    local opts = readJson(findRoot(bufnr) .. "/" .. CONFIG_FILE)
+    opts.root = root
+    return TypstProj:new(opts)
   end
 }
