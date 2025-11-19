@@ -12,7 +12,7 @@ map("n", "<leader>E", "<cmd>Vexplore<CR>")
 map("n", "<leader>bf", vim.lsp.buf.format, { desc = "Format current buffer" })
 
 -- TypstInit
-map("n", "<leader>ti", require("config.commands").TypstInit, { desc = "Init typst project"})
+map("n", "<leader>ti", "<cmd>TypstInit<cr>", { desc = "Init typst project"})
 
 -- Don't yank when deleting text
 map({ "n", "v" }, "x", '"_x')

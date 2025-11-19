@@ -1,9 +1,9 @@
 return {
-  onExit = function(obj)
+  onExit = function(out)
     local notifs = {
-      { content = obj.code,   msg = "Exited with code: ", level = vim.log.levels.INFO },
-      { content = obj.stdout, msg = "Output:\n",          level = vim.log.levels.INFO },
-      { content = obj.stderr, msg = "Errors:\n",          level = vim.log.levels.ERROR },
+      { content = out.code,   msg = "Exited with code: ", level = vim.log.levels.INFO },
+      { content = out.stdout, msg = "",                   level = vim.log.levels.INFO },
+      { content = out.stderr, msg = "",                   level = vim.log.levels.ERROR },
     }
 
     vim.schedule(function()
