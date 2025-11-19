@@ -2,7 +2,7 @@
   "def": {
     "prefix": "def",
     "body": [
-      "#definition${1}[",
+      "#definition${1|,(title: \"\")|}[",
       "\t$0",
       "]"
     ],
@@ -11,7 +11,7 @@
   "rem": {
     "prefix": "rem",
     "body": [
-      "#remark${1}[",
+      "#remark${1|,(title: \"\")|}[",
       "\t$0",
       "]"
     ],
@@ -20,7 +20,7 @@
   "thm": {
     "prefix": "thm",
     "body": [
-      "#theorem${1}[",
+      "#theorem${1|,(title: \"\")|}[",
       "\t$0",
       "]"
     ],
@@ -29,7 +29,7 @@
   "lem": {
     "prefix": "lem",
     "body": [
-      "#lemma${1}[",
+      "#lemma${1|,(title: \"\")|}[",
       "\t$0",
       "]"
     ],
@@ -38,7 +38,7 @@
   "cor": {
     "prefix": "cor",
     "body": [
-      "#corollary${1}[",
+      "#corollary${1|,(title: \"\")|}[",
       "\t$0",
       "]"
     ],
@@ -47,7 +47,7 @@
   "exercise": {
     "prefix": "exr",
     "body": [
-      "#exercise${1}[",
+      "#exercise${1|,(title: \"\")|}[",
       "\t$0",
       "]"
     ],
@@ -56,7 +56,7 @@
   "example": {
     "prefix": "exp",
     "body": [
-      "#example${1}[",
+      "#example${1|,(title: \"\")|}[",
       "\t$0",
       "]"
     ],
@@ -65,7 +65,7 @@
   "prop": {
     "prefix": "prp",
     "body": [
-      "#proposition${1}[",
+      "#proposition${1|,(title: \"\")|}[",
       "\t$0",
       "]"
     ],

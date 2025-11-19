@@ -27,3 +27,11 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.breakindent = true
   end
 })
+
+vim.api.nvim_create_user_command(
+  "TypstInit",
+  function() coroutine.resume(
+    coroutine.create(require("utils.typst").typstInit)
+  ) end,
+  {}
+)
