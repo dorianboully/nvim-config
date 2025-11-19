@@ -65,26 +65,7 @@ function TypstProj:compile(cmd)
     return
   end
 
-  local onExit = function(obj)
-    local cmdStr = table.concat(argv, " ")
-
-    local notifs = {
-      { content = obj.code,   msg = argv[1] .. " exited with code: ",  level = vim.log.levels.INFO },
-      { content = obj.stdout, msg = "Output of '" .. cmdStr .. "':\n", level = vim.log.levels.INFO },
-      { content = obj.stderr, msg = "Errors of '" .. cmdStr .. "':\n", level = vim.log.levels.ERROR },
-    }
-
-    vim.schedule(function()
-      vim.iter(notifs):each(function(notif)
-        local content = notif.content
-        if content and content ~= "" then
-          vim.notify(notif.msg .. content, notif.level)
-        end
-      end)
-    end)
-  end
-
-  vim.system(argv, { detach = true, text = true, cwd = self.root }, onExit)
+  vim.system(argv, { detach = true, text = true, cwd = self.root }, require("utils.system").onExit)
 end
 
 function TypstProj:view()
