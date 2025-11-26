@@ -12,7 +12,6 @@ end
 -- Other option is to use enable = false inside a spec
 local exclude = {
   "copilot",
-  "blink",
 }
 
 local packUtil = require("utils.pack")

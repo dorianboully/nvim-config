@@ -4,7 +4,14 @@ return {
   name = "blink.cmp",
 
   opts = {
-    snippets = {preset = "luasnip"}
+    completion = {
+      menu = {
+        auto_show = function() return vim.bo.filetype ~= "typst" end
+      }
+    },
+    snippets = {
+      preset = "luasnip",
+    },
   },
 
   config = true

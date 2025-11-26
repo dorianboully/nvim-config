@@ -99,7 +99,7 @@
     "description": "Tilde accent"
   },
   "overline_accent": {
-    "prefix": "overline",
+    "prefix": "ov",
     "body": "overline(${1})$0",
     "description": "Overline accent"
   },

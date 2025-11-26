@@ -4,9 +4,18 @@
       "rev": "b19413d214068f316c78978b08264ed1c41830ec",
       "src": "https://github.com/saghen/blink.cmp"
     },
-    "lualine": [],
-    "luasnip": [],
-    "mini.nvim": [],
+    "lualine": {
+      "rev": "3946f0122255bc377d14a59b27b609fb3ab25768",
+      "src": "https://github.com/nvim-lualine/lualine.nvim"
+    },
+    "luasnip": {
+      "rev": "3732756842a2f7e0e76a7b0487e9692072857277",
+      "src": "https://github.com/L3MON4D3/LuaSnip"
+    },
+    "mini.nvim": {
+      "rev": "6e885e4c27743ae6bf5957ea78ce86c032835f09",
+      "src": "https://github.com/nvim-mini/mini.nvim"
+    },
     "nvim-autopairs": {
       "rev": "7a2c97cccd60abc559344042fefb1d5a85b3e33b",
       "src": "https://github.com/windwp/nvim-autopairs"
@@ -16,6 +25,8 @@
       "src": "https://github.com/kylechui/nvim-surround"
     },
     "nvim-treesitter": {
+      "rev": "bb83a676128d95c865e40ba71376d883bdadec14",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
     "nvim-treesitter-textobjects": {
@@ -23,11 +34,25 @@
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
       "version": "'main'"
     },
-    "nvim-web-devicons": [],
-    "rose-pine": [],
-    "snacks.nvim": [],
-    "surround": [],
-    "vimtex": [],
-    "which-key": []
+    "nvim-web-devicons": {
+      "rev": "8dcb311b0c92d460fac00eac706abd43d94d68af",
+      "src": "https://github.com/nvim-tree/nvim-web-devicons"
+    },
+    "rose-pine": {
+      "rev": "cf2a288696b03d0934da713d66c6d71557b5c997",
+      "src": "https://github.com/rose-pine/neovim"
+    },
+    "snacks.nvim": {
+      "rev": "fe7cfe9800a182274d0f868a74b7263b8c0c020b",
+      "src": "https://github.com/folke/snacks.nvim"
+    },
+    "vimtex": {
+      "rev": "32bcb3922c20588e00de68f73c86312eda2141ad",
+      "src": "https://github.com/lervag/vimtex"
+    },
+    "which-key": {
+      "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
+      "src": "https://github.com/folke/which-key.nvim"
+    }
   }
 }

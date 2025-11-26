@@ -33,48 +33,49 @@ return {
       mode = { "i", "s" },
       silent = true
     },
-    {
-      "<Tab>",
-      function()
-        local ls = require("luasnip")
-        if ls.expandable() then
-          vim.schedule(ls.expand)
-          return
-        else
-          return "<Tab>"
-        end
-      end,
-      expr = true,
-      mode = { "i", "s" }
-    },
-    {
-      "<C-L>",
-      function()
-        local ls = require("luasnip")
-        if ls.jumpable(1) then
-          vim.schedule(function() ls.jump(1) end)
-          return
-        else
-          return "<C-L>"
-        end
-      end,
-      expr = true,
-      mode = { "i", "s" }
-    },
-    {
-      "<C-H>",
-      function()
-        local ls = require("luasnip")
-        if ls.jumpable(-1) then
-          vim.schedule(function() ls.jump(-1) end)
-          return
-        else
-          return "<C-L>"
-        end
-      end,
-      expr = true,
-      mode = { "i", "s" }
-    }
+    -- {
+    --   "<Tab>",
+    --   function()
+    --     local ls = require("luasnip")
+    --     if ls.expandable() then
+    --       vim.schedule(ls.expand)
+    --       return
+    --     else
+    --       return "<Tab>"
+    --     end
+    --   end,
+    --   expr = true,
+    --   mode = { "i", "s" },
+    --   noremap = true
+    -- },
+    -- {
+    --   "<C-L>",
+    --   function()
+    --     local ls = require("luasnip")
+    --     if ls.jumpable(1) then
+    --       vim.schedule(function() ls.jump(1) end)
+    --       return
+    --     else
+    --       return "<C-L>"
+    --     end
+    --   end,
+    --   expr = true,
+    --   mode = { "i", "s" }
+    -- },
+    -- {
+    --   "<C-H>",
+    --   function()
+    --     local ls = require("luasnip")
+    --     if ls.jumpable(-1) then
+    --       vim.schedule(function() ls.jump(-1) end)
+    --       return
+    --     else
+    --       return "<C-L>"
+    --     end
+    --   end,
+    --   expr = true,
+    --   mode = { "i", "s" }
+    -- }
   },
 
   config = function(opts)
