@@ -6,8 +6,9 @@ return {
   opts = {
     enable_autosnippets = true,
     history = true,
-    region_check_events = { "CursorMoved" },
+    region_check_events = { "CursorMoved", "InsertEnter" },
     delete_check_events = { "TextChanged" },
+    update_events = { "TextChanged", "TextChangedI" }
   },
 
   keys = {
@@ -33,49 +34,51 @@ return {
       mode = { "i", "s" },
       silent = true
     },
-    -- {
-    --   "<Tab>",
-    --   function()
-    --     local ls = require("luasnip")
-    --     if ls.expandable() then
-    --       vim.schedule(ls.expand)
-    --       return
-    --     else
-    --       return "<Tab>"
-    --     end
-    --   end,
-    --   expr = true,
-    --   mode = { "i", "s" },
-    --   noremap = true
-    -- },
-    -- {
-    --   "<C-L>",
-    --   function()
-    --     local ls = require("luasnip")
-    --     if ls.jumpable(1) then
-    --       vim.schedule(function() ls.jump(1) end)
-    --       return
-    --     else
-    --       return "<C-L>"
-    --     end
-    --   end,
-    --   expr = true,
-    --   mode = { "i", "s" }
-    -- },
-    -- {
-    --   "<C-H>",
-    --   function()
-    --     local ls = require("luasnip")
-    --     if ls.jumpable(-1) then
-    --       vim.schedule(function() ls.jump(-1) end)
-    --       return
-    --     else
-    --       return "<C-L>"
-    --     end
-    --   end,
-    --   expr = true,
-    --   mode = { "i", "s" }
-    -- }
+    {
+      "<Tab>",
+      function()
+        local ls = require("luasnip")
+        if ls.expandable() then
+          vim.schedule(ls.expand)
+          return
+        elseif ls.jumpable(1) then
+          vim.schedule(function() ls.jump(1) end)
+        else
+          return "<Tab>"
+        end
+      end,
+      expr = true,
+      mode = { "i", "s" },
+      noremap = true
+    },
+    {
+      "<C-L>",
+      function()
+        local ls = require("luasnip")
+        if ls.jumpable(1) then
+          vim.schedule(function() ls.jump(1) end)
+          return
+        else
+          return "<C-L>"
+        end
+      end,
+      expr = true,
+      mode = { "i", "s" }
+    },
+    {
+      "<C-H>",
+      function()
+        local ls = require("luasnip")
+        if ls.jumpable(-1) then
+          vim.schedule(function() ls.jump(-1) end)
+          return
+        else
+          return "<C-L>"
+        end
+      end,
+      expr = true,
+      mode = { "i", "s" }
+    }
   },
 
   config = function(opts)
