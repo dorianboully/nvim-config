@@ -1,4 +1,4 @@
-{
+     {
   "inline_math": {
     "prefix": "mm",
     "body": "$${1}$$0",
@@ -7,9 +7,7 @@
   "display_math": {
     "prefix": "dm",
     "body": [
-      "$",
-      "\t$0",
-      "$"
+      "$ $0 $"
     ],
     "description": "Display math mode"
   },
@@ -20,7 +18,7 @@
   },
   "summation": {
     "prefix": "sum",
-    "body": "$sum_(${1:i=1})^(${2:n}) $0",
+    "body": "sum_(${1:i=1})^(${2:n}) $0",
     "description": "Summation"
   },
   "product": {
@@ -30,42 +28,42 @@
   },
   "coproduct": {
     "prefix": "cpr",
-    "body": "coproduct_(${1:i in I})^(${2:n}) $0",
+    "body": "product.co_(${1:i in I})^(${2:n}) $0",
     "description": "Coproduct"
   },
   "direct_sum": {
     "prefix": "bop",
-    "body": "bigoplus_(${1:i in I})^(${2:n}) $0",
+    "body": "op(plus.circle)_(${1:i in I})^(${2:n}) $0",
     "description": "Direct sum"
   },
   "big_intersection": {
     "prefix": "bcap",
-    "body": "bigcap_(${1:i in I})^(${2:n}) $0",
+    "body": "sect.big_(${1:i in I})^(${2:n}) $0",
     "description": "Big intersection"
   },
   "big_union": {
     "prefix": "bcup",
-    "body": "bigcup_(${1:i in I})^(${2:n}) $0",
+    "body": "union.big_(${1:i in I})^(${2:n}) $0",
     "description": "Big union"
   },
   "big_wedge": {
     "prefix": "bwe",
-    "body": "bigwedge_(${1:i in I})^(${2:n}) $0",
+    "body": "and.big_(${1:i in I})^(${2:n}) $0",
     "description": "Big wedge"
   },
   "big_vee": {
     "prefix": "bve",
-    "body": "bigvee_(${1:i in I})^(${2:n}) $0",
+    "body": "or.big_(${1:i in I})^(${2:n}) $0",
     "description": "Big vee"
   },
   "integral": {
     "prefix": "int",
-    "body": "$integral_(${1:a})^(${2:b}) $0",
+    "body": "integral_(${1:a})^(${2:b}) $0",
     "description": "Integral"
   },
   "limit": {
     "prefix": "lim",
-    "body": "lim_(${1:x to a}) ${2:f(x)}$0",
+    "body": "lim_(${1:x -> a}) ${2:f(x)}$0",
     "description": "Limit"
   },
   "subscript": {
@@ -115,8 +113,8 @@
   },
   "cases": {
     "prefix": "cases",
-    "body": "cases(\n\t${1:expr_1} &if ${2:condition_1},\n\t${3:expr_2} &if ${4:condition_2}\n)$0",
-    "description": "Cases/piecewise"
+    "body": "cases(\n\t${1:expr_1} & \"if\" ${2:condition_1},\n\t${3:expr_2} & \"if\" ${4:condition_2}\n)$0",
+    "description": "Cases"
   },
   "absolute_value": {
     "prefix": "abs",
@@ -160,12 +158,12 @@
   },
   "script_font": {
     "prefix": "ms",
-    "body": "scripts(${1})$0",
+    "body": "cal(${1})$0",
     "description": "Script font"
   },
   "double_struck_font": {
     "prefix": "md",
-    "body": "double-struck(${1})$0",
+    "body": "bb(${1})$0",
     "description": "Double-struck font"
   },
   "roman_font": {
@@ -184,3 +182,4 @@
     "description": "Monospace font"
   }
 }
+

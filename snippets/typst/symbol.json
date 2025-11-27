@@ -10,8 +10,8 @@
     "description": "Aleph (cardinality)"
   },
   "∇": {
-    "prefix": "nabla",
-    "body": "∇",
+    "prefix": "nab",
+    "body": "nabla",
     "description": "Nabla/Del (gradient)"
   },
   "∂": {
@@ -25,19 +25,14 @@
     "description": "Infinity"
   },
   "∀": {
-    "prefix": ";A",
+    "prefix": "A",
     "body": "∀",
     "description": "Universal quantifier (forall)"
   },
   "∃": {
-    "prefix": ";E",
+    "prefix": "E",
     "body": "∃",
     "description": "Existential quantifier (exists)"
-  },
-  "∈": {
-    "prefix": "in",
-    "body": "∈",
-    "description": "Element of"
   },
   "∋": {
     "prefix": "ni",
@@ -89,16 +84,6 @@
     "body": "∪",
     "description": "Union"
   },
-  "∧": {
-    "prefix": "we",
-    "body": "∧",
-    "description": "Logical AND"
-  },
-  "∨": {
-    "prefix": "ve",
-    "body": "∨",
-    "description": "Logical OR"
-  },
   "¬": {
     "prefix": "not",
     "body": "¬",
@@ -106,7 +91,7 @@
   },
   "∅": {
     "prefix": "em",
-    "body": "∅",
+    "body": "emptyset",
     "description": "Empty set"
   },
   "ℝ": {
@@ -146,12 +131,12 @@
   },
   "≪": {
     "prefix": "<<",
-    "body": "≪",
+    "body": "lt.double",
     "description": "Much less than"
   },
   "≫": {
     "prefix": ">>",
-    "body": "≫",
+    "body": "gt.double",
     "description": "Much greater than"
   },
   "≠": {
@@ -170,7 +155,7 @@
     "description": "Similar to"
   },
   "≃": {
-    "prefix": "simeq",
+    "prefix": "seq",
     "body": "≃",
     "description": "Simeq (similar and equal)"
   },
@@ -184,23 +169,13 @@
     "body": "≅",
     "description": "Congruent"
   },
-  "∝": {
-    "prefix": "prop",
-    "body": "∝",
-    "description": "Proportional to"
-  },
   "≡": {
     "prefix": "equiv",
     "body": "≡",
     "description": "Congruent/Equivalent"
   },
-  "≔": {
-    "prefix": ":=",
-    "body": "≔",
-    "description": "Colon equals (defined as)"
-  },
   "⊥": {
-    "prefix": "perp",
+    "prefix": "orth",
     "body": "⊥",
     "description": "Perpendicular"
   },
@@ -219,11 +194,6 @@
     "body": "∓",
     "description": "Minus or plus"
   },
-  "÷": {
-    "prefix": "div",
-    "body": "÷",
-    "description": "Division"
-  },
   "×": {
     "prefix": "xx",
     "body": "×",
@@ -236,83 +206,53 @@
   },
   "⋯": {
     "prefix": "cd",
-    "body": "⋯",
+    "body": "dots.h.c",
     "description": "Centered horizontal dots"
   },
   "∖": {
     "prefix": "sm",
-    "body": "∖",
+    "body": "without",
     "description": "Set difference"
   },
   "⊗": {
     "prefix": "ox",
-    "body": "⊗",
+    "body": "times.o",
     "description": "Tensor product"
   },
   "⊕": {
     "prefix": "op",
-    "body": "⊕",
+    "body": "plus.o",
     "description": "Direct sum"
   },
   "⊙": {
     "prefix": "odot",
-    "body": "⊙",
+    "body": "dot.o",
     "description": "Odot"
-  },
-  "→": {
-    "prefix": "to",
-    "body": "→",
-    "description": "Right arrow"
-  },
-  "←": {
-    "prefix": "from",
-    "body": "←",
-    "description": "Left arrow"
-  },
-  "↔": {
-    "prefix": "lra",
-    "body": "↔",
-    "description": "Bidirectional arrow"
-  },
-  "⇒": {
-    "prefix": "imp",
-    "body": "⇒",
-    "description": "Right double arrow (implies)"
-  },
-  "⇐": {
-    "prefix": "implied",
-    "body": "⇐",
-    "description": "Left double arrow (implied by)"
   },
   "⇔": {
     "prefix": "iff",
-    "body": "⇔",
+    "body": "<==>",
     "description": "Bidirectional double arrow (if and only if)"
   },
   "↑": {
-    "prefix": "ua",
+    "prefix": "at",
     "body": "↑",
-    "description": "Up arrow"
+    "description": "arrow.t"
   },
   "↓": {
-    "prefix": "da",
+    "prefix": "ab",
     "body": "↓",
-    "description": "Down arrow"
+    "description": "arrow.b"
   },
   "↦": {
-    "prefix": "ma",
-    "body": "↦",
+    "prefix": "arb",
+    "body": "arrow.r.bar",
     "description": "Maps to"
   },
-  "∴": {
-    "prefix": "therefore",
-    "body": "∴",
-    "description": "Therefore"
-  },
-  "∵": {
-    "prefix": "because",
-    "body": "∵",
-    "description": "Because"
+  "longmapsto": {
+    "prefix": "lrb",
+    "body": "arrow.r.bar.long",
+    "description": "longmapsto"
   },
   "°": {
     "prefix": "deg",

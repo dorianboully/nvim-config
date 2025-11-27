@@ -1,5 +1,3 @@
-local conds = require("utils.Luasnip.conditions")
-
 local ls = require("luasnip")
 local s = ls.snippet
 local i = ls.insert_node

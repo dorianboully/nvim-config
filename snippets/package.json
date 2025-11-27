@@ -14,10 +14,6 @@
       },
       {
         "language": "typst",
-        "path": "./typst/space.json"
-      },
-      {
-        "language": "typst",
         "path": "./typst/symbol.json"
       },
       {
