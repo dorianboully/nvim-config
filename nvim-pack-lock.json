@@ -46,6 +46,10 @@
       "rev": "fe7cfe9800a182274d0f868a74b7263b8c0c020b",
       "src": "https://github.com/folke/snacks.nvim"
     },
+    "typst-preview.nvim": {
+      "rev": "87d0f3a1beedefe6fdd96422c04c3dceb69d1063",
+      "src": "https://github.com/chomosuke/typst-preview.nvim"
+    },
     "vimtex": {
       "rev": "32bcb3922c20588e00de68f73c86312eda2141ad",
       "src": "https://github.com/lervag/vimtex"
