@@ -70,5 +70,14 @@
       "]"
     ],
     "description": "Proposition"
+  },
+  "proof": {
+    "prefix": "prf",
+    "body": [
+      "#proof[",
+      "\t$0",
+      "]"
+    ],
+    "description": "Proof env"
   }
 }
