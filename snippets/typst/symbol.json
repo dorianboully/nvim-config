@@ -25,12 +25,12 @@
     "description": "Infinity"
   },
   "∀": {
-    "prefix": "A",
+    "prefix": ";A",
     "body": "∀",
     "description": "Universal quantifier (forall)"
   },
   "∃": {
-    "prefix": "E",
+    "prefix": ";E",
     "body": "∃",
     "description": "Existential quantifier (exists)"
   },
