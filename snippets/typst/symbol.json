@@ -24,6 +24,16 @@
     "body": "∞",
     "description": "Infinity"
   },
+  "composition":{
+    "prefix": "comp",
+    "body": "compose",
+    "description": "composition"
+  },
+  "prime":{
+    "prefix": "prm",
+    "body": "prime",
+    "description": "prime"
+  },
   "∀": {
     "prefix": ";A",
     "body": "∀",
