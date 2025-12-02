@@ -16,6 +16,7 @@ opt.wrap = false          -- Disable line wrap
 opt.shiftwidth = 2        -- Size of an indent
 opt.tabstop = 2           -- Number of spaces tabs count for
 opt.smartindent = true    -- Insert indents automatically
+opt.ignorecase = true     -- Case insensitive search
 opt.smartcase = true      -- Don't ignore case with capitals
 opt.completeopt = "noinsert,menuone,popup"
 
