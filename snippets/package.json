@@ -22,7 +22,7 @@
       },
       {
         "language": "typst",
-        "path": "./typst/thenv.json"
+        "path": "./typst/env.json"
       }
     ]
   }
