@@ -35,3 +35,11 @@ vim.api.nvim_create_user_command(
   ) end,
   {}
 )
+
+vim.api.nvim_create_user_command(
+  "TypstDiagram",
+    vim.schedule_wrap(function()
+      vim.ui.open("https://q.uiver.app/")
+    end),
+    {}
+)
