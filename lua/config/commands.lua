@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "tex", "plaintex", "typst" },
   callback = function(args)
-    vim.bo[args.buf].textwidth = 80
+    vim.bo[args.buf].textwidth = 65
     vim.opt_local.breakindent = true
   end
 })
