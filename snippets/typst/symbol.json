@@ -298,5 +298,10 @@
     "prefix": "sharp",
     "body": "♯",
     "description": "Sharp symbol"
+  },
+  "slash": {
+    "prefix": "sl",
+    "body": "slash",
+    "description": "'/' symbol for quotients sets"
   }
 }

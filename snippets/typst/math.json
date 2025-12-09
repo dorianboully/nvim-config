@@ -11,6 +11,21 @@
     ],
     "description": "Display math mode"
   },
+  "set": {
+    "prefix": "set",
+    "body": "{ ${1} mid(|) ${2} }$0",
+    "description": "Mathematical set with |"
+  },
+  "set;": {
+    "prefix": "set;",
+    "body": "{ ${1} thick;thick ${2} }$0",
+    "description": "Mathematical set with ;"
+  },
+  "restriction": {
+    "prefix": "res",
+    "body": "|_{${1}}$0",
+    "description": "restriction of a function"
+  },
   "binomial": {
     "prefix": "binom",
     "body": "binom(${1:n}, ${2:k})$0",
