@@ -7,7 +7,7 @@ return {
   end,
 
   keys = {
-    { "<C-y>", "copilot#Accept('\\<C-y>')", desc = "Accept copilot suggestion", mode = "i",  replace_keycodes = false, expr = true, silent = true, },
+    { "<C-y>", "copilot#Accept('<C-y>')", desc = "Accept copilot suggestion", mode = "i", replace_keycodes = false, expr = true, silent = true, },
     { "<C-z>", "<Plug>(copilot-dismiss)", desc = "Dismiss Copilot suggestion", mode = "i" },
     { "<C-down>", "<Plug>(copilot-next)", desc = "Next item", mode = "i" },
     { "<C-up>", "<Plug>(copilot-previous)", desc = "Previous item", mode = "i" },
