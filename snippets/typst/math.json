@@ -7,7 +7,9 @@
   "display_math": {
     "prefix": "dm",
     "body": [
-      "$ $0 $"
+      "$",
+      "\t$0", 
+      "$"
     ],
     "description": "Display math mode"
   },

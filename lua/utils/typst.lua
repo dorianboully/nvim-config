@@ -66,7 +66,6 @@ local function pickTemplate()
 
     if co then
       local choice = coroutine.yield()
-      vim.print("choice: " .. choice)
       return choice
     end
   end
@@ -90,24 +89,6 @@ local function getName()
   return ""
 end
 
---- Return the directory in which the "typst init"
---- command should be called. The path should be inferred
---- depending on the buffer:
---- a) If we are inside snacks file explorer, it should return
---- the directory corresponding to the line currently hovered
---- b) If the current bufer is a file, return its parent folder
---- c) Else, return nil
---- @return string | nil
-local function getCwd()
-  local bufname = vim.api.nvim_buf_get_name(0)
-  if bufname ~= "" then
-    local parent = vim.fn.fnamemodify(bufname, ":p:h")
-    if parent ~= "" then
-      return parent
-    end
-  end
-end
-
 --- Initialize a typst project
 --- @param template string?
 --- @param name string?
@@ -115,7 +96,7 @@ end
 --- @return nil
 M.typstInit = function(template, name, cwd)
   name = name or getName()
-  cwd = cwd or getCwd()
+  cwd = cwd or vim.fn.getcwd(0)
 
   template = template or pickTemplate()
 
