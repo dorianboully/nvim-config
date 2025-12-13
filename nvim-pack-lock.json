@@ -4,6 +4,10 @@
       "rev": "b19413d214068f316c78978b08264ed1c41830ec",
       "src": "https://github.com/saghen/blink.cmp"
     },
+    "copilot": {
+      "rev": "f89e977c87180519ba3b942200e3d05b17b1e2fc",
+      "src": "https://github.com/github/copilot.vim"
+    },
     "lualine": {
       "rev": "3946f0122255bc377d14a59b27b609fb3ab25768",
       "src": "https://github.com/nvim-lualine/lualine.nvim"

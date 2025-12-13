@@ -10,10 +10,7 @@ end
 
 -- Name of the files inside "./lua/plugins/" to not load
 -- Other option is to use enable = false inside a spec
-local exclude = {
-  "copilot",
-}
+local exclude = {}
 
 local packUtil = require("utils.pack")
 packUtil.packAddSpecs(packUtil.getSpecs("plugins", exclude))
-

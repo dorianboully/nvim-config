@@ -10,7 +10,7 @@ return {
   keys = {
     {
       "<C-y>",
-      "copilot#Accept('\\<C-y>')",
+      "copilot#Accept('<C-y>')",
       desc = "Accept copilot suggestion",
       mode = "i",
       noremap = true,
