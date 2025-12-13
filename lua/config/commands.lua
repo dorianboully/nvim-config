@@ -20,14 +20,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "tex", "plaintex", "typst" },
-  callback = function(args)
-    vim.bo[args.buf].textwidth = 65
-    vim.opt_local.breakindent = true
-  end
-})
-
 vim.api.nvim_create_user_command(
   "TypstInit",
   function() coroutine.resume(

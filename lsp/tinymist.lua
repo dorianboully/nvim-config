@@ -4,7 +4,7 @@ return {
 
   filetypes = { 'typst' },
 
-  root_markers = { 'project.json', 'typst.toml', '.git' },
+  root_markers = { 'typst.toml', '.git' },
 
   settings = {
     exportPdf = 'never',
@@ -15,11 +15,11 @@ return {
   },
 
   on_attach = function(_, bufnr)
-    local project = require("utils.typst").initProject(bufnr)
+    local typst = require("utils.typst")
 
-    vim.api.nvim_create_user_command("TypstView", function() project:view() end, {})
-    vim.api.nvim_create_user_command("TypstWatch", function() project:compile("watch") end, {})
-    vim.api.nvim_create_user_command("TypstCompile", function() project:compile("compile") end, {})
+    vim.api.nvim_create_user_command("TypstView", function() typst.view() end, {})
+    vim.api.nvim_create_user_command("TypstWatch", function() typst.compile("watch") end, {})
+    vim.api.nvim_create_user_command("TypstCompile", function() typst.compile("compile") end, {})
 
 
     vim.keymap.set("n", "<localleader>v", "<cmd>TypstView<cr>", { buffer = bufnr })
