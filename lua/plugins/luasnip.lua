@@ -52,33 +52,22 @@ return {
       noremap = true
     },
     {
-      "<C-L>",
+      "<S-Tab>",
       function()
         local ls = require("luasnip")
-        if ls.jumpable(1) then
-          vim.schedule(function() ls.jump(1) end)
+        if ls.expandable() then
+          vim.schedule(ls.expand)
           return
-        else
-          return "<C-L>"
-        end
-      end,
-      expr = true,
-      mode = { "i", "s" }
-    },
-    {
-      "<C-H>",
-      function()
-        local ls = require("luasnip")
-        if ls.jumpable(-1) then
+        elseif ls.jumpable(-1) then
           vim.schedule(function() ls.jump(-1) end)
-          return
         else
-          return "<C-L>"
+          return "<S-Tab>"
         end
       end,
       expr = true,
-      mode = { "i", "s" }
-    }
+      mode = { "i", "s" },
+      noremap = true
+    },
   },
 
   config = function(opts)
