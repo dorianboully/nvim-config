@@ -12,14 +12,12 @@ return {
     local autopairs = require("nvim-autopairs")
     local cond = require("nvim-autopairs.conds")
 
-    autopairs.setup()
+    autopairs.setup(opts)
 
     autopairs.add_rule(
       Rule("$", "$", "typst")
-      :with_pair(cond.not_before_regex("\\", 1)) -- ignore escaped \$
       :with_pair(function(o)
         local _, count = o.line
-            :gsub("\\%$", "")
             :gsub("%$", "")
         return count % 2 == 0
       end)
@@ -27,3 +25,4 @@ return {
     )
   end
 }
+
