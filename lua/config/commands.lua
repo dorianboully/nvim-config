@@ -3,7 +3,6 @@ vim.api.nvim_create_user_command("PackListInactive", function()
   vim.print(require("utils.pack").getInactivePackages())
 end, {})
 
--- Detect rc filetype
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*rc",
   callback = function()
@@ -13,7 +12,13 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
--- Highlight on yank
+vim.api.nvim_create_autocmd("Filetype", {
+  pattern = "typst",
+  callback = function()
+    vim.bo.textwidth = 65
+  end
+})
+
 vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function()
     (vim.hl or vim.highlight).on_yank()
