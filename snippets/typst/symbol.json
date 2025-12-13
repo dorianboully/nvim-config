@@ -264,6 +264,11 @@
     "body": "arrow.r.bar.long",
     "description": "longmapsto"
   },
+  "hook": {
+    "prefix": "arh",
+    "body": "arrow.r.hook",
+    "description": "hook"
+  },
   "°": {
     "prefix": "deg",
     "body": "°",
