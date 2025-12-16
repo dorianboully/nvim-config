@@ -16,6 +16,7 @@ vim.api.nvim_create_autocmd("Filetype", {
   pattern = "typst",
   callback = function()
     vim.bo.textwidth = 65
+    vim.opt_local.formatoptions:remove({ "t" })
   end
 })
 
