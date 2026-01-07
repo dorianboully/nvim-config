@@ -179,9 +179,9 @@
     "body": "dots.c",
     "description": "Centered horizontal dots"
   },
-  "setminus": {
+  "setdifference": {
     "prefix": "wo",
-    "body": "setminus",
+    "body": "without",
     "description": "Set difference"
   },
   "otimes": {
@@ -241,12 +241,12 @@
   },
   "chevrons": {
     "prefix": "lra",
-    "body": "chevron.l ${1} chevron.r $0",
+    "body": "chevron.l ${1} chevron.r$0",
     "description": "Angle brackets / Chevrons"
   },
   "curlybraces": {
     "prefix": "lrc",
-    "body": "{ ${1} } $0",
+    "body": "{ ${1} }$0",
     "description": "Curly braces"
   },
   "midbar": {
