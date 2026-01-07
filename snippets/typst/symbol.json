@@ -121,17 +121,12 @@
   },
   "neq": {
     "prefix": "ne",
-    "body": "neq",
+    "body": "eq.not",
     "description": "Not equal"
-  },
-  "approx": {
-    "prefix": "appr",
-    "body": "approx",
-    "description": "Approximately equal"
   },
   "simeq": {
     "prefix": "teq",
-    "body": "simeq",
+    "body": "tilde.eq",
     "description": "Simeq (similar and equal)"
   },
   "isomorphism": {
