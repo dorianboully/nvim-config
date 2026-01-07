@@ -238,5 +238,25 @@
     "prefix": "sl",
     "body": "slash",
     "description": "'/' symbol for quotients sets"
+  },
+  "chevrons": {
+    "prefix": "lra",
+    "body": "chevron.l ${1} chevron.r $0",
+    "description": "Angle brackets / Chevrons"
+  },
+  "curlybraces": {
+    "prefix": "lrc",
+    "body": "{ ${1} } $0",
+    "description": "Curly braces"
+  },
+  "midbar": {
+    "prefix": "mb",
+    "body": "mid(|)",
+    "description": "Mid bar delimiter"
+  },
+  "midsemicolon": {
+    "prefix": ";;",
+    "body": "thick ; thick",
+    "description": "Thick semicolon delimiter"
   }
 }
