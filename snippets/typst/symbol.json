@@ -134,9 +134,9 @@
     "body": "simeq",
     "description": "Simeq (similar and equal)"
   },
-  "cong": {
+  "isomorphism": {
     "prefix": "teqq",
-    "body": "cong",
+    "body": "tilde.equiv",
     "description": "Congruent"
   },
   "equiv": {
