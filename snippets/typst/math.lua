@@ -18,4 +18,8 @@ return {
     fmta("_(<>)^(<>) <>", { i(1), i(2), i(0) }),
     {}
   ),
+  s({ trig = "ttl", name = "env title", wordTrig = false },
+    fmta('(title: "<>")', i(1)),
+    {}
+  )
 }
