@@ -23,75 +23,55 @@
     "body": "{ ${1} thick;thick ${2} }$0",
     "description": "Mathematical set with ;"
   },
-  "restriction": {
-    "prefix": "res",
-    "body": "|_{${1}}$0",
-    "description": "restriction of a function"
-  },
   "binomial": {
     "prefix": "binom",
     "body": "binom(${1:n}, ${2:k})$0",
     "description": "Binomial coefficient"
   },
   "summation": {
-    "prefix": "sum",
-    "body": "sum_(${1:i=1})^(${2:n}) $0",
+    "prefix": "sm",
+    "body": "sum",
     "description": "Summation"
   },
   "product": {
     "prefix": "pr",
-    "body": "product_(${1:i=1})^(${2:n}) $0",
+    "body": "product",
     "description": "Product"
   },
   "coproduct": {
     "prefix": "cpr",
-    "body": "product.co_(${1:i in I})^(${2:n}) $0",
+    "body": "product.co",
     "description": "Coproduct"
   },
   "direct_sum": {
     "prefix": "bop",
-    "body": "op(plus.circle)_(${1:i in I})^(${2:n}) $0",
+    "body": "op(plus.circle)",
     "description": "Direct sum"
   },
   "big_intersection": {
     "prefix": "bcap",
-    "body": "sect.big_(${1:i in I})^(${2:n}) $0",
+    "body": "sect.big",
     "description": "Big intersection"
   },
   "big_union": {
     "prefix": "bcup",
-    "body": "union.big_(${1:i in I})^(${2:n}) $0",
+    "body": "union.big",
     "description": "Big union"
   },
   "big_wedge": {
     "prefix": "bwe",
-    "body": "and.big_(${1:i in I})^(${2:n}) $0",
+    "body": "and.big",
     "description": "Big wedge"
   },
   "big_vee": {
     "prefix": "bve",
-    "body": "or.big_(${1:i in I})^(${2:n}) $0",
+    "body": "or.big",
     "description": "Big vee"
   },
   "integral": {
     "prefix": "int",
-    "body": "integral_(${1:a})^(${2:b}) $0",
+    "body": "integral",
     "description": "Integral"
-  },
-  "limit": {
-    "prefix": "lim",
-    "body": "lim_(${1:x -> a}) ${2:f(x)}$0",
-    "description": "Limit"
-  },
-  "subscript": {
-    "prefix": "sb",
-    "body": "_(${1})$0",
-    "description": "Subscript"
-  },
-  "superscript": {
-    "prefix": "sp",
-    "body": "^(${1})$0",
-    "description": "Superscript"
   },
   "bar_accent": {
     "prefix": "bar",
@@ -104,12 +84,12 @@
     "description": "Hat accent"
   },
   "vec_accent": {
-    "prefix": "vec",
-    "body": "vec(${1})$0",
+    "prefix": "ar",
+    "body": "arrow(${1})$0",
     "description": "Vector accent"
   },
   "tilde_accent": {
-    "prefix": "tilde",
+    "prefix": "tl",
     "body": "tilde(${1})$0",
     "description": "Tilde accent"
   },
@@ -119,19 +99,9 @@
     "description": "Overline accent"
   },
   "root": {
-    "prefix": "sqrt",
-    "body": "root(${1:n}, ${2:x})$0",
+    "prefix": "sqr",
+    "body": "sqrt(${1:n})$0",
     "description": "Root"
-  },
-  "matrix": {
-    "prefix": "mat",
-    "body": "mat(\n\t${1:a}, ${2:b};\n\t${3:c}, ${4:d}\n)$0",
-    "description": "Matrix"
-  },
-  "cases": {
-    "prefix": "cases",
-    "body": "cases(\n\t${1:expr_1} & \"if\" ${2:condition_1},\n\t${3:expr_2} & \"if\" ${4:condition_2}\n)$0",
-    "description": "Cases"
   },
   "absolute_value": {
     "prefix": "abs",
@@ -142,16 +112,6 @@
     "prefix": "norm",
     "body": "norm(${1})$0",
     "description": "Norm"
-  },
-  "floor": {
-    "prefix": "floor",
-    "body": "floor(${1})$0",
-    "description": "Floor function"
-  },
-  "ceil": {
-    "prefix": "ceil",
-    "body": "ceil(${1})$0",
-    "description": "Ceiling function"
   },
   "cal_font": {
     "prefix": "mc",
@@ -175,11 +135,11 @@
   },
   "script_font": {
     "prefix": "ms",
-    "body": "cal(${1})$0",
+    "body": "scr(${1})$0",
     "description": "Script font"
   },
   "double_struck_font": {
-    "prefix": "md",
+    "prefix": "bb",
     "body": "bb(${1})$0",
     "description": "Double-struck font"
   },
@@ -187,16 +147,6 @@
     "prefix": "mr",
     "body": "upright(${1})$0",
     "description": "Roman (upright) font"
-  },
-  "sans_serif_font": {
-    "prefix": "mss",
-    "body": "sans(${1})$0",
-    "description": "Sans-serif font"
-  },
-  "monospace_font": {
-    "prefix": "mmf",
-    "body": "mono(${1})$0",
-    "description": "Monospace font"
   }
 }
 

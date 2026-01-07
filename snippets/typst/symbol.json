@@ -1,308 +1,238 @@
 {
-  "ℏ": {
+  "hbar": {
     "prefix": "hb",
-    "body": "ℏ",
+    "body": "planck.reduce",
     "description": "Reduced Planck constant (h-bar)"
   },
-  "ℵ": {
-    "prefix": "aleph",
-    "body": "ℵ",
-    "description": "Aleph (cardinality)"
-  },
-  "∇": {
-    "prefix": "nab",
+  "nabla": {
+    "prefix": "nb",
     "body": "nabla",
     "description": "Nabla/Del (gradient)"
   },
-  "∂": {
-    "prefix": "part",
-    "body": "∂",
+  "partial": {
+    "prefix": "pt",
+    "body": "partial",
     "description": "Partial derivative"
   },
-  "∞": {
+  "infinity": {
     "prefix": "oo",
-    "body": "∞",
+    "body": "infinity",
     "description": "Infinity"
   },
-  "composition":{
-    "prefix": "comp",
+  "composition": {
+    "prefix": "cp",
     "body": "compose",
     "description": "composition"
   },
-  "prime":{
-    "prefix": "prm",
+  "prime": {
+    "prefix": "pp",
     "body": "prime",
     "description": "prime"
   },
-  "∀": {
+  "forall": {
     "prefix": ";A",
-    "body": "∀",
+    "body": "forall",
     "description": "Universal quantifier (forall)"
   },
-  "∃": {
+  "exists": {
     "prefix": ";E",
-    "body": "∃",
+    "body": "exists",
     "description": "Existential quantifier (exists)"
   },
-  "∋": {
+  "ni": {
     "prefix": "ni",
     "body": "in.rev",
-    "description": "Element of"
+    "description": "Element of (reverse)"
   },
-  "∉": {
+  "notin": {
     "prefix": "nin",
-    "body": "∉",
+    "body": "in.not",
     "description": "Not element of"
   },
-  "⊂": {
+  "subset": {
     "prefix": "sub",
-    "body": "⊂",
+    "body": "subset",
     "description": "Subset"
   },
-  "⊃": {
+  "superset": {
     "prefix": "sup",
-    "body": "⊃",
+    "body": "superset",
     "description": "Superset"
   },
-  "⊆": {
+  "subseteq": {
     "prefix": "sube",
-    "body": "⊆",
+    "body": "subset.eq",
     "description": "Subset or equal"
   },
-  "⊇": {
+  "superseteq": {
     "prefix": "supe",
-    "body": "⊇",
+    "body": "superset.eq",
     "description": "Superset or equal"
   },
-  "⊄": {
+  "nsubset": {
     "prefix": "nsub",
-    "body": "⊄",
+    "body": "subset.not",
     "description": "Not subset"
   },
-  "⊅": {
+  "nsuperset": {
     "prefix": "nsup",
-    "body": "⊅",
+    "body": "superset.not",
     "description": "Not superset"
   },
-  "∩": {
+  "intersection": {
     "prefix": "cap",
-    "body": "∩",
+    "body": "inter",
     "description": "Intersection"
   },
-  "∪": {
+  "union": {
     "prefix": "cup",
-    "body": "∪",
+    "body": "union",
     "description": "Union"
   },
-  "¬": {
+  "lnot": {
     "prefix": "not",
-    "body": "¬",
+    "body": "not",
     "description": "Logical NOT"
   },
-  "∅": {
-    "prefix": "em",
+  "emptyset": {
+    "prefix": "nt",
     "body": "emptyset",
     "description": "Empty set"
   },
-  "ℝ": {
-    "prefix": "RR",
-    "body": "ℝ",
-    "description": "Real numbers"
-  },
-  "ℂ": {
-    "prefix": "CC",
-    "body": "ℂ",
-    "description": "Complex numbers"
-  },
-  "ℤ": {
-    "prefix": "ZZ",
-    "body": "ℤ",
-    "description": "Integers"
-  },
-  "ℕ": {
-    "prefix": "NN",
-    "body": "ℕ",
-    "description": "Natural numbers"
-  },
-  "ℚ": {
-    "prefix": "QQ",
-    "body": "ℚ",
-    "description": "Rational numbers"
-  },
-  "⩽": {
+  "le": {
     "prefix": "le",
-    "body": "⩽",
+    "body": "lt.eq",
     "description": "Less than or equal"
   },
-  "⩾": {
+  "ge": {
     "prefix": "ge",
-    "body": "⩾",
+    "body": "gt.eq",
     "description": "Greater than or equal"
   },
-  "≪": {
+  "ll": {
     "prefix": "<<",
     "body": "lt.double",
     "description": "Much less than"
   },
-  "≫": {
+  "gg": {
     "prefix": ">>",
     "body": "gt.double",
     "description": "Much greater than"
   },
-  "≠": {
+  "neq": {
     "prefix": "ne",
-    "body": "≠",
+    "body": "neq",
     "description": "Not equal"
   },
-  "≈": {
+  "approx": {
     "prefix": "appr",
-    "body": "≈",
+    "body": "approx",
     "description": "Approximately equal"
   },
-  "∼": {
-    "prefix": "sim",
-    "body": "∼",
-    "description": "Similar to"
-  },
-  "≃": {
-    "prefix": "seq",
-    "body": "≃",
+  "simeq": {
+    "prefix": "teq",
+    "body": "simeq",
     "description": "Simeq (similar and equal)"
   },
-  "⋍": {
-    "prefix": "backsim",
-    "body": "⋍",
-    "description": "Backsimeq"
-  },
-  "≅": {
-    "prefix": "cong",
-    "body": "≅",
+  "cong": {
+    "prefix": "teqq",
+    "body": "cong",
     "description": "Congruent"
   },
-  "≡": {
-    "prefix": "equiv",
-    "body": "≡",
+  "equiv": {
+    "prefix": "eqq",
+    "body": "equiv",
     "description": "Congruent/Equivalent"
   },
-  "⊥": {
+  "perp": {
     "prefix": "orth",
-    "body": "⊥",
+    "body": "perp",
     "description": "Perpendicular"
   },
-  "∥": {
+  "parallel": {
     "prefix": "para",
-    "body": "∥",
+    "body": "parallel",
     "description": "Parallel"
   },
-  "±": {
+  "pm": {
     "prefix": "pm",
-    "body": "±",
+    "body": "plus.minus",
     "description": "Plus or minus"
   },
-  "∓": {
+  "mp": {
     "prefix": "mp",
-    "body": "∓",
+    "body": "minus.plus",
     "description": "Minus or plus"
   },
-  "×": {
+  "times": {
     "prefix": "xx",
-    "body": "×",
+    "body": "times",
     "description": "Multiplication"
   },
-  "⋅": {
-    "prefix": "dot",
-    "body": "⋅",
+  "cdot": {
+    "prefix": "d",
+    "body": "dot",
     "description": "Dot product"
   },
-  "⋯": {
-    "prefix": "cd",
-    "body": "dots.h.c",
+  "cdots": {
+    "prefix": "dhc",
+    "body": "dots.c",
     "description": "Centered horizontal dots"
   },
-  "∖": {
-    "prefix": "sm",
-    "body": "without",
+  "setminus": {
+    "prefix": "wo",
+    "body": "setminus",
     "description": "Set difference"
   },
-  "⊗": {
-    "prefix": "ox",
-    "body": "times.o",
+  "otimes": {
+    "prefix": "to",
+    "body": "times.circle",
     "description": "Tensor product"
   },
-  "⊕": {
-    "prefix": "op",
-    "body": "plus.o",
+  "oplus": {
+    "prefix": "po",
+    "body": "plus.circle",
     "description": "Direct sum"
   },
-  "⊙": {
-    "prefix": "odot",
-    "body": "dot.o",
+  "odot": {
+    "prefix": "do",
+    "body": "dot.circle",
     "description": "Odot"
   },
-  "⇔": {
+  "iff": {
     "prefix": "iff",
-    "body": "<==>",
+    "body": "arrow.l.r.double",
     "description": "Bidirectional double arrow (if and only if)"
   },
-  "↑": {
-    "prefix": "at",
-    "body": "↑",
-    "description": "arrow.t"
-  },
-  "↓": {
+  "mapsto": {
     "prefix": "ab",
-    "body": "↓",
-    "description": "arrow.b"
-  },
-  "↦": {
-    "prefix": "arb",
     "body": "arrow.r.bar",
     "description": "Maps to"
   },
   "longmapsto": {
-    "prefix": "lrb",
-    "body": "arrow.r.bar.long",
-    "description": "longmapsto"
+    "prefix": "abl",
+    "body": "${1|arrow.r.long.bar,stretch(arrow.r.long.bar)|}",
+    "description": "Long maps to (Choice: Fixed or Stretched)"
   },
   "hook": {
-    "prefix": "arh",
+    "prefix": "ah",
     "body": "arrow.r.hook",
     "description": "hook"
   },
-  "°": {
-    "prefix": "deg",
-    "body": "°",
-    "description": "Degree"
+  "longhook": {
+    "prefix": "alh",
+    "body": "${1|arrowHookLong, stretch(arrow.r.hook)|}",
+    "description": "Long hook"
   },
-  "†": {
-    "prefix": "dag",
-    "body": "†",
-    "description": "Dagger"
+  "longarrow": {
+    "prefix": "al",
+    "body": "${1|arrow.r.long, stretch(arrow.r.long)|}",
+    "description": "Long arrow (Choice: Fixed or Stretched)"
   },
-  "‡": {
-    "prefix": "ddag",
-    "body": "‡",
-    "description": "Double dagger"
-  },
-  "ℓ": {
-    "prefix": "ll",
-    "body": "ℓ",
-    "description": "Ell (script l)"
-  },
-  "♭": {
-    "prefix": "flat",
-    "body": "♭",
-    "description": "Flat symbol"
-  },
-  "♮": {
-    "prefix": "nat",
-    "body": "♮",
-    "description": "Natural symbol"
-  },
-  "♯": {
-    "prefix": "sharp",
-    "body": "♯",
-    "description": "Sharp symbol"
+  "arrowtilde": {
+    "prefix": "at",
+    "body": "$1{|arrowTildeLong, $$stretch(arrow.r.long)^(#move(dy: .5em)[$$tilde$$])$$|}",
+    "description": "Long hook"
   },
   "slash": {
     "prefix": "sl",

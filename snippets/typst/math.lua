@@ -13,4 +13,9 @@ return {
     fmta("_(<>)", i(1)),
     {}
   ),
+
+  s({ trig = "sbp", name = "subscript and superscript", wordTrig = false },
+    fmta("_(<>)^(<>) <>", { i(1), i(2), i(0) }),
+    {}
+  ),
 }
