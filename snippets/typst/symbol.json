@@ -221,17 +221,17 @@
   },
   "longhook": {
     "prefix": "alh",
-    "body": "${1|arrowHookLong, stretch(arrow.r.hook)|}",
+    "body": "${1|arrowHookLong,stretch(arrow.r.hook)|}",
     "description": "Long hook"
   },
   "longarrow": {
     "prefix": "al",
-    "body": "${1|arrow.r.long, stretch(arrow.r.long)|}",
+    "body": "${1|arrow.r.long,stretch(arrow.r.long)|}",
     "description": "Long arrow (Choice: Fixed or Stretched)"
   },
   "arrowtilde": {
     "prefix": "at",
-    "body": "$1{|arrowTildeLong, $$stretch(arrow.r.long)^(#move(dy: .5em)[$$tilde$$])$$|}",
+    "body": "${1|arrowTildeLong,stretch(arrow.r.long)^(#move(dy: .5em)[$tilde$])|}",
     "description": "Long hook"
   },
   "slash": {
