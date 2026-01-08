@@ -101,12 +101,12 @@
   },
   "le": {
     "prefix": "le",
-    "body": "lt.eq",
+    "body": "lt.eq.slant",
     "description": "Less than or equal"
   },
   "ge": {
     "prefix": "ge",
-    "body": "gt.eq",
+    "body": "gt.eq.slant",
     "description": "Greater than or equal"
   },
   "ll": {
