@@ -19,7 +19,7 @@ return {
     {}
   ),
   s({ trig = "ttl", name = "env title", wordTrig = false },
-    fmta('(title: "<>")', i(1)),
+    fmta('(title: [<>])', i(1)),
     {}
   )
 }

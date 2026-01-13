@@ -196,7 +196,7 @@
   },
   "iff": {
     "prefix": "iff",
-    "body": "arrow.l.r.double",
+    "body": "arrow.l.r.double.long",
     "description": "Bidirectional double arrow (if and only if)"
   },
   "mapsto": {
@@ -221,12 +221,12 @@
   },
   "longarrow": {
     "prefix": "al",
-    "body": "${1|arrow.r.long,stretch(arrow.r.long)|}",
+    "body": "${1|arrow.r.long,stretch(arrow)|}",
     "description": "Long arrow (Choice: Fixed or Stretched)"
   },
   "arrowtilde": {
     "prefix": "at",
-    "body": "${1|arrowTildeLong,stretch(arrow.r.long)^(#move(dy: .5em)[$tilde$])|}",
+    "body": "${1|arrowTildeLong,stretch(arrow)^(#move(dy: .5em)[$tilde$])|}",
     "description": "Long hook"
   },
   "slash": {
