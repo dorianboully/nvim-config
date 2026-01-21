@@ -8,6 +8,9 @@ map("v", "P", '"_dP')
 map("n", "<leader>e", "<cmd>Explore<CR>")
 map("n", "<leader>E", "<cmd>Vexplore<CR>")
 
+-- Insert special characters (digraphs)
+map("i", "<C-F>", "<C-K>", { noremap = true, desc = "Insert a digraph (special character)" })
+
 -- Format buffer
 map("n", "<leader>bf", vim.lsp.buf.format, { desc = "Format current buffer" })
 
