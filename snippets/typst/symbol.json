@@ -164,11 +164,6 @@
     "body": "times",
     "description": "Multiplication"
   },
-  "cdot": {
-    "prefix": "d",
-    "body": "dot",
-    "description": "Dot product"
-  },
   "cdots": {
     "prefix": "dhc",
     "body": "dots.c",
@@ -193,6 +188,11 @@
     "prefix": "do",
     "body": "dot.circle",
     "description": "Odot"
+  },
+  "circle": {
+    "prefix": "cl",
+    "body": "circle(${1})$0",
+    "description": "Circle"
   },
   "iff": {
     "prefix": "iff",
