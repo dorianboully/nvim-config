@@ -4,7 +4,7 @@ return {
 
   filetypes = { 'typst' },
 
-  root_markers = { 'typst.toml', '.git' },
+  root_markers = { 'typst.toml', '.git', 'main.typ' },
 
   settings = {
     exportPdf = 'never',
