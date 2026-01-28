@@ -176,17 +176,17 @@
   },
   "otimes": {
     "prefix": "to",
-    "body": "times.circle",
+    "body": "times.o",
     "description": "Tensor product"
   },
   "oplus": {
     "prefix": "po",
-    "body": "plus.circle",
+    "body": "plus.o",
     "description": "Direct sum"
   },
   "odot": {
     "prefix": "do",
-    "body": "dot.circle",
+    "body": "dot.o",
     "description": "Odot"
   },
   "circle": {
