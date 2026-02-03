@@ -21,5 +21,13 @@ return {
   s({ trig = "ttl", name = "env title", wordTrig = false },
     fmta('(title: [<>])', i(1)),
     {}
-  )
+  ),
+  s({ trig = "pp", name = "prime", wordTrig = false },
+    fmta("^(prime)<>", i(0)),
+    {}
+  ),
+  s({ trig = "ppd", name = "prime", wordTrig = false },
+    fmta("^(prime.double)<>", i(0)),
+    {}
+  ),
 }
