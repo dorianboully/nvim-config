@@ -22,12 +22,16 @@ return {
     fmta('(title: [<>])', i(1)),
     {}
   ),
-  s({ trig = "pp", name = "prime", wordTrig = false },
-    fmta("^(prime)<>", i(0)),
+  s({ trig = "tp", name = "transpose", wordTrig = false },
+    fmta("^(top)<>", i(0)),
     {}
   ),
-  s({ trig = "ppd", name = "prime", wordTrig = false },
-    fmta("^(prime.double)<>", i(0)),
+  s({ trig = "inv", name = "inverse", wordTrig = false },
+    fmta("^(-1)<>", i(0)),
+    {}
+  ),
+  s({ trig = "ort", name = "orthogonal (perp)", wordTrig = false },
+    fmta("^(perp)<>", i(0)),
     {}
   ),
 }
