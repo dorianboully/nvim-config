@@ -15,7 +15,10 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 vim.api.nvim_create_autocmd("Filetype", {
   pattern = "typst",
   callback = function()
-    vim.bo.textwidth = 65
+    vim.bo.textwidth = 80
+    vim.opt_local.linebreak = true
+    vim.opt_local.breakindent = true
+    vim.opt_local.breakindentopt = "shift:2"
     vim.opt_local.formatoptions:remove({ "t" })
   end
 })
@@ -28,16 +31,18 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 vim.api.nvim_create_user_command(
   "TypstInit",
-  function() coroutine.resume(
-    coroutine.create(require("utils.typst").typstInit)
-  ) end,
+  function()
+    coroutine.resume(
+      coroutine.create(require("utils.typst").typstInit)
+    )
+  end,
   {}
 )
 
 vim.api.nvim_create_user_command(
   "TypstDiagram",
-    vim.schedule_wrap(function()
-      vim.ui.open("https://q.uiver.app/")
-    end),
-    {}
+  vim.schedule_wrap(function()
+    vim.ui.open("https://q.uiver.app/")
+  end),
+  {}
 )

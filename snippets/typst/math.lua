@@ -26,6 +26,10 @@ return {
     fmta("^(top)<>", i(0)),
     {}
   ),
+  s({ trig = "st", name = "[st]ar", wordTrig = false },
+    fmta("^(*)<>", i(0)),
+    {}
+  ),
   s({ trig = "inv", name = "inverse", wordTrig = false },
     fmta("^(-1)<>", i(0)),
     {}
