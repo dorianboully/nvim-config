@@ -208,4 +208,36 @@ M.view = function(viewer, file)
   vim.system({ viewer, file }, { detach = true, cwd = cwd })
 end
 
+--- Start live preview: switch to onType export and open zathura
+M.preview = function()
+  local client = get_client()
+  if not client then
+    vim.notify("tinymist not attached", vim.log.levels.ERROR)
+    return
+  end
+
+  client:notify("workspace/didChangeConfiguration", {
+    settings = { exportPdf = "onType" },
+  })
+
+  M.view()
+
+  vim.notify("Live preview started (export on type)", vim.log.levels.INFO)
+end
+
+--- Stop live preview: revert to onSave export
+M.stopPreview = function()
+  local client = get_client()
+  if not client then
+    vim.notify("tinymist not attached", vim.log.levels.ERROR)
+    return
+  end
+
+  client:notify("workspace/didChangeConfiguration", {
+    settings = { exportPdf = "onSave" },
+  })
+
+  vim.notify("Live preview stopped (export on save)", vim.log.levels.INFO)
+end
+
 return M
