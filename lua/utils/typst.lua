@@ -1,5 +1,5 @@
 local TEMPLATES_PATH = "~/.local/share/typst/packages/local"
-local M = { _watching = false }
+local M = { _watching = true }
 
 --- Get the tinymist LSP client for the current buffer
 ---@return vim.lsp.Client?
@@ -138,7 +138,7 @@ M.compile = function()
 
   client:request("workspace/executeCommand", {
     command = "tinymist.exportPdf",
-    arguments = { vim.uri_from_bufnr(0) },
+    arguments = { vim.api.nvim_buf_get_name(0) },
   }, function(err)
     vim.schedule(function()
       if err then
@@ -178,11 +178,11 @@ M.pin = function(unpin)
   end
 
   -- vim.NIL encodes as JSON null, telling tinymist to unpin the main file
-  local uri = unpin and vim.NIL or vim.uri_from_bufnr(0)
+  local path = unpin and vim.NIL or vim.api.nvim_buf_get_name(0)
 
   client:request("workspace/executeCommand", {
     command = "tinymist.pinMain",
-    arguments = { uri },
+    arguments = { path },
   }, function(err)
     vim.schedule(function()
       if err then
