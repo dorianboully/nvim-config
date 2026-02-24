@@ -136,9 +136,11 @@ M.compile = function()
     return
   end
 
+  local path = M._pinnedPath or vim.api.nvim_buf_get_name(0)
+
   client:request("workspace/executeCommand", {
     command = "tinymist.exportPdf",
-    arguments = { vim.api.nvim_buf_get_name(0) },
+    arguments = { path },
   }, function(err)
     vim.schedule(function()
       if err then
@@ -151,7 +153,7 @@ M.compile = function()
 end
 
 --- Toggle pin/unpin the main file for multi-file projects
-M._pinned = false
+M._pinnedPath = nil
 M.togglePin = function()
   local client = get_client()
   if not client then
@@ -159,9 +161,10 @@ M.togglePin = function()
     return
   end
 
-  M._pinned = not M._pinned
+  local shouldPin = M._pinnedPath == nil
   -- vim.NIL encodes as JSON null, telling tinymist to unpin the main file
-  local path = M._pinned and vim.api.nvim_buf_get_name(0) or vim.NIL
+  local bufname = vim.api.nvim_buf_get_name(0)
+  local path = shouldPin and bufname or vim.NIL
 
   client:request("workspace/executeCommand", {
     command = "tinymist.pinMain",
@@ -169,10 +172,10 @@ M.togglePin = function()
   }, function(err)
     vim.schedule(function()
       if err then
-        M._pinned = not M._pinned
         vim.notify("Pin failed: " .. tostring(err.message or err), vim.log.levels.ERROR)
       else
-        local msg = M._pinned and ("Pinned: " .. vim.api.nvim_buf_get_name(0)) or "Unpinned main file"
+        M._pinnedPath = shouldPin and bufname or nil
+        local msg = shouldPin and ("Pinned: " .. bufname) or "Unpinned main file"
         vim.notify(msg, vim.log.levels.INFO)
       end
     end)
@@ -181,7 +184,7 @@ end
 
 M.view = function(viewer, file)
   viewer = viewer or "zathura"
-  local input = vim.api.nvim_buf_get_name(0)
+  local input = M._pinnedPath or vim.api.nvim_buf_get_name(0)
   file = file or input:gsub(".typ", ".pdf")
   local cwd = vim.fn.fnamemodify(input, ":h")
 

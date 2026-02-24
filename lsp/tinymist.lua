@@ -7,7 +7,7 @@ return {
   root_markers = { 'typst.toml', '.git', 'main.typ' },
 
   settings = {
-    projectResolution = "lockDatabase",
+    projectResolution = "path",
     exportPdf = 'onSave',
     outputPath = "$root/$dir/$name",
     formatterMode = 'typstyle',
