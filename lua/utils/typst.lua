@@ -1,5 +1,5 @@
 local TEMPLATES_PATH = "~/.local/share/typst/packages/local"
-local M = { _watching = true }
+local M = {}
 
 --- Get the tinymist LSP client for the current buffer
 ---@return vim.lsp.Client?
@@ -148,24 +148,6 @@ M.compile = function()
       end
     end)
   end)
-end
-
---- Toggle continuous PDF export on save
-M.watch = function()
-  local client = get_client()
-  if not client then
-    vim.notify("tinymist not attached", vim.log.levels.ERROR)
-    return
-  end
-
-  M._watching = not M._watching
-  local mode = M._watching and "onSave" or "never"
-
-  client:notify("workspace/didChangeConfiguration", {
-    settings = { exportPdf = mode },
-  })
-
-  vim.notify("Export on save: " .. (M._watching and "enabled" or "disabled"), vim.log.levels.INFO)
 end
 
 --- Toggle pin/unpin the main file for multi-file projects
