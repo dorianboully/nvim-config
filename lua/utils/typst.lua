@@ -1,5 +1,12 @@
 local TEMPLATES_PATH = "~/.local/share/typst/packages/local"
-local M = {}
+local M = { _watching = false }
+
+--- Get the tinymist LSP client for the current buffer
+---@return vim.lsp.Client?
+local function get_client()
+  local clients = vim.lsp.get_clients({ bufnr = 0, name = "tinymist" })
+  return clients[1]
+end
 
 --- Return a template from local templates
 --- (from "~/.local/share/typst/packages/")
@@ -121,20 +128,71 @@ M.typstInit = function(template, name, cwd)
   )
 end
 
-M.compile = function(cmd)
-  cmd = cmd or "compile"
+--- Export the current document as PDF via tinymist
+M.compile = function()
+  local client = get_client()
+  if not client then
+    vim.notify("tinymist not attached", vim.log.levels.ERROR)
+    return
+  end
 
-  local input = vim.api.nvim_buf_get_name(0)
-  local cwd = vim.fn.fnamemodify(input, ":h")
+  client:request("workspace/executeCommand", {
+    command = "tinymist.exportPdf",
+    arguments = { vim.uri_from_bufnr(0) },
+  }, function(err)
+    vim.schedule(function()
+      if err then
+        vim.notify("Export failed: " .. tostring(err.message or err), vim.log.levels.ERROR)
+      else
+        vim.notify("PDF exported", vim.log.levels.INFO)
+      end
+    end)
+  end)
+end
 
-  local argv = {
-    "typst",
-    cmd,
-    input
-  }
+--- Toggle continuous PDF export on save
+M.watch = function()
+  local client = get_client()
+  if not client then
+    vim.notify("tinymist not attached", vim.log.levels.ERROR)
+    return
+  end
 
-  vim.system(argv, { detach = true, text = true, cwd = cwd },
-    require("utils.system").onExit)
+  M._watching = not M._watching
+  local mode = M._watching and "onSave" or "never"
+
+  client:notify("workspace/didChangeConfiguration", {
+    settings = { exportPdf = mode },
+  })
+
+  vim.notify("Export on save: " .. (M._watching and "enabled" or "disabled"), vim.log.levels.INFO)
+end
+
+--- Pin or unpin the main file for multi-file projects
+---@param unpin? boolean
+M.pin = function(unpin)
+  local client = get_client()
+  if not client then
+    vim.notify("tinymist not attached", vim.log.levels.ERROR)
+    return
+  end
+
+  -- vim.NIL encodes as JSON null, telling tinymist to unpin the main file
+  local uri = unpin and vim.NIL or vim.uri_from_bufnr(0)
+
+  client:request("workspace/executeCommand", {
+    command = "tinymist.pinMain",
+    arguments = { uri },
+  }, function(err)
+    vim.schedule(function()
+      if err then
+        vim.notify("Pin failed: " .. tostring(err.message or err), vim.log.levels.ERROR)
+      else
+        local msg = unpin and "Unpinned main file" or ("Pinned: " .. vim.api.nvim_buf_get_name(0))
+        vim.notify(msg, vim.log.levels.INFO)
+      end
+    end)
+  end)
 end
 
 M.view = function(viewer, file)
