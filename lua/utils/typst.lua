@@ -179,17 +179,75 @@ M.togglePin = function()
   end)
 end
 
+--- Track the viewer process for forward search via D-Bus
+M._viewer_pid = nil
+
 M.view = function(viewer, file)
   viewer = viewer or "zathura"
   local input = vim.api.nvim_buf_get_name(0)
-  file = file or input:gsub(".typ", ".pdf")
+  file = file or input:gsub("%.typ$", ".pdf")
   local cwd = vim.fn.fnamemodify(input, ":h")
 
-  if not vim.fn.filereadable(file) then
+  if vim.fn.filereadable(file) == 0 then
     vim.notify("File '" .. file .. "' not readable.", vim.log.levels.ERROR)
+    return
   end
 
-  vim.system({ viewer, file }, { detach = true, cwd = cwd })
+  local obj = vim.system({ viewer, file }, { detach = true, cwd = cwd })
+  if viewer == "zathura" and obj.pid then
+    M._viewer_pid = obj.pid
+  end
+end
+
+--- Forward search: scroll the PDF viewer to the approximate page
+--- corresponding to the cursor position. Uses D-Bus to communicate
+--- with a running zathura instance (requires pdfinfo and dbus-send).
+M.forwardSearch = function()
+  if not M._viewer_pid then
+    vim.notify("No viewer running. Use :TypstView first.", vim.log.levels.WARN)
+    return
+  end
+
+  local input = vim.api.nvim_buf_get_name(0)
+  local pdf = input:gsub("%.typ$", ".pdf")
+  local line = vim.api.nvim_win_get_cursor(0)[1]
+  local total_lines = vim.api.nvim_buf_line_count(0)
+
+  vim.system({ "pdfinfo", pdf }, { text = true }, function(out)
+    vim.schedule(function()
+      if out.code ~= 0 then
+        vim.notify("pdfinfo not available (install poppler-utils for forward search)", vim.log.levels.WARN)
+        return
+      end
+
+      local pages = tonumber(out.stdout:match("Pages:%s*(%d+)"))
+      if not pages or pages == 0 then
+        vim.notify("Could not determine PDF page count", vim.log.levels.WARN)
+        return
+      end
+
+      -- Estimate page (0-indexed) from cursor position
+      local page = 0
+      if total_lines > 0 then
+        page = math.max(0, math.min(pages - 1, math.floor((line - 1) / total_lines * pages)))
+      end
+      local dbus_name = "org.pwmt.zathura.PID-" .. M._viewer_pid
+
+      vim.system({
+        "dbus-send", "--type=method_call",
+        "--dest=" .. dbus_name,
+        "/org/pwmt/zathura",
+        "org.pwmt.zathura.GotoPage",
+        "uint32:" .. page,
+      }, {}, function(dbus_out)
+        if dbus_out.code ~= 0 then
+          vim.schedule(function()
+            vim.notify("Forward search failed (D-Bus). Is zathura still running?", vim.log.levels.WARN)
+          end)
+        end
+      end)
+    end)
+  end)
 end
 
 --- Toggle live preview: switch between onType export (with zathura) and onSave
