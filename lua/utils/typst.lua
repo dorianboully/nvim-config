@@ -208,36 +208,27 @@ M.view = function(viewer, file)
   vim.system({ viewer, file }, { detach = true, cwd = cwd })
 end
 
---- Start live preview: switch to onType export and open zathura
-M.preview = function()
+--- Toggle live preview: switch between onType export (with zathura) and onSave
+M._previewing = false
+M.togglePreview = function()
   local client = get_client()
   if not client then
     vim.notify("tinymist not attached", vim.log.levels.ERROR)
     return
   end
 
+  M._previewing = not M._previewing
+  local mode = M._previewing and "onType" or "onSave"
+
   client:notify("workspace/didChangeConfiguration", {
-    settings = { exportPdf = "onType" },
+    settings = { exportPdf = mode },
   })
 
-  M.view()
-
-  vim.notify("Live preview started (export on type)", vim.log.levels.INFO)
-end
-
---- Stop live preview: revert to onSave export
-M.stopPreview = function()
-  local client = get_client()
-  if not client then
-    vim.notify("tinymist not attached", vim.log.levels.ERROR)
-    return
+  if M._previewing then
+    M.view()
   end
 
-  client:notify("workspace/didChangeConfiguration", {
-    settings = { exportPdf = "onSave" },
-  })
-
-  vim.notify("Live preview stopped (export on save)", vim.log.levels.INFO)
+  vim.notify("Live preview: " .. (M._previewing and "enabled" or "disabled"), vim.log.levels.INFO)
 end
 
 return M
