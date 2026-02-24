@@ -22,14 +22,12 @@ return {
     vim.api.nvim_create_user_command("TypstPreview", function() typst.togglePreview() end, {})
     vim.api.nvim_create_user_command("TypstWatch", function() typst.watch() end, {})
     vim.api.nvim_create_user_command("TypstCompile", function() typst.compile() end, {})
-    vim.api.nvim_create_user_command("TypstPin", function() typst.pin() end, {})
-    vim.api.nvim_create_user_command("TypstUnpin", function() typst.pin(true) end, {})
+    vim.api.nvim_create_user_command("TypstPin", function() typst.togglePin() end, {})
 
     vim.keymap.set("n", "<localleader>v", "<cmd>TypstView<cr>", { buffer = bufnr })
     vim.keymap.set("n", "<localleader>p", "<cmd>TypstPreview<cr>", { buffer = bufnr, desc = "Toggle live preview" })
     vim.keymap.set("n", "<localleader>w", "<cmd>TypstWatch<cr>", { buffer = bufnr })
     vim.keymap.set("n", "<localleader>c", "<cmd>TypstCompile<cr>", { buffer = bufnr })
-    vim.keymap.set("n", "<localleader>m", "<cmd>TypstPin<cr>", { buffer = bufnr, desc = "Pin main file" })
-    vim.keymap.set("n", "<localleader>M", "<cmd>TypstUnpin<cr>", { buffer = bufnr, desc = "Unpin main file" })
+    vim.keymap.set("n", "<localleader>m", "<cmd>TypstPin<cr>", { buffer = bufnr, desc = "Toggle pin main file" })
   end
 }
