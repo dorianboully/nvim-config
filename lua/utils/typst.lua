@@ -1,4 +1,5 @@
 local TEMPLATES_PATH = "~/.local/share/typst/packages/local"
+local LOCK_FILE = "tinymist.lock"
 local M = {}
 
 --- Get the tinymist LSP client for the current buffer
@@ -6,6 +7,115 @@ local M = {}
 local function get_client()
   local clients = vim.lsp.get_clients({ bufnr = 0, name = "tinymist" })
   return clients[1]
+end
+
+--- Find tinymist.lock by searching upward from a path
+---@param bufpath string
+---@return string? lock_path, string? lock_dir
+local function find_lock(bufpath)
+  local dir = vim.fn.fnamemodify(bufpath, ":p:h")
+  local found = vim.fs.find(LOCK_FILE, { path = dir, upward = true })
+  if #found > 0 then
+    return found[1], vim.fs.dirname(found[1])
+  end
+  return nil, nil
+end
+
+--- Read the main file from a tinymist.lock file.
+--- Picks the route with the highest priority and resolves the matching
+--- document's main path to an absolute path.
+---@param bufpath string
+---@return string?
+local function read_lock_main(bufpath)
+  local lock_path, lock_dir = find_lock(bufpath)
+  if not lock_path or not lock_dir then
+    return nil
+  end
+
+  local f = io.open(lock_path, "r")
+  if not f then
+    return nil
+  end
+  local content = f:read("*a")
+  f:close()
+
+  -- Line-by-line parse: collect [[document]] and [[route]] entries
+  local section, docs, routes = nil, {}, {}
+  local cur = {}
+  for line in content:gmatch("[^\n]+") do
+    local header = line:match("^%[%[(%w+)%]%]$")
+    if header then
+      if section and cur.id then
+        if section == "document" then
+          docs[#docs + 1] = cur
+        elseif section == "route" then
+          routes[#routes + 1] = cur
+        end
+      end
+      section = header
+      cur = {}
+    elseif section then
+      local key, val = line:match('^(%S+)%s*=%s*"([^"]-)"')
+      if key then
+        cur[key] = val
+      end
+      local knum, vnum = line:match("^(%S+)%s*=%s*(%d+)%s*$")
+      if knum then
+        cur[knum] = tonumber(vnum)
+      end
+    end
+  end
+  if section and cur.id then
+    if section == "document" then
+      docs[#docs + 1] = cur
+    elseif section == "route" then
+      routes[#routes + 1] = cur
+    end
+  end
+
+  -- Find the route with the highest priority
+  local best_id, best_priority = nil, -1
+  for _, r in ipairs(routes) do
+    local p = r.priority or 0
+    if p > best_priority then
+      best_id = r.id
+      best_priority = p
+    end
+  end
+
+  if not best_id then
+    return nil
+  end
+
+  -- Find the matching document's main field
+  local main_ref
+  for _, d in ipairs(docs) do
+    if d.id == best_id then
+      main_ref = d.main
+      break
+    end
+  end
+
+  if not main_ref then
+    return nil
+  end
+
+  -- Resolve "file:xxx" to an absolute path relative to the lock directory
+  local rel = main_ref:gsub("^file:", "")
+  local abs = vim.fs.normalize(lock_dir .. "/" .. rel)
+  if vim.fn.filereadable(abs) == 1 then
+    return abs
+  end
+  return nil
+end
+
+--- Get the main file for the current buffer.
+--- Resolution order: pinned path > tinymist.lock > given path.
+---@param bufpath string?
+---@return string
+M.getMainFile = function(bufpath)
+  bufpath = bufpath or vim.api.nvim_buf_get_name(0)
+  return M._pinnedPath or read_lock_main(bufpath) or bufpath
 end
 
 --- Return a template from local templates
@@ -136,7 +246,7 @@ M.compile = function()
     return
   end
 
-  local path = M._pinnedPath or vim.api.nvim_buf_get_name(0)
+  local path = M.getMainFile()
 
   client:request("workspace/executeCommand", {
     command = "tinymist.exportPdf",
@@ -184,7 +294,7 @@ end
 
 M.view = function(viewer, file)
   viewer = viewer or "zathura"
-  local input = M._pinnedPath or vim.api.nvim_buf_get_name(0)
+  local input = M.getMainFile()
   file = file or input:gsub(".typ", ".pdf")
   local cwd = vim.fn.fnamemodify(input, ":h")
 
