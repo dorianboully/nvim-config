@@ -7,7 +7,7 @@ return {
   config = true,
   opts = {
     get_main_file = function(path_of_buffer)
-      return require("utils.typst").getMainFile(path_of_buffer)
+      return require("utils.typst")._pinnedPath or path_of_buffer
     end,
   },
 }
