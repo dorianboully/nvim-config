@@ -1,4 +1,5 @@
 local TEMPLATES_PATH = "~/.local/share/typst/packages/local"
+local LOCK_FILE = ".typstmain"
 local M = {}
 
 --- Get the tinymist LSP client for the current buffer
@@ -6,6 +7,61 @@ local M = {}
 local function get_client()
   local clients = vim.lsp.get_clients({ bufnr = 0, name = "tinymist" })
   return clients[1]
+end
+
+--- Find the project root by searching upward for root markers
+---@param path string
+---@return string
+local function find_root(path)
+  local dir = vim.fn.fnamemodify(path, ":p:h")
+  local found = vim.fs.find({ "typst.toml", ".git", "main.typ" }, { path = dir, upward = true })
+  if #found > 0 then
+    return vim.fs.dirname(found[1])
+  end
+  return dir
+end
+
+--- Get the lock file path for a given buffer path
+---@param bufpath string
+---@return string
+local function get_lock_path(bufpath)
+  return find_root(bufpath) .. "/" .. LOCK_FILE
+end
+
+--- Write the main file path to the project lock file
+---@param main_path string
+local function write_lock(main_path)
+  local lock_path = get_lock_path(main_path)
+  local f = io.open(lock_path, "w")
+  if f then
+    f:write(main_path .. "\n")
+    f:close()
+  end
+end
+
+--- Read the main file path from the project lock file
+---@param bufpath string
+---@return string?
+local function read_lock(bufpath)
+  local lock_path = get_lock_path(bufpath)
+  local f = io.open(lock_path, "r")
+  if f then
+    local main = f:read("*l")
+    f:close()
+    if main and main ~= "" and vim.fn.filereadable(main) == 1 then
+      return main
+    end
+  end
+  return nil
+end
+
+--- Get the main file for the current buffer.
+--- Resolution order: pinned path > lock file > given path.
+---@param bufpath string?
+---@return string
+M.getMainFile = function(bufpath)
+  bufpath = bufpath or vim.api.nvim_buf_get_name(0)
+  return M._pinnedPath or read_lock(bufpath) or bufpath
 end
 
 --- Return a template from local templates
@@ -128,7 +184,8 @@ M.typstInit = function(template, name, cwd)
   )
 end
 
---- Export the current document as PDF via tinymist
+--- Export the current document as PDF via tinymist.
+--- Writes a lock file with the main path when no temporary pin is active.
 M.compile = function()
   local client = get_client()
   if not client then
@@ -136,7 +193,12 @@ M.compile = function()
     return
   end
 
-  local path = M._pinnedPath or vim.api.nvim_buf_get_name(0)
+  local path = M.getMainFile()
+
+  -- Persist the main file in the lock file only when not using a temporary pin
+  if not M._pinnedPath then
+    write_lock(path)
+  end
 
   client:request("workspace/executeCommand", {
     command = "tinymist.exportPdf",
@@ -184,7 +246,7 @@ end
 
 M.view = function(viewer, file)
   viewer = viewer or "zathura"
-  local input = M._pinnedPath or vim.api.nvim_buf_get_name(0)
+  local input = M.getMainFile()
   file = file or input:gsub(".typ", ".pdf")
   local cwd = vim.fn.fnamemodify(input, ":h")
 
