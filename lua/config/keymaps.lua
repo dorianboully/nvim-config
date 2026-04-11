@@ -72,3 +72,10 @@ map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result
 map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
 
 map('i', '<c-space>', '<c-x><c-o>', { desc = "Trigger completion" })
+
+-- Terminal
+map('t', '<C-g>', '<C-\\><C-n>', { desc = "Exit terminal mode" })
+map('t', '<C-h>', '<C-\\><C-n><C-w>h', { desc = "Go to Left Window" })
+map('t', '<C-j>', '<C-\\><C-n><C-w>j', { desc = "Go to Lower Window" })
+map('t', '<C-k>', '<C-\\><C-n><C-w>k', { desc = "Go to Upper Window" })
+map('t', '<C-l>', '<C-\\><C-n><C-w>l', { desc = "Go to Right Window" })
