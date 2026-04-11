@@ -6,7 +6,7 @@ return {
     enable = true,
     version = "main",
     opts = {
-      parsers = { "typst" },
+      parsers = { "typst", "python" },
     },
     config = function(opts)
       require(TS).install(opts.parsers)
