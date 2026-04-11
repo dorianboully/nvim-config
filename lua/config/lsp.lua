@@ -1,6 +1,6 @@
 -- Configurations of LSP servers are stored in vim.fn.stdpath("config") .. "/lsp/"
 -- Here, we enable configurations according to the filenames (lua.lua, latex.lua, etc.)
-vim.lsp.enable({ "lua", "tinymist", "jsonls" })
+vim.lsp.enable({ "lua", "tinymist", "jsonls", "basedpyright" })
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("my_lsp", { clear = true }),
