@@ -8,7 +8,7 @@ return {
 
   settings = {
     projectResolution = "lockDatabase",
-    exportPdf = 'onSave',
+    exportPdf = 'never',
     outputPath = "$root/$dir/$name",
     formatterMode = 'typstyle',
     lint = { enabled = true },
