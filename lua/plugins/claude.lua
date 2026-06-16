@@ -6,6 +6,9 @@ return {
   dependencies = { "folke/snacks.nvim" },
 
   config = true,
+  opts = {
+    auto_start = false,
+  },
 
   keys = {
     { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
