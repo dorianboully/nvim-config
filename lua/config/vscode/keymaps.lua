@@ -5,6 +5,9 @@ local vscode = require("vscode") -- bundled with vscode-neovim
 local map = vim.keymap.set
 
 local function act(name, args)
+  if args ~= nil and type(args) ~= "table" then
+    args = { args }
+  end
   return function() vscode.action(name, args and { args = args }) end
 end
 
