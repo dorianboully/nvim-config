@@ -13,7 +13,8 @@ vim.iter(pairs(Parsers)):each(function(parser, filetypes)
   vim.api.nvim_create_autocmd('FileType', {
     pattern = filetypes,
     callback = function(ev)
-      vim.treesitter.start(ev.buf, parser)
+      -- pcall: not every parser is installed (e.g. latex, covered by vimtex)
+      pcall(vim.treesitter.start, ev.buf, parser)
     end
   })
 end)
