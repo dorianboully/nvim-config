@@ -15,8 +15,8 @@ end
 -- :TypstDiagram/:TypstInit user commands, unavailable under vscode since
 -- config/commands.lua isn't loaded here) and add {p,c,v}, all backed by the
 -- tinymist/typst-preview extensions.
-map("n", "<leader>td", act("vscode.open", "https://q.uiver.app/"), { desc = "Open web diagram helper" })
-map("n", "<leader>ti", act("tinymist.initTemplate"), { desc = "Init typst project" })
-map("n", "<leader>tp", act("typst-preview.preview"), { desc = "Toggle preview" })
-map("n", "<leader>tc", act("tinymist.exportCurrentPdf"), { desc = "Compile pdf" })
-map("n", "<leader>tv", act("tinymist.showPdf"), { desc = "View pdf" })
+map("n", "<localleader>d", act("vscode.open", "https://q.uiver.app/"), { desc = "Open web diagram helper" })
+map("n", "<localleader>i", act("tinymist.initTemplate"), { desc = "Init typst project" })
+map("n", "<localleader>p", act("typst-preview.preview"), { desc = "Toggle preview" })
+map("n", "<localleader>c", act("tinymist.exportCurrentPdf"), { desc = "Compile pdf" })
+map("n", "<localleader>v", act("tinymist.showPdf"), { desc = "View pdf" })
