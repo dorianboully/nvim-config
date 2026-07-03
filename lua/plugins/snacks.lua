@@ -38,7 +38,9 @@ return {
   },
 
   config = function(opts)
-    require("snacks").setup(opts)
+    ---@type fun(opts?: snacks.Config)
+    local setup = require("snacks").setup
+    setup(opts)
     Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
     Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
     Snacks.toggle.diagnostics():map("<leader>ud")

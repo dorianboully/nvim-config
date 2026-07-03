@@ -1,14 +1,39 @@
 {
   "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
   "runtime": {
-    "version": "LuaJIT"
+    "version": "LuaJIT",
+    "path": [
+      "?.lua",
+      "?/init.lua",
+      "lua/?.lua",
+      "lua/?/init.lua"
+    ]
   },
   "workspace": {
+    "checkThirdParty": false,
     "library": [
+      ".vscode/luals",
       "lua",
-      "$VIMRUNTIME",
+      "/home/dorian/.local/share/bob/nightly/share/nvim/runtime",
+      "/home/dorian/.local/share/bob/nightly/share/nvim/runtime/lua",
+      "${3rd}/luv/library",
       "${3rd}/busted/library",
-      "/home/dorian/.local/share/nvim/site/pack/core/opt/snacks.nvim"
+      "/home/dorian/.local/share/nvim/site/pack/core/opt/claudecode/lua",
+      "/home/dorian/.local/share/nvim/site/pack/core/opt/copilot/lua",
+      "/home/dorian/.local/share/nvim/site/pack/core/opt/lean/lua",
+      "/home/dorian/.local/share/nvim/site/pack/core/opt/lualine/lua",
+      "/home/dorian/.local/share/nvim/site/pack/core/opt/luasnip/lua",
+      "/home/dorian/.local/share/nvim/site/pack/core/opt/mini.nvim/lua",
+      "/home/dorian/.local/share/nvim/site/pack/core/opt/nvim-autopairs/lua",
+      "/home/dorian/.local/share/nvim/site/pack/core/opt/nvim-surround/lua",
+      "/home/dorian/.local/share/nvim/site/pack/core/opt/nvim-treesitter/lua",
+      "/home/dorian/.local/share/nvim/site/pack/core/opt/nvim-treesitter-textobjects/lua",
+      "/home/dorian/.local/share/nvim/site/pack/core/opt/nvim-web-devicons/lua",
+      "/home/dorian/.local/share/nvim/site/pack/core/opt/rose-pine/lua",
+      "/home/dorian/.local/share/nvim/site/pack/core/opt/snacks.nvim/lua",
+      "/home/dorian/.local/share/nvim/site/pack/core/opt/typst-preview/lua",
+      "/home/dorian/.local/share/nvim/site/pack/core/opt/vimtex/lua",
+      "/home/dorian/.local/share/nvim/site/pack/core/opt/which-key/lua"
     ]
   }
 }
