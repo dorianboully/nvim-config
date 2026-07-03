@@ -1,0 +1,724 @@
+# Typst snippets for HyperSnips (VSCode) — curated port of snippets/typst/*.json
+# + snippets/typst/math.lua (2026-07-03). Nvim/LuaSnip keeps reading the originals.
+#
+# Flags: w = word boundary (LuaSnip wordTrig=true parity)
+#        i = in-word, matches as a word suffix (LuaSnip wordTrig=false parity)
+#        A = automatic expansion (no Tab). Only used where `context math(context)`
+#            gates it to real typst math mode (markup.math.typst, verified against
+#            tinymist's compiled grammar) or where the trigger is `;`-prefixed and
+#            therefore can never collide with a real identifier.
+
+global
+function math(context) {
+  return context.scopes.some((s) => s.startsWith("markup.math.typst"));
+}
+endglobal
+
+# ---------- suffix operators (ex math.lua) ----------
+
+# jj/kk replace sp/sb (vim reference: j = down = subscript, k = up = superscript)
+context math(context)
+snippet kk "superscript" Ai
+^($1)
+endsnippet
+
+context math(context)
+snippet jj "subscript" Ai
+_($1)
+endsnippet
+
+snippet sbp "subscript and superscript" i
+_($1)^($2) $0
+endsnippet
+
+snippet tp "transpose" i
+^(top)$0
+endsnippet
+
+snippet st "star" i
+^(*)$0
+endsnippet
+
+snippet inv "inverse" i
+^(-1)$0
+endsnippet
+
+snippet ort "orthogonal (perp)" i
+^(perp)$0
+endsnippet
+
+snippet ttl "env title" i
+(title: [$1])
+endsnippet
+
+# ---------- environments (ex env.json) ----------
+
+snippet eq "Equation" w
+#equation(id: "eq$1")[
+	$0
+]
+endsnippet
+
+snippet def "Definition" w
+#definition$1[
+	$0
+]
+endsnippet
+
+snippet rem "Remark" w
+#remark$1[
+	$0
+]
+endsnippet
+
+snippet thm "Theorem" w
+#theorem$1[
+	$0
+]
+endsnippet
+
+snippet lem "Lemma" w
+#lemma$1[
+	$0
+]
+endsnippet
+
+snippet cor "Corollary" w
+#corollary$1[
+	$0
+]
+endsnippet
+
+snippet exr "Exercise" w
+#exercise$1[
+	$0
+]
+endsnippet
+
+snippet exp "Example" w
+#example$1[
+	$0
+]
+endsnippet
+
+snippet prp "Proposition" w
+#proposition$1[
+	$0
+]
+endsnippet
+
+snippet prt "Property" w
+#property$1[
+	$0
+]
+endsnippet
+
+snippet conj "Conjecture" w
+#conjecture$1[
+	$0
+]
+endsnippet
+
+snippet prf "Proof env" w
+#proof[
+	$0
+]
+endsnippet
+
+snippet sol "Solution env" w
+#proof(title:"Solution")[
+	$0
+]
+endsnippet
+
+snippet ils "Roman item list" w
+#ilist[
+	+ $0
+]
+endsnippet
+
+snippet diag "Commutative diagram environment" w
+#diagram[
+	$0
+]
+endsnippet
+
+# ---------- greek (ex greek.json) ----------
+# All automatic: `;` never appears in a real typst identifier, so there's no
+# false-positive risk even without the math context guard — added anyway for
+# consistency and because that's genuinely where these are used.
+
+context math(context)
+snippet ;a "alpha" Ai
+alpha
+endsnippet
+
+context math(context)
+snippet ;b "beta" Ai
+beta
+endsnippet
+
+context math(context)
+snippet ;g "gamma" Ai
+gamma
+endsnippet
+
+context math(context)
+snippet ;d "delta" Ai
+delta
+endsnippet
+
+context math(context)
+snippet ;e "epsilon" Ai
+epsilon
+endsnippet
+
+context math(context)
+snippet ;ev "epsilon (variant)" Ai
+epsilon.alt
+endsnippet
+
+context math(context)
+snippet ;z "zeta" Ai
+zeta
+endsnippet
+
+context math(context)
+snippet ;h "eta" Ai
+eta
+endsnippet
+
+context math(context)
+snippet ;q "theta" Ai
+theta
+endsnippet
+
+context math(context)
+snippet ;qv "theta (variant)" Ai
+theta.alt
+endsnippet
+
+context math(context)
+snippet ;i "iota" Ai
+iota
+endsnippet
+
+context math(context)
+snippet ;k "kappa" Ai
+kappa
+endsnippet
+
+context math(context)
+snippet ;l "lambda" Ai
+lambda
+endsnippet
+
+context math(context)
+snippet ;m "mu" Ai
+mu
+endsnippet
+
+context math(context)
+snippet ;n "nu" Ai
+nu
+endsnippet
+
+context math(context)
+snippet ;x "xi" Ai
+xi
+endsnippet
+
+context math(context)
+snippet ;o "omicron" Ai
+omicron
+endsnippet
+
+context math(context)
+snippet ;p "pi" Ai
+pi
+endsnippet
+
+context math(context)
+snippet ;pv "pi (variant)" Ai
+pi.alt
+endsnippet
+
+context math(context)
+snippet ;r "rho" Ai
+rho
+endsnippet
+
+context math(context)
+snippet ;rv "rho (variant)" Ai
+rho.alt
+endsnippet
+
+context math(context)
+snippet ;s "sigma" Ai
+sigma
+endsnippet
+
+context math(context)
+snippet ;sv "sigma (final)" Ai
+sigma.alt
+endsnippet
+
+context math(context)
+snippet ;t "tau" Ai
+tau
+endsnippet
+
+context math(context)
+snippet ;u "upsilon" Ai
+upsilon
+endsnippet
+
+context math(context)
+snippet ;f "phi" Ai
+phi
+endsnippet
+
+context math(context)
+snippet ;fv "phi (variant)" Ai
+phi.alt
+endsnippet
+
+context math(context)
+snippet ;c "chi" Ai
+chi
+endsnippet
+
+context math(context)
+snippet ;y "psi" Ai
+psi
+endsnippet
+
+context math(context)
+snippet ;w "omega" Ai
+omega
+endsnippet
+
+context math(context)
+snippet ;B "Beta" Ai
+Beta
+endsnippet
+
+context math(context)
+snippet ;G "Gamma" Ai
+Gamma
+endsnippet
+
+context math(context)
+snippet ;D "Delta" Ai
+Delta
+endsnippet
+
+context math(context)
+snippet ;Z "Zeta" Ai
+Zeta
+endsnippet
+
+context math(context)
+snippet ;H "Eta" Ai
+Eta
+endsnippet
+
+context math(context)
+snippet ;Q "Theta" Ai
+Theta
+endsnippet
+
+context math(context)
+snippet ;I "Iota" Ai
+Iota
+endsnippet
+
+context math(context)
+snippet ;K "Kappa" Ai
+Kappa
+endsnippet
+
+context math(context)
+snippet ;L "Lambda" Ai
+Lambda
+endsnippet
+
+context math(context)
+snippet ;M "Mu" Ai
+Mu
+endsnippet
+
+context math(context)
+snippet ;N "Nu" Ai
+Nu
+endsnippet
+
+context math(context)
+snippet ;X "Xi" Ai
+Xi
+endsnippet
+
+context math(context)
+snippet ;O "Omicron" Ai
+Omicron
+endsnippet
+
+context math(context)
+snippet ;P "Pi" Ai
+Pi
+endsnippet
+
+context math(context)
+snippet ;R "Rho" Ai
+Rho
+endsnippet
+
+context math(context)
+snippet ;S "Sigma" Ai
+Sigma
+endsnippet
+
+context math(context)
+snippet ;T "Tau" Ai
+Tau
+endsnippet
+
+context math(context)
+snippet ;U "Upsilon" Ai
+Upsilon
+endsnippet
+
+context math(context)
+snippet ;F "Phi" Ai
+Phi
+endsnippet
+
+context math(context)
+snippet ;C "Chi" Ai
+Chi
+endsnippet
+
+context math(context)
+snippet ;Y "Psi" Ai
+Psi
+endsnippet
+
+context math(context)
+snippet ;W "Omega" Ai
+Omega
+endsnippet
+
+# ---------- symbols (ex symbol.json) ----------
+
+snippet hb "Reduced Planck constant (h-bar)" w
+planck.reduce
+endsnippet
+
+snippet nb "Nabla/Del (gradient)" w
+nabla
+endsnippet
+
+snippet pt "Partial derivative" w
+partial
+endsnippet
+
+snippet oo "Infinity" w
+infinity
+endsnippet
+
+snippet cp "Composition" w
+compose
+endsnippet
+
+context math(context)
+snippet ;A "Universal quantifier (forall)" Ai
+forall
+endsnippet
+
+context math(context)
+snippet ;E "Existential quantifier (exists)" Ai
+exists
+endsnippet
+
+snippet ni "Element of (reverse)" w
+in.rev
+endsnippet
+
+snippet nin "Not element of" w
+in.not
+endsnippet
+
+snippet sub "Subset" w
+subset
+endsnippet
+
+snippet sup "Superset" w
+supset
+endsnippet
+
+snippet sube "Subset or equal" w
+subset.eq
+endsnippet
+
+snippet supe "Superset or equal" w
+supset.eq
+endsnippet
+
+snippet nsub "Not subset" w
+subset.not
+endsnippet
+
+snippet nsup "Not superset" w
+superset.not
+endsnippet
+
+snippet cap "Intersection" w
+inter
+endsnippet
+
+snippet cup "Union" w
+union
+endsnippet
+
+snippet not "Logical NOT" w
+not
+endsnippet
+
+snippet nt "Empty set" w
+nothing
+endsnippet
+
+snippet le "Less than or equal" w
+lt.eq.slant
+endsnippet
+
+snippet ge "Greater than or equal" w
+gt.eq.slant
+endsnippet
+
+snippet << "Much less than" i
+lt.double
+endsnippet
+
+snippet >> "Much greater than" i
+gt.double
+endsnippet
+
+snippet ne "Not equal" w
+eq.not
+endsnippet
+
+snippet teq "Simeq (similar and equal)" w
+tilde.eq
+endsnippet
+
+snippet teqq "Congruent (tilde.equiv)" w
+tilde.equiv
+endsnippet
+
+snippet eqq "Equivalent" w
+equiv
+endsnippet
+
+snippet orth "Perpendicular" w
+perp
+endsnippet
+
+snippet para "Parallel" w
+parallel
+endsnippet
+
+snippet pm "Plus or minus" w
+plus.minus
+endsnippet
+
+snippet mp "Minus or plus" w
+minus.plus
+endsnippet
+
+snippet xx "Multiplication" w
+times
+endsnippet
+
+snippet cd "Centered horizontal dots" w
+dots.c
+endsnippet
+
+snippet wo "Set difference" w
+without
+endsnippet
+
+snippet to "Tensor product" w
+times.o
+endsnippet
+
+snippet po "Direct sum" w
+plus.o
+endsnippet
+
+snippet do "Odot" w
+dot.o
+endsnippet
+
+snippet cl "Circle" w
+circle($1)$0
+endsnippet
+
+snippet iff "If and only if" w
+arrow.l.r.double.long
+endsnippet
+
+snippet ab "Maps to" w
+arrow.r.bar
+endsnippet
+
+snippet ah "Hook arrow" w
+arrow.r.hook
+endsnippet
+
+snippet al "Long arrow (choice: fixed or stretched)" w
+${1|arrow.r.long,stretch(arrow)|}
+endsnippet
+
+snippet sl "Slash (quotient sets)" w
+slash
+endsnippet
+
+snippet lra "Angle brackets / chevrons" w
+chevron.l $1 chevron.r$0
+endsnippet
+
+snippet lrc "Curly braces" w
+{ $1 }$0
+endsnippet
+
+snippet md "Mid bar delimiter" w
+mid(|)
+endsnippet
+
+context math(context)
+snippet ;; "Thick semicolon delimiter" Ai
+thick ; thick
+endsnippet
+
+# ---------- math (ex math.json) ----------
+
+snippet mm "Inline math mode" w
+\$$1\$$0
+endsnippet
+
+snippet dm "Display math mode" w
+\$
+	$0
+\$
+endsnippet
+
+snippet set "Mathematical set with |" w
+{ $1 mid(|) $2 }$0
+endsnippet
+
+snippet binom "Binomial coefficient" w
+binom(${1:n}, ${2:k})$0
+endsnippet
+
+snippet sm "Summation" w
+sum
+endsnippet
+
+snippet pr "Product" w
+product
+endsnippet
+
+snippet cpr "Coproduct" w
+product.co
+endsnippet
+
+snippet bop "Direct sum (big)" w
+op(plus.o)
+endsnippet
+
+snippet bcap "Big intersection" w
+sect.big
+endsnippet
+
+snippet bcup "Big union" w
+union.big
+endsnippet
+
+snippet bwe "Big wedge" w
+and.big
+endsnippet
+
+snippet bve "Big vee" w
+or.big
+endsnippet
+
+snippet int "Integral" w
+integral
+endsnippet
+
+snippet bar "Bar accent" w
+bar($1)$0
+endsnippet
+
+snippet hat "Hat accent" w
+hat($1)$0
+endsnippet
+
+snippet ar "Vector accent" w
+arrow($1)$0
+endsnippet
+
+snippet tl "Tilde accent" w
+tilde($1)$0
+endsnippet
+
+snippet ov "Overline accent" w
+overline($1)$0
+endsnippet
+
+snippet sqr "Root" w
+sqrt(${1:n})$0
+endsnippet
+
+snippet abs "Absolute value" w
+abs($1)$0
+endsnippet
+
+snippet norm "Norm" w
+norm($1)$0
+endsnippet
+
+snippet mc "Calligraphic font" w
+cal($1)$0
+endsnippet
+
+snippet mb "Bold font" w
+bold($1)$0
+endsnippet
+
+snippet mi "Italic font" w
+italic($1)$0
+endsnippet
+
+snippet mf "Fraktur font" w
+frak($1)$0
+endsnippet
+
+snippet ms "Script font" w
+scr($1)$0
+endsnippet
+
+snippet bb "Double-struck font" w
+bb($1)$0
+endsnippet
+
+snippet mr "Roman (upright) font" w
+upright($1)$0
+endsnippet
+
+# ---------- text (ex text.json) ----------
+
+snippet lb "Label" w
+<$1>
+endsnippet
