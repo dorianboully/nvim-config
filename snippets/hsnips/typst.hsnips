@@ -19,6 +19,16 @@
 # Every manual trigger also has an instant `TRIG;` variant (see the ;-suffix
 # section at the end of this file): type the trigger then `;` to expand
 # without waiting for the completion menu.
+#
+# 2026-08-11: the manual math triggers are now context-gated too, so they no
+# longer clutter the completion menu in markup mode.
+# All `TRIG;` variants moved from `Aw` to `Ai`. `w` was broken for them: hsnips
+# implements it as `getWordRangeAtPosition(cursor) == trigger`, and VSCode
+# returns no word when the cursor sits just after a `;`, so it fell back to
+# "everything since the last whitespace" — `$ni;`, `$(ni;`, `$x_ni;` and `]lb;`
+# did not expand, only ` ni;` did. `i` matches the trigger as a suffix, which is
+# safe here since the `;` is typed deliberately; the one collision it creates
+# (`eq;` inside `teq;`) is resolved by priority, see there.
 
 global
 function math(context) {
@@ -462,6 +472,7 @@ snippet ;E "Existential quantifier (exists)" Ai
 exists
 endsnippet
 
+context math(context)
 snippet ni "Element of (reverse)" w
 in.rev
 endsnippet
@@ -471,10 +482,12 @@ snippet nin "Not element of" Aw
 in.not
 endsnippet
 
+context math(context)
 snippet sub "Subset" w
 subset
 endsnippet
 
+context math(context)
 snippet sup "Superset" w
 supset
 endsnippet
@@ -499,14 +512,17 @@ snippet nsup "Not superset" Aw
 superset.not
 endsnippet
 
+context math(context)
 snippet cap "Intersection" w
 inter
 endsnippet
 
+context math(context)
 snippet cup "Union" w
 union
 endsnippet
 
+context math(context)
 snippet not "Logical NOT" w
 not
 endsnippet
@@ -516,10 +532,12 @@ snippet nt "Empty set" Aw
 nothing
 endsnippet
 
+context math(context)
 snippet le "Less than or equal" w
 lt.eq.slant
 endsnippet
 
+context math(context)
 snippet ge "Greater than or equal" w
 gt.eq.slant
 endsnippet
@@ -534,10 +552,12 @@ snippet >> "Much greater than" Ai
 gt.double
 endsnippet
 
+context math(context)
 snippet ne "Not equal" w
 eq.not
 endsnippet
 
+context math(context)
 snippet teq "Simeq (similar and equal)" w
 tilde.eq
 endsnippet
@@ -577,6 +597,7 @@ snippet xx "Multiplication" Aw
 times
 endsnippet
 
+context math(context)
 snippet cd "Centered horizontal dots" w
 dots.c
 endsnippet
@@ -586,6 +607,7 @@ snippet wo "Set difference" Aw
 without
 endsnippet
 
+context math(context)
 snippet to "Tensor product" w
 times.o
 endsnippet
@@ -595,6 +617,7 @@ snippet po "Direct sum" Aw
 plus.o
 endsnippet
 
+context math(context)
 snippet do "Odot" w
 dot.o
 endsnippet
@@ -609,6 +632,7 @@ snippet iff "If and only if" Aw
 arrow.l.r.double.long
 endsnippet
 
+context math(context)
 snippet ab "Maps to" w
 arrow.r.bar
 endsnippet
@@ -623,6 +647,7 @@ snippet ah "Hook arrow" Aw
 arrow.r.hook
 endsnippet
 
+context math(context)
 snippet al "Long arrow (choice: fixed or stretched)" w
 ${1|arrow.r.long,stretch(arrow)|}
 endsnippet
@@ -664,6 +689,7 @@ snippet dm "Display math mode" w
 \$
 endsnippet
 
+context math(context)
 snippet set "Mathematical set with |" w
 { $1 mid(|) $2 }$0
 endsnippet
@@ -678,6 +704,7 @@ snippet sm "Summation" Aw
 sum
 endsnippet
 
+context math(context)
 snippet pr "Product" w
 product
 endsnippet
@@ -712,6 +739,7 @@ snippet bve "Big vee" Aw
 or.big
 endsnippet
 
+context math(context)
 snippet int "Integral" w
 integral
 endsnippet
@@ -726,6 +754,7 @@ snippet hat "Hat accent" Aw
 hat($1)$0
 endsnippet
 
+context math(context)
 snippet ar "Vector accent" w
 arrow($1)$0
 endsnippet
@@ -765,6 +794,7 @@ snippet mb "Bold font" Aw
 bold($1)$0
 endsnippet
 
+context math(context)
 snippet mi "Italic font" w
 italic($1)$0
 endsnippet
@@ -803,206 +833,209 @@ snippet ttl; "env title (;)" Ai
 (title: [$1])
 endsnippet
 
-snippet eq; "Equation (;)" Aw
+snippet eq; "Equation (;)" Ai
 #equation(id: "eq$1")[
 	$0
 ]
 endsnippet
 
-snippet def; "Definition (;)" Aw
+snippet def; "Definition (;)" Ai
 #definition$1[
 	$0
 ]
 endsnippet
 
-snippet rem; "Remark (;)" Aw
+snippet rem; "Remark (;)" Ai
 #remark$1[
 	$0
 ]
 endsnippet
 
-snippet thm; "Theorem (;)" Aw
+snippet thm; "Theorem (;)" Ai
 #theorem$1[
 	$0
 ]
 endsnippet
 
-snippet lem; "Lemma (;)" Aw
+snippet lem; "Lemma (;)" Ai
 #lemma$1[
 	$0
 ]
 endsnippet
 
-snippet cor; "Corollary (;)" Aw
+snippet cor; "Corollary (;)" Ai
 #corollary$1[
 	$0
 ]
 endsnippet
 
-snippet exr; "Exercise (;)" Aw
+snippet exr; "Exercise (;)" Ai
 #exercise$1[
 	$0
 ]
 endsnippet
 
-snippet exp; "Example (;)" Aw
+snippet exp; "Example (;)" Ai
 #example$1[
 	$0
 ]
 endsnippet
 
-snippet prp; "Proposition (;)" Aw
+snippet prp; "Proposition (;)" Ai
 #proposition$1[
 	$0
 ]
 endsnippet
 
-snippet prt; "Property (;)" Aw
+snippet prt; "Property (;)" Ai
 #property$1[
 	$0
 ]
 endsnippet
 
-snippet conj; "Conjecture (;)" Aw
+snippet conj; "Conjecture (;)" Ai
 #conjecture$1[
 	$0
 ]
 endsnippet
 
-snippet prf; "Proof env (;)" Aw
+snippet prf; "Proof env (;)" Ai
 #proof[
 	$0
 ]
 endsnippet
 
-snippet sol; "Solution env (;)" Aw
+snippet sol; "Solution env (;)" Ai
 #proof(title:"Solution")[
 	$0
 ]
 endsnippet
 
-snippet ils; "Roman item list (;)" Aw
+snippet ils; "Roman item list (;)" Ai
 #ilist[
 	+ $0
 ]
 endsnippet
 
-snippet diag; "Commutative diagram environment (;)" Aw
+snippet diag; "Commutative diagram environment (;)" Ai
 #diagram[
 	$0
 ]
 endsnippet
 
 context math(context)
-snippet sub; "Subset (;)" Aw
+snippet sub; "Subset (;)" Ai
 subset
 endsnippet
 
 context math(context)
-snippet sup; "Superset (;)" Aw
+snippet sup; "Superset (;)" Ai
 supset
 endsnippet
 
 context math(context)
-snippet cap; "Intersection (;)" Aw
+snippet cap; "Intersection (;)" Ai
 inter
 endsnippet
 
 context math(context)
-snippet cup; "Union (;)" Aw
+snippet cup; "Union (;)" Ai
 union
 endsnippet
 
 context math(context)
-snippet not; "Logical NOT (;)" Aw
+snippet not; "Logical NOT (;)" Ai
 not
 endsnippet
 
 context math(context)
-snippet le; "Less than or equal (;)" Aw
+snippet le; "Less than or equal (;)" Ai
 lt.eq.slant
 endsnippet
 
 context math(context)
-snippet ge; "Greater than or equal (;)" Aw
+snippet ge; "Greater than or equal (;)" Ai
 gt.eq.slant
 endsnippet
 
 context math(context)
-snippet ne; "Not equal (;)" Aw
+snippet ne; "Not equal (;)" Ai
 eq.not
 endsnippet
 
 context math(context)
-snippet ni; "Element of (reverse) (;)" Aw
+snippet ni; "Element of (reverse) (;)" Ai
 in.rev
 endsnippet
 
+# Higher priority than `eq;`, which the `i` flag would otherwise match inside
+# `teq;` (snippets are tried in descending priority, first match wins).
+priority 1
 context math(context)
-snippet teq; "Simeq (similar and equal) (;)" Aw
+snippet teq; "Simeq (similar and equal) (;)" Ai
 tilde.eq
 endsnippet
 
 context math(context)
-snippet cd; "Centered horizontal dots (;)" Aw
+snippet cd; "Centered horizontal dots (;)" Ai
 dots.c
 endsnippet
 
 context math(context)
-snippet to; "Tensor product (;)" Aw
+snippet to; "Tensor product (;)" Ai
 times.o
 endsnippet
 
 context math(context)
-snippet do; "Odot (;)" Aw
+snippet do; "Odot (;)" Ai
 dot.o
 endsnippet
 
 context math(context)
-snippet ab; "Maps to (;)" Aw
+snippet ab; "Maps to (;)" Ai
 arrow.r.bar
 endsnippet
 
 context math(context)
-snippet al; "Long arrow (choice: fixed or stretched) (;)" Aw
+snippet al; "Long arrow (choice: fixed or stretched) (;)" Ai
 ${1|arrow.r.long,stretch(arrow)|}
 endsnippet
 
-snippet mm; "Inline math mode (;)" Aw
+snippet mm; "Inline math mode (;)" Ai
 \$$1\$$0
 endsnippet
 
-snippet dm; "Display math mode (;)" Aw
+snippet dm; "Display math mode (;)" Ai
 \$
 	$0
 \$
 endsnippet
 
 context math(context)
-snippet set; "Mathematical set with | (;)" Aw
+snippet set; "Mathematical set with | (;)" Ai
 { $1 mid(|) $2 }$0
 endsnippet
 
 context math(context)
-snippet pr; "Product (;)" Aw
+snippet pr; "Product (;)" Ai
 product
 endsnippet
 
 context math(context)
-snippet int; "Integral (;)" Aw
+snippet int; "Integral (;)" Ai
 integral
 endsnippet
 
 context math(context)
-snippet ar; "Vector accent (;)" Aw
+snippet ar; "Vector accent (;)" Ai
 arrow($1)$0
 endsnippet
 
 context math(context)
-snippet mi; "Italic font (;)" Aw
+snippet mi; "Italic font (;)" Ai
 italic($1)$0
 endsnippet
 
-snippet lb; "Label (;)" Aw
+snippet lb; "Label (;)" Ai
 <$1>
 endsnippet
