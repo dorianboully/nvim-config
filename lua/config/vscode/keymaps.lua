@@ -17,6 +17,6 @@ end
 -- tinymist/typst-preview extensions.
 map("n", "<localleader>d", act("vscode.open", "https://q.uiver.app/"), { desc = "Open web diagram helper" })
 map("n", "<localleader>i", act("tinymist.initTemplate"), { desc = "Init typst project" })
-map("n", "<localleader>p", act("typst-preview.preview"), { desc = "Toggle preview" })
+map("n", "<localleader>p", act("typst-preview.browser"), { desc = "Preview in browser" })
 map("n", "<localleader>c", act("tinymist.exportCurrentPdf"), { desc = "Compile pdf" })
 map("n", "<localleader>v", act("tinymist.showPdf"), { desc = "View pdf" })

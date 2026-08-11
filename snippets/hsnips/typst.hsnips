@@ -7,6 +7,18 @@
 #            gates it to real typst math mode (markup.math.typst, verified against
 #            tinymist's compiled grammar) or where the trigger is `;`-prefixed and
 #            therefore can never collide with a real identifier.
+#
+# 2026-07-06: most math snippets are now automatic (A) to skip the completion
+# menu entirely. Kept MANUAL on purpose (trigger is a prefix of something you
+# might actually type, or conflicts with a document macro):
+#   set int pr mi ar to do cd not le ge ne ni teq sub sup cap cup ab al mm dm ttl
+#   (cd = codimension operator in AlgComm; mi < min/mid/mod; ar < arg/arrow;
+#    to < top; do < dots; int < inter/integral; pr < prime/prod; ab < abl;
+#    ni < nin; teq < teqq)
+# plus everything in markup mode (env snippets, lb, mm/dm).
+# Every manual trigger also has an instant `TRIG;` variant (see the ;-suffix
+# section at the end of this file): type the trigger then `;` to expand
+# without waiting for the completion menu.
 
 global
 function math(context) {
@@ -27,23 +39,28 @@ snippet jj "subscript" Ai
 _($1)
 endsnippet
 
-snippet sbp "subscript and superscript" i
+context math(context)
+snippet sbp "subscript and superscript" Ai
 _($1)^($2) $0
 endsnippet
 
-snippet tp "transpose" i
+context math(context)
+snippet tp "transpose" Ai
 ^(top)$0
 endsnippet
 
-snippet st "star" i
+context math(context)
+snippet st "star" Ai
 ^(*)$0
 endsnippet
 
-snippet inv "inverse" i
+context math(context)
+snippet inv "inverse" Ai
 ^(-1)$0
 endsnippet
 
-snippet ort "orthogonal (perp)" i
+context math(context)
+snippet ort "orthogonal (perp)" Ai
 ^(perp)$0
 endsnippet
 
@@ -410,23 +427,28 @@ endsnippet
 
 # ---------- symbols (ex symbol.json) ----------
 
-snippet hb "Reduced Planck constant (h-bar)" w
+context math(context)
+snippet hb "Reduced Planck constant (h-bar)" Aw
 planck.reduce
 endsnippet
 
-snippet nb "Nabla/Del (gradient)" w
+context math(context)
+snippet nb "Nabla/Del (gradient)" Aw
 nabla
 endsnippet
 
-snippet pt "Partial derivative" w
+context math(context)
+snippet pt "Partial derivative" Aw
 partial
 endsnippet
 
-snippet oo "Infinity" w
+context math(context)
+snippet oo "Infinity" Aw
 infinity
 endsnippet
 
-snippet cp "Composition" w
+context math(context)
+snippet cp "Composition" Aw
 compose
 endsnippet
 
@@ -444,7 +466,8 @@ snippet ni "Element of (reverse)" w
 in.rev
 endsnippet
 
-snippet nin "Not element of" w
+context math(context)
+snippet nin "Not element of" Aw
 in.not
 endsnippet
 
@@ -456,19 +479,23 @@ snippet sup "Superset" w
 supset
 endsnippet
 
-snippet sube "Subset or equal" w
+context math(context)
+snippet sube "Subset or equal" Aw
 subset.eq
 endsnippet
 
-snippet supe "Superset or equal" w
+context math(context)
+snippet supe "Superset or equal" Aw
 supset.eq
 endsnippet
 
-snippet nsub "Not subset" w
+context math(context)
+snippet nsub "Not subset" Aw
 subset.not
 endsnippet
 
-snippet nsup "Not superset" w
+context math(context)
+snippet nsup "Not superset" Aw
 superset.not
 endsnippet
 
@@ -484,7 +511,8 @@ snippet not "Logical NOT" w
 not
 endsnippet
 
-snippet nt "Empty set" w
+context math(context)
+snippet nt "Empty set" Aw
 nothing
 endsnippet
 
@@ -496,11 +524,13 @@ snippet ge "Greater than or equal" w
 gt.eq.slant
 endsnippet
 
-snippet << "Much less than" i
+context math(context)
+snippet << "Much less than" Ai
 lt.double
 endsnippet
 
-snippet >> "Much greater than" i
+context math(context)
+snippet >> "Much greater than" Ai
 gt.double
 endsnippet
 
@@ -512,31 +542,38 @@ snippet teq "Simeq (similar and equal)" w
 tilde.eq
 endsnippet
 
-snippet teqq "Congruent (tilde.equiv)" w
+context math(context)
+snippet teqq "Congruent (tilde.equiv)" Aw
 tilde.equiv
 endsnippet
 
-snippet eqq "Equivalent" w
+context math(context)
+snippet eqq "Equivalent" Aw
 equiv
 endsnippet
 
-snippet orth "Perpendicular" w
+context math(context)
+snippet orth "Perpendicular" Aw
 perp
 endsnippet
 
-snippet para "Parallel" w
+context math(context)
+snippet para "Parallel" Aw
 parallel
 endsnippet
 
-snippet pm "Plus or minus" w
+context math(context)
+snippet pm "Plus or minus" Aw
 plus.minus
 endsnippet
 
-snippet mp "Minus or plus" w
+context math(context)
+snippet mp "Minus or plus" Aw
 minus.plus
 endsnippet
 
-snippet xx "Multiplication" w
+context math(context)
+snippet xx "Multiplication" Aw
 times
 endsnippet
 
@@ -544,7 +581,8 @@ snippet cd "Centered horizontal dots" w
 dots.c
 endsnippet
 
-snippet wo "Set difference" w
+context math(context)
+snippet wo "Set difference" Aw
 without
 endsnippet
 
@@ -552,7 +590,8 @@ snippet to "Tensor product" w
 times.o
 endsnippet
 
-snippet po "Direct sum" w
+context math(context)
+snippet po "Direct sum" Aw
 plus.o
 endsnippet
 
@@ -560,11 +599,13 @@ snippet do "Odot" w
 dot.o
 endsnippet
 
-snippet cl "Circle" w
+context math(context)
+snippet cl "Circle" Aw
 circle($1)$0
 endsnippet
 
-snippet iff "If and only if" w
+context math(context)
+snippet iff "If and only if" Aw
 arrow.l.r.double.long
 endsnippet
 
@@ -572,7 +613,13 @@ snippet ab "Maps to" w
 arrow.r.bar
 endsnippet
 
-snippet ah "Hook arrow" w
+context math(context)
+snippet abl "Long maps to" Aw
+arrow.r.long.bar
+endsnippet
+
+context math(context)
+snippet ah "Hook arrow" Aw
 arrow.r.hook
 endsnippet
 
@@ -580,19 +627,23 @@ snippet al "Long arrow (choice: fixed or stretched)" w
 ${1|arrow.r.long,stretch(arrow)|}
 endsnippet
 
-snippet sl "Slash (quotient sets)" w
+context math(context)
+snippet sl "Slash (quotient sets)" Aw
 slash
 endsnippet
 
-snippet lra "Angle brackets / chevrons" w
+context math(context)
+snippet lra "Angle brackets / chevrons" Aw
 chevron.l $1 chevron.r$0
 endsnippet
 
-snippet lrc "Curly braces" w
+context math(context)
+snippet lrc "Curly braces" Aw
 { $1 }$0
 endsnippet
 
-snippet md "Mid bar delimiter" w
+context math(context)
+snippet md "Mid bar delimiter" Aw
 mid(|)
 endsnippet
 
@@ -617,11 +668,13 @@ snippet set "Mathematical set with |" w
 { $1 mid(|) $2 }$0
 endsnippet
 
-snippet binom "Binomial coefficient" w
+context math(context)
+snippet binom "Binomial coefficient" Aw
 binom(${1:n}, ${2:k})$0
 endsnippet
 
-snippet sm "Summation" w
+context math(context)
+snippet sm "Summation" Aw
 sum
 endsnippet
 
@@ -629,27 +682,33 @@ snippet pr "Product" w
 product
 endsnippet
 
-snippet cpr "Coproduct" w
+context math(context)
+snippet cpr "Coproduct" Aw
 product.co
 endsnippet
 
-snippet bop "Direct sum (big)" w
+context math(context)
+snippet bop "Direct sum (big)" Aw
 op(plus.o)
 endsnippet
 
-snippet bcap "Big intersection" w
+context math(context)
+snippet bcap "Big intersection" Aw
 sect.big
 endsnippet
 
-snippet bcup "Big union" w
+context math(context)
+snippet bcup "Big union" Aw
 union.big
 endsnippet
 
-snippet bwe "Big wedge" w
+context math(context)
+snippet bwe "Big wedge" Aw
 and.big
 endsnippet
 
-snippet bve "Big vee" w
+context math(context)
+snippet bve "Big vee" Aw
 or.big
 endsnippet
 
@@ -657,11 +716,13 @@ snippet int "Integral" w
 integral
 endsnippet
 
-snippet bar "Bar accent" w
+context math(context)
+snippet bar "Bar accent" Aw
 bar($1)$0
 endsnippet
 
-snippet hat "Hat accent" w
+context math(context)
+snippet hat "Hat accent" Aw
 hat($1)$0
 endsnippet
 
@@ -669,31 +730,38 @@ snippet ar "Vector accent" w
 arrow($1)$0
 endsnippet
 
-snippet tl "Tilde accent" w
+context math(context)
+snippet tl "Tilde accent" Aw
 tilde($1)$0
 endsnippet
 
-snippet ov "Overline accent" w
+context math(context)
+snippet ov "Overline accent" Aw
 overline($1)$0
 endsnippet
 
-snippet sqr "Root" w
+context math(context)
+snippet sqr "Root" Aw
 sqrt(${1:n})$0
 endsnippet
 
-snippet abs "Absolute value" w
+context math(context)
+snippet abs "Absolute value" Aw
 abs($1)$0
 endsnippet
 
-snippet norm "Norm" w
+context math(context)
+snippet norm "Norm" Aw
 norm($1)$0
 endsnippet
 
-snippet mc "Calligraphic font" w
+context math(context)
+snippet mc "Calligraphic font" Aw
 cal($1)$0
 endsnippet
 
-snippet mb "Bold font" w
+context math(context)
+snippet mb "Bold font" Aw
 bold($1)$0
 endsnippet
 
@@ -701,24 +769,240 @@ snippet mi "Italic font" w
 italic($1)$0
 endsnippet
 
-snippet mf "Fraktur font" w
+context math(context)
+snippet mf "Fraktur font" Aw
 frak($1)$0
 endsnippet
 
-snippet ms "Script font" w
+context math(context)
+snippet ms "Script font" Aw
 scr($1)$0
 endsnippet
 
-snippet bb "Double-struck font" w
+context math(context)
+snippet bb "Double-struck font" Aw
 bb($1)$0
 endsnippet
 
-snippet mr "Roman (upright) font" w
+context math(context)
+snippet mr "Roman (upright) font" Aw
 upright($1)$0
 endsnippet
 
 # ---------- text (ex text.json) ----------
 
 snippet lb "Label" w
+<$1>
+endsnippet
+
+# ---------- ;-suffix auto variants (expand instantly, no menu) ----------
+# Type the manual trigger then `;` to expand without the completion menu,
+# UltiSnips-expand-key style. Math ones are context-gated like the rest.
+
+snippet ttl; "env title (;)" Ai
+(title: [$1])
+endsnippet
+
+snippet eq; "Equation (;)" Aw
+#equation(id: "eq$1")[
+	$0
+]
+endsnippet
+
+snippet def; "Definition (;)" Aw
+#definition$1[
+	$0
+]
+endsnippet
+
+snippet rem; "Remark (;)" Aw
+#remark$1[
+	$0
+]
+endsnippet
+
+snippet thm; "Theorem (;)" Aw
+#theorem$1[
+	$0
+]
+endsnippet
+
+snippet lem; "Lemma (;)" Aw
+#lemma$1[
+	$0
+]
+endsnippet
+
+snippet cor; "Corollary (;)" Aw
+#corollary$1[
+	$0
+]
+endsnippet
+
+snippet exr; "Exercise (;)" Aw
+#exercise$1[
+	$0
+]
+endsnippet
+
+snippet exp; "Example (;)" Aw
+#example$1[
+	$0
+]
+endsnippet
+
+snippet prp; "Proposition (;)" Aw
+#proposition$1[
+	$0
+]
+endsnippet
+
+snippet prt; "Property (;)" Aw
+#property$1[
+	$0
+]
+endsnippet
+
+snippet conj; "Conjecture (;)" Aw
+#conjecture$1[
+	$0
+]
+endsnippet
+
+snippet prf; "Proof env (;)" Aw
+#proof[
+	$0
+]
+endsnippet
+
+snippet sol; "Solution env (;)" Aw
+#proof(title:"Solution")[
+	$0
+]
+endsnippet
+
+snippet ils; "Roman item list (;)" Aw
+#ilist[
+	+ $0
+]
+endsnippet
+
+snippet diag; "Commutative diagram environment (;)" Aw
+#diagram[
+	$0
+]
+endsnippet
+
+context math(context)
+snippet sub; "Subset (;)" Aw
+subset
+endsnippet
+
+context math(context)
+snippet sup; "Superset (;)" Aw
+supset
+endsnippet
+
+context math(context)
+snippet cap; "Intersection (;)" Aw
+inter
+endsnippet
+
+context math(context)
+snippet cup; "Union (;)" Aw
+union
+endsnippet
+
+context math(context)
+snippet not; "Logical NOT (;)" Aw
+not
+endsnippet
+
+context math(context)
+snippet le; "Less than or equal (;)" Aw
+lt.eq.slant
+endsnippet
+
+context math(context)
+snippet ge; "Greater than or equal (;)" Aw
+gt.eq.slant
+endsnippet
+
+context math(context)
+snippet ne; "Not equal (;)" Aw
+eq.not
+endsnippet
+
+context math(context)
+snippet ni; "Element of (reverse) (;)" Aw
+in.rev
+endsnippet
+
+context math(context)
+snippet teq; "Simeq (similar and equal) (;)" Aw
+tilde.eq
+endsnippet
+
+context math(context)
+snippet cd; "Centered horizontal dots (;)" Aw
+dots.c
+endsnippet
+
+context math(context)
+snippet to; "Tensor product (;)" Aw
+times.o
+endsnippet
+
+context math(context)
+snippet do; "Odot (;)" Aw
+dot.o
+endsnippet
+
+context math(context)
+snippet ab; "Maps to (;)" Aw
+arrow.r.bar
+endsnippet
+
+context math(context)
+snippet al; "Long arrow (choice: fixed or stretched) (;)" Aw
+${1|arrow.r.long,stretch(arrow)|}
+endsnippet
+
+snippet mm; "Inline math mode (;)" Aw
+\$$1\$$0
+endsnippet
+
+snippet dm; "Display math mode (;)" Aw
+\$
+	$0
+\$
+endsnippet
+
+context math(context)
+snippet set; "Mathematical set with | (;)" Aw
+{ $1 mid(|) $2 }$0
+endsnippet
+
+context math(context)
+snippet pr; "Product (;)" Aw
+product
+endsnippet
+
+context math(context)
+snippet int; "Integral (;)" Aw
+integral
+endsnippet
+
+context math(context)
+snippet ar; "Vector accent (;)" Aw
+arrow($1)$0
+endsnippet
+
+context math(context)
+snippet mi; "Italic font (;)" Aw
+italic($1)$0
+endsnippet
+
+snippet lb; "Label (;)" Aw
 <$1>
 endsnippet
