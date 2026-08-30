@@ -11,10 +11,10 @@
 # 2026-07-06: most math snippets are now automatic (A) to skip the completion
 # menu entirely. Kept MANUAL on purpose (trigger is a prefix of something you
 # might actually type, or conflicts with a document macro):
-#   set int pr mi ar to do cd not le ge ne ni teq sub sup cap cup ab al mm dm ttl
+#   set int pr mi ar to do cd cl not le ge ne ni teq sub sup cap cup ab al mm dm ttl
 #   (cd = codimension operator in AlgComm; mi < min/mid/mod; ar < arg/arrow;
 #    to < top; do < dots; int < inter/integral; pr < prime/prod; ab < abl;
-#    ni < nin; teq < teqq)
+#    ni < nin; teq < teqq; cl = closure/adherence, typed literally in math)
 # plus everything in markup mode (env snippets, lb, mm/dm).
 # Every manual trigger also has an instant `TRIG;` variant (see the ;-suffix
 # section at the end of this file): type the trigger then `;` to expand
@@ -623,7 +623,7 @@ dot.o
 endsnippet
 
 context math(context)
-snippet cl "Circle" Aw
+snippet cl "Circle" w
 circle($1)$0
 endsnippet
 
@@ -989,6 +989,11 @@ endsnippet
 context math(context)
 snippet do; "Odot (;)" Ai
 dot.o
+endsnippet
+
+context math(context)
+snippet cl; "Circle (;)" Ai
+circle($1)$0
 endsnippet
 
 context math(context)
