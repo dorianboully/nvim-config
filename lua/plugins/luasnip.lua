@@ -1,11 +1,4 @@
----Envoie des touches sans les remapper.
----`i` insère en tête du buffer de frappe : sans lui les touches sont mises en
----file derrière le mapping et avalées. `n` empêche le remap — indispensable,
----sinon <Tab> se rappelle lui-même indéfiniment.
----@param keys string
-local function feed(keys)
-  vim.api.nvim_feedkeys(vim.keycode(keys), "in", false)
-end
+local feed = require("utils.keymap").feed
 
 -- Ordre décidé : LuaSnip d'abord, parce que les autosnippets sont le flux
 -- principal ; le menu de complétion ensuite, maintenant qu'il est ouvert

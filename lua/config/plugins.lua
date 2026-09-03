@@ -21,14 +21,28 @@ local function apply(spec)
   require("utils.keymap").mapKeys(spec.keys)
 end
 
+---@param spec table
+local function to_pack(spec)
+  return { src = spec.src, name = spec.name, version = spec.version }
+end
+
 ---Installe, charge puis configure une liste de specs.
+---Une spec marquée `load = false` est seulement maintenue à jour sur le
+---disque : son plugin/ n'est jamais sourcé et sa config n'est pas appliquée.
+---C'est ce qui permet de n'utiliser un dépôt que pour un binaire qu'il livre.
 ---@param specs table[]
 function M.add(specs)
-  vim.pack.add(vim.tbl_map(function(spec)
-    return { src = spec.src, name = spec.name, version = spec.version }
-  end, specs))
+  local loaded, on_disk = {}, {}
+  for _, spec in ipairs(specs) do
+    table.insert(spec.load == false and on_disk or loaded, spec)
+  end
 
-  vim.iter(specs):each(apply)
+  if #on_disk > 0 then
+    vim.pack.add(vim.tbl_map(to_pack, on_disk), { load = false })
+  end
+  vim.pack.add(vim.tbl_map(to_pack, loaded))
+
+  vim.iter(loaded):each(apply)
 end
 
 ---Toutes les specs de lua/plugins/, par ordre alphabétique pour que l'ordre

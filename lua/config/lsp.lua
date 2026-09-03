@@ -1,6 +1,15 @@
 -- Les configurations de serveurs vivent dans lsp/, un fichier par serveur.
 -- vim.lsp.enable() les active par nom de fichier.
-vim.lsp.enable({ "lua", "tinymist", "jsonls", "basedpyright" })
+local servers = { "lua", "tinymist", "jsonls", "basedpyright" }
+
+-- Copilot n'est activé que si son serveur est trouvable : soit une
+-- installation classique, soit la copie embarquée par le dépôt copilot.vim.
+local copilot = require("utils.copilot").cmd() ~= nil
+if copilot then
+  table.insert(servers, "copilot")
+end
+
+vim.lsp.enable(servers)
 
 -- Repli : treesitter par défaut, LSP quand le serveur sait le faire.
 -- foldlevelstart à 99 pour que les fichiers s'ouvrent dépliés.
@@ -31,3 +40,57 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- Volontairement non activés d'office : les inlay hints et les codelens sont
 -- du bruit dans un document typst. Ils restent sous <leader>uh et grx.
+
+-- ── Complétion inline (copilot) ─────────────────────────────────────────────
+if not copilot then
+  return
+end
+
+local feed = require("utils.keymap").feed
+
+-- Les suggestions se rafraîchissent seules en mode insertion : pas d'équivalent
+-- de <Plug>(copilot-suggest) à mapper.
+vim.lsp.inline_completion.enable()
+
+--- Accepte une partie seulement de la suggestion, en tronquant le texte avant
+--- qu'il soit appliqué.
+---@param pattern string motif Lua capturant le fragment à conserver
+local function accept_partial(pattern)
+  return function()
+    vim.lsp.inline_completion.get({
+      on_accept = function(item)
+        local text = item.insert_text
+        if type(text) ~= "string" then
+          text = text.value
+        end
+        item.insert_text = text:match(pattern) or text
+        return item
+      end,
+    })
+  end
+end
+
+vim.keymap.set("i", "<C-y>", function()
+  -- Le menu de complétion a la priorité : <C-y> y est la touche d'acceptation
+  -- native, celle qui déclenche l'expansion des snippets LSP.
+  if vim.fn.pumvisible() == 1 then
+    feed("<C-y>")
+  else
+    vim.lsp.inline_completion.get()
+  end
+end, { desc = "Accepter : menu de complétion, sinon suggestion inline" })
+
+vim.keymap.set("i", "<C-l>", accept_partial("^%s*%S+"), { desc = "Accepter un mot de la suggestion" })
+vim.keymap.set("i", "<C-S-l>", accept_partial("^[^\n]*"), { desc = "Accepter une ligne de la suggestion" })
+
+vim.keymap.set("i", "<C-down>", function()
+  vim.lsp.inline_completion.select({ count = 1 })
+end, { desc = "Suggestion suivante" })
+
+vim.keymap.set("i", "<C-up>", function()
+  vim.lsp.inline_completion.select({ count = -1 })
+end, { desc = "Suggestion précédente" })
+
+vim.keymap.set("n", "<leader>ui", function()
+  vim.lsp.inline_completion.enable(not vim.lsp.inline_completion.is_enabled())
+end, { desc = "Basculer la complétion inline" })

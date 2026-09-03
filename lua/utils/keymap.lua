@@ -1,5 +1,14 @@
 local M = {}
 
+---Envoie des touches sans les remapper.
+---`i` insère en tête du buffer de frappe : sans lui, les touches sont mises en
+---file derrière le mapping et avalées. `n` empêche le remap — indispensable,
+---sinon une touche qui se rejoue elle-même boucle indéfiniment.
+---@param keys string
+M.feed = function(keys)
+  vim.api.nvim_feedkeys(vim.keycode(keys), "in", false)
+end
+
 ---Applique une table de raccourcis, éventuellement locale à un buffer.
 ---@param keys? table
 ---@param bufnr? integer
