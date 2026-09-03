@@ -15,14 +15,21 @@ return {
 
   root_markers = { '.git' },
 
-  -- Le serveur pousse son état d'authentification par notification. On le garde
-  -- pour :CopilotStatus, et on ne dérange l'utilisateur qu'en cas d'erreur.
+  -- Authentification par variable d'environnement, posée dans le shell :
+  --   export GITHUB_COPILOT_TOKEN=...   (ou GH_COPILOT_TOKEN)
+  -- Le serveur n'a pas de mode connexion en ligne de commande, et son seul
+  -- magasin d'identifiants est keytar — qui échoue sous WSL faute de service
+  -- de secrets D-Bus. Le flux d'appareil ne persisterait donc rien.
+  -- (GITHUB_TOKEN n'est lu que si CODESPACES=true.)
+
+  -- Sans ce gestionnaire, un défaut d'authentification est parfaitement
+  -- silencieux : la requête part, le serveur répond NotSignedIn, et aucune
+  -- suggestion n'apparaît sans le moindre message.
   handlers = {
     ['didChangeStatus'] = function(_, result)
-      vim.g.copilot_status = result
       if result and result.kind == 'Error' then
         vim.schedule(function()
-          vim.notify('copilot : ' .. (result.message or 'erreur') .. '  (:CopilotSignIn)', vim.log.levels.WARN)
+          vim.notify('copilot : ' .. (result.message or 'erreur'), vim.log.levels.WARN)
         end)
       end
     end,
