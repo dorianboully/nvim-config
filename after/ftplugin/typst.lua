@@ -13,3 +13,14 @@ w.breakindentopt = "shift:2"
 vim.opt_local.formatoptions:remove("t")
 
 vim.b.undo_ftplugin = "setlocal textwidth< linebreak< breakindent< breakindentopt< formatoptions<"
+
+-- Objets de texte « math », définis par queries/typst/textobjects.scm.
+-- Locaux au buffer parce que la requête n'existe que pour typst : en TeX,
+-- c'est vimtex qui fournit am/im, et ailleurs la capture n'existe pas.
+for lhs, capture in pairs({ am = "@math.outer", im = "@math.inner" }) do
+  vim.keymap.set({ "x", "o" }, lhs, function()
+    require("nvim-treesitter-textobjects.select").select_textobject(capture, "textobjects")
+  end, { buffer = 0, desc = "Sélection math (" .. capture:sub(2) .. ")" })
+end
+
+vim.b.undo_ftplugin = (vim.b.undo_ftplugin or "") .. " | execute 'silent! xunmap <buffer> am' | execute 'silent! xunmap <buffer> im'"

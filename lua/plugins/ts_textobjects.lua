@@ -8,6 +8,9 @@ return {
       include_surrounding_whitespace = false,
     }
   },
+  -- `as` (portée) est retiré : v_an / v_in couvrent l'expansion par nœud
+  -- depuis 0.12. `am` / `im` (math) sont passés dans after/ftplugin/typst.lua :
+  -- la requête n'existe que pour typst, et en TeX c'est vimtex qui les fournit.
   keys = {
     {
       "af",
@@ -45,33 +48,6 @@ return {
       mode = { "x", "o" },
       desc = "Select inner class",
     },
-    {
-      "as",
-      function()
-        require("nvim-treesitter-textobjects.select")
-            .select_textobject("@local.scope", "textobjects")
-      end,
-      mode = { "x", "o" },
-      desc = "Select local scope",
-    },
-    {
-      "am",
-      function()
-        require("nvim-treesitter-textobjects.select")
-            .select_textobject("@math.outer", "textobjects")
-      end,
-      mode = { "x", "o" },
-      desc = "Select outer math",
-    },
-    {
-      "im",
-      function()
-        require("nvim-treesitter-textobjects.select")
-            .select_textobject("@math.inner", "textobjects")
-      end,
-      mode = { "x", "o" },
-      desc = "Select inner math",
-    }
   },
   config = true,
 }
