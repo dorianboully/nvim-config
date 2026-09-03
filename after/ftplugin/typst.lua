@@ -23,4 +23,29 @@ for lhs, capture in pairs({ am = "@math.outer", im = "@math.inner" }) do
   end, { buffer = 0, desc = "Sélection math (" .. capture:sub(2) .. ")" })
 end
 
-vim.b.undo_ftplugin = (vim.b.undo_ftplugin or "") .. " | execute 'silent! xunmap <buffer> am' | execute 'silent! xunmap <buffer> im'"
+local normal_maps = {}
+if not vim.g.vscode then
+  local actions = require("typst.actions")
+  for lhs, mapping in pairs({
+    ["<localleader>c"] = { actions.compile, "Compiler le document" },
+    ["<localleader>d"] = { function() vim.ui.open("https://q.uiver.app/") end, "Ouvrir l'éditeur de diagrammes" },
+    ["<localleader>i"] = {
+      function() coroutine.resume(coroutine.create(require("typst.templates").init)) end,
+      "Créer un projet depuis un template",
+    },
+    ["<localleader>m"] = { actions.pin, "Épingler le document principal" },
+    ["<localleader>p"] = { "<cmd>TypstPreviewToggle<cr>", "Basculer la prévisualisation" },
+    ["<localleader>v"] = { actions.view, "Ouvrir le PDF" },
+  }) do
+    vim.keymap.set("n", lhs, mapping[1], { buffer = 0, desc = mapping[2] })
+    normal_maps[#normal_maps + 1] = lhs
+  end
+end
+
+local undo_maps = vim.iter(normal_maps):map(function(lhs)
+  return "execute 'silent! nunmap <buffer> " .. lhs .. "'"
+end):join(" | ")
+vim.b.undo_ftplugin = (vim.b.undo_ftplugin or "")
+  .. " | execute 'silent! xunmap <buffer> am' | execute 'silent! ounmap <buffer> am'"
+  .. " | execute 'silent! xunmap <buffer> im' | execute 'silent! ounmap <buffer> im'"
+  .. (#undo_maps > 0 and " | " .. undo_maps or "")
