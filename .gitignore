@@ -1,3 +1,6 @@
 # Journal écrit par Neovim quand il est lancé depuis ce dossier.
 # Le lockfile de vim.pack, lui, est volontairement versionné.
 nvim.log
+
+# Worktrees et transcrits des sessions Claude Code.
+.claude/
