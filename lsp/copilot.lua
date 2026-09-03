@@ -15,6 +15,19 @@ return {
 
   root_markers = { '.git' },
 
+  -- Le serveur pousse son état d'authentification par notification. On le garde
+  -- pour :CopilotStatus, et on ne dérange l'utilisateur qu'en cas d'erreur.
+  handlers = {
+    ['didChangeStatus'] = function(_, result)
+      vim.g.copilot_status = result
+      if result and result.kind == 'Error' then
+        vim.schedule(function()
+          vim.notify('copilot : ' .. (result.message or 'erreur') .. '  (:CopilotSignIn)', vim.log.levels.WARN)
+        end)
+      end
+    end,
+  },
+
   init_options = {
     editorInfo = { name = 'Neovim', version = tostring(vim.version()) },
     editorPluginInfo = { name = 'Neovim', version = tostring(vim.version()) },
