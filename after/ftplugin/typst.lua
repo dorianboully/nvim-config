@@ -33,7 +33,7 @@ if not vim.g.vscode then
       function() coroutine.resume(coroutine.create(require("typst.templates").init)) end,
       "Créer un projet depuis un template",
     },
-    ["<localleader>m"] = { actions.pin, "Épingler le document principal" },
+    ["<localleader>m"] = { actions.pin, "Épingler ou détacher le document principal" },
     ["<localleader>p"] = { "<cmd>TypstPreview<cr>", "Ouvrir une prévisualisation" },
     ["<localleader>v"] = { actions.view, "Ouvrir le PDF" },
   }) do
