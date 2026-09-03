@@ -9,6 +9,6 @@ else
   require("config.lsp")
   require("config.treesitter")
 
-  local packUtil = require("utils.pack")
-  packUtil.packAddSpecs(packUtil.getSpecs("plugins", {}))
+  local plugins = require("config.plugins")
+  plugins.add(plugins.all())
 end

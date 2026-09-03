@@ -10,12 +10,21 @@ o.cursorline = true
 o.number = true
 o.relativenumber = true
 o.signcolumn = "yes" -- évite le décalage du texte quand un signe apparaît
-o.ruler = false      -- la statusline par défaut affiche déjà la position
+o.ruler = true       -- la statusline par défaut n'affiche la position que si ruler est actif
 o.scrolloff = 8
 o.sidescrolloff = 8
 o.winborder = "single"
 o.pumborder = "single" -- 0.12 : le menu de complétion suit le style des flottantes
 o.pummaxwidth = 60
+
+-- La statusline par défaut affiche déjà les diagnostics, la progression LSP,
+-- l'indicateur 'busy' et le code de sortie du terminal. Elle omet le type de
+-- fichier, seule chose que lualine apportait ici : on l'insère au point de
+-- bascule gauche/droite plutôt que de réécrire toute l'expression.
+local statusline = vim.o.statusline
+if statusline:find("%%=") then
+  vim.o.statusline = (statusline:gsub("%%=", "%%=%%{&filetype} ", 1))
+end
 
 -- ── Indentation ────────────────────────────────────────────────────────────
 o.expandtab = true

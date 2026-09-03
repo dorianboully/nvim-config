@@ -8,7 +8,7 @@ require("config.vscode.keymaps") -- VSCode overlay last, so it overrides shared 
 -- Explicit opt-in (not the old blanket exclude-list): only load what's needed.
 -- All work headless. queries/typst/textobjects.scm (@math.outer/@math.inner) is
 -- already on the runtimepath since it lives in this config's own queries/ dir.
-require("utils.pack").packAddSpecs({
+require("config.plugins").add({
   require("plugins.nvim-treesitter"),
   require("plugins.ts_textobjects"),
   require("plugins.nvim-surround"),
