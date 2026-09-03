@@ -1,15 +1,6 @@
 -- Les configurations de serveurs vivent dans lsp/, un fichier par serveur.
 -- vim.lsp.enable() les active par nom de fichier.
-local servers = { "lua", "tinymist", "jsonls", "basedpyright" }
-
--- Copilot n'est activé que si son serveur est trouvable : soit une
--- installation classique, soit la copie embarquée par le dépôt copilot.vim.
-local copilot = require("utils.copilot").cmd() ~= nil
-if copilot then
-  table.insert(servers, "copilot")
-end
-
-vim.lsp.enable(servers)
+vim.lsp.enable({ "lua", "tinymist", "jsonls", "basedpyright", "copilot" })
 
 -- Repli : treesitter par défaut, LSP quand le serveur sait le faire.
 -- foldlevelstart à 99 pour que les fichiers s'ouvrent dépliés.
@@ -42,9 +33,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- du bruit dans un document typst. Ils restent sous <leader>uh et grx.
 
 -- ── Complétion inline (copilot) ─────────────────────────────────────────────
-if not copilot then
-  return
-end
+-- Les raccourcis sont posés sans condition : sans client attaché, get() et
+-- select() ne font simplement rien, et <C-y> retombe sur le menu.
 
 local feed = require("utils.keymap").feed
 
