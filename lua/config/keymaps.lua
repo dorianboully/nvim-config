@@ -6,6 +6,7 @@
 --   listes     ]q [q  ]l [l  ]b [b  ]t [t  ]a [a  ]<Space> [<Space>
 --   commentaire gc gcc
 --   explorateur -  (plugin natif `dir`, remonte d'un niveau)
+--   fenêtres   <C-w>hjkl, et <C-l> (nohlsearch + diffupdate + multi-curseurs)
 
 local map = vim.keymap.set
 
@@ -18,7 +19,6 @@ map({ "n", "v" }, "<leader>d", '"_d', { desc = "Supprimer sans copier" })
 map("x", "p", '"_dP', { desc = "Coller sans écraser le registre" })
 
 -- ── Insertion ──────────────────────────────────────────────────────────────
-map("i", "jk", "<Esc>", { desc = "Sortir du mode insertion" })
 map("i", "<C-g>", "<C-k>", { desc = "Insérer un digraphe" }) -- <C-k> sert aux snippets
 map("i", "<C-space>", "<C-x><C-o>", { desc = "Complétion omni manuelle" })
 
@@ -53,12 +53,12 @@ map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent =
 map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true, desc = "Haut" })
 
 -- ── Fenêtres ───────────────────────────────────────────────────────────────
--- Note : <C-l> masque le défaut, qui efface la surbrillance, retire les
--- multi-curseurs (|Q|) et rafraîchit les diffs. Utiliser <C-w>l pour le récupérer.
-map("n", "<C-h>", "<C-w>h", { desc = "Fenêtre de gauche" })
-map("n", "<C-j>", "<C-w>j", { desc = "Fenêtre du bas" })
-map("n", "<C-k>", "<C-w>k", { desc = "Fenêtre du haut" })
-map("n", "<C-l>", "<C-w>l", { desc = "Fenêtre de droite" })
+-- Pas d'alias <C-hjkl> : <C-w>hjkl est le natif, et surtout <C-l> a son propre
+-- défaut en mode normal — une chaîne exécutée en entier à chaque appel :
+--   nohlsearch | diffupdate | vider les multi-curseurs (|Q|) | redessiner
+-- Chaque étape est sans effet s'il n'y a rien à faire, d'où l'impression d'un
+-- repli en cascade. Le masquer coûtait le seul moyen d'effacer les curseurs.
+-- Le mode terminal, lui, n'a aucun défaut : ses raccourcis restent plus bas.
 
 map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Agrandir en hauteur" })
 map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Réduire en hauteur" })
