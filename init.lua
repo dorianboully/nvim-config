@@ -4,6 +4,7 @@ if vim.g.vscode then
 else
   require("config.options")
   require("config.keymaps")
+  require("config.autocmds")
   require("config.commands")
   require("config.lsp")
   require("config.treesitter")

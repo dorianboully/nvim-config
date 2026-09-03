@@ -1,48 +1,9 @@
-vim.api.nvim_create_user_command("PackClean", require("utils.pack").packClean, {})
-vim.api.nvim_create_user_command("PackListInactive", function()
-  vim.print(require("utils.pack").getInactivePackages())
-end, {})
+-- Commandes utilisateur. Le typst sera repris en phase 4.
 
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = "*rc",
-  callback = function()
-    if vim.bo.filetype == "" then
-      vim.bo.filetype = "sh"
-    end
-  end,
-})
+vim.api.nvim_create_user_command("TypstInit", function()
+  coroutine.resume(coroutine.create(require("utils.typst").typstInit))
+end, { desc = "Créer un projet typst depuis un template local" })
 
-vim.api.nvim_create_autocmd("Filetype", {
-  pattern = "typst",
-  callback = function()
-    vim.bo.textwidth = 80
-    vim.opt_local.linebreak = true
-    vim.opt_local.breakindent = true
-    vim.opt_local.breakindentopt = "shift:2"
-    vim.opt_local.formatoptions:remove({ "t" })
-  end
-})
-
-vim.api.nvim_create_autocmd("TextYankPost", {
-  callback = function()
-    vim.hl.hl_op()
-  end,
-})
-
-vim.api.nvim_create_user_command(
-  "TypstInit",
-  function()
-    coroutine.resume(
-      coroutine.create(require("utils.typst").typstInit)
-    )
-  end,
-  {}
-)
-
-vim.api.nvim_create_user_command(
-  "TypstDiagram",
-  vim.schedule_wrap(function()
-    vim.ui.open("https://q.uiver.app/")
-  end),
-  {}
-)
+vim.api.nvim_create_user_command("TypstDiagram", vim.schedule_wrap(function()
+  vim.ui.open("https://q.uiver.app/")
+end), { desc = "Ouvrir l'éditeur de diagrammes commutatifs" })

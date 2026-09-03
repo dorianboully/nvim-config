@@ -1,80 +1,98 @@
+-- Socle : uniquement ce que Neovim ne fait pas déjà tout seul.
+--
+-- Volontairement absents, parce que ce sont des défauts depuis 0.11/0.12 :
+--   LSP        grn gra grr gri grt grx gO K <C-s>
+--   diagnostic ]d [d ]D [D <C-w>d
+--   listes     ]q [q  ]l [l  ]b [b  ]t [t  ]a [a  ]<Space> [<Space>
+--   commentaire gc gcc
+--   explorateur -  (plugin natif `dir`, remonte d'un niveau)
+
 local map = vim.keymap.set
 
--- Yank/Paste to/from system clipboard.
-map({ "n", "v" }, "<leader>y", '"+y')
-map("n", "<leader>Y", '"+Y')
-map("v", "p", '"_dp')
-map("v", "P", '"_dP')
-map("n", "<leader>e", "<cmd>Explore<CR>")
-map("n", "<leader>E", "<cmd>Vexplore<CR>")
+-- ── Registres ──────────────────────────────────────────────────────────────
+map({ "n", "v" }, "<leader>y", '"+y', { desc = "Copier vers le presse-papier" })
+map("n", "<leader>Y", '"+Y', { desc = "Copier la ligne vers le presse-papier" })
+map({ "n", "v" }, "x", '"_x', { desc = "Supprimer un caractère sans copier" })
+map({ "n", "v" }, "<leader>d", '"_d', { desc = "Supprimer sans copier" })
+-- En visuel, `P` préserve déjà le registre — seul `p` l'écrase. Un seul mapping suffit.
+map("x", "p", '"_dP', { desc = "Coller sans écraser le registre" })
 
--- Insert special characters (digraphs)
-map("i", "<C-G>", "<C-K>", { noremap = true, desc = "Insert a digraph (special character)" })
+-- ── Insertion ──────────────────────────────────────────────────────────────
+map("i", "jk", "<Esc>", { desc = "Sortir du mode insertion" })
+map("i", "<C-g>", "<C-k>", { desc = "Insérer un digraphe" }) -- <C-k> sert aux snippets
+map("i", "<C-space>", "<C-x><C-o>", { desc = "Complétion omni manuelle" })
 
--- Format buffer
-map("n", "<leader>bf", vim.lsp.buf.format, { desc = "Format current buffer" })
+-- ── Recherche ──────────────────────────────────────────────────────────────
+-- `n`/`N` gardent une direction fixe, et rouvrent le pli sur la cible.
+map("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Résultat suivant" })
+map("n", "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Résultat précédent" })
+map({ "x", "o" }, "n", "'Nn'[v:searchforward]", { expr = true, desc = "Résultat suivant" })
+map({ "x", "o" }, "N", "'nN'[v:searchforward]", { expr = true, desc = "Résultat précédent" })
 
--- Typst
-map("n", "<leader>td", "<cmd>TypstDiagram<cr>", { desc = "Open web diagram helper" })
-map("n", "<leader>ti", "<cmd>TypstInit<cr>", { desc = "Init typst project"})
+-- La surbrillance s'efface au premier mouvement horizontal.
+-- `expr` et non `<cmd>` : avec `<cmd>noh<cr>h`, la commande absorbait le
+-- compteur et `3h` ne déplaçait que d'une colonne.
+local function clear_hl(key)
+  return function()
+    vim.cmd.nohlsearch()
+    return key
+  end
+end
 
--- Don't yank when deleting text
-map({ "n", "v" }, "x", '"_x')
-map({ "n", "v" }, "<leader>d", '"_d')
+for _, key in ipairs({ "h", "l", "gj", "gk" }) do
+  map("n", key, clear_hl(key), { expr = true, desc = "Efface la surbrillance, puis " .. key })
+end
 
--- Clear hlsearch
-map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "clear hlsearch and escape" })
-map("n", "h", "<cmd>noh<cr>h", { desc = "clear hlsearch and move left" })
-map("n", "gj", "<cmd>noh<cr>gj", { desc = "clear hlsearch and move down" })
-map("n", "gk", "<cmd>noh<cr>gk", { desc = "clear hlsearch and move up" })
-map("n", "l", "<cmd>noh<cr>l", { desc = "clear hlsearch and move right" })
-map("i", "jk", "<Esc>", { remap = true })
+map("n", "<esc>", "<cmd>nohlsearch<cr><esc>", { desc = "Efface la surbrillance" })
 
--- better up/down
-map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
-map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { remap = true, desc = "Down", expr = true, silent = true })
-map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", {  desc = "Up", expr = true, silent = true })
-map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { remap = true, desc = "Up", expr = true, silent = true })
+-- ── Mouvement ──────────────────────────────────────────────────────────────
+-- Sans compteur, suivre les lignes visuelles ; avec, les lignes réelles.
+map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true, desc = "Bas" })
+map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true, desc = "Haut" })
+map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true, desc = "Bas" })
+map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true, desc = "Haut" })
 
--- Move to window using the <ctrl> hjkl keys
-map("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
-map("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
-map("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
-map("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
+-- ── Fenêtres ───────────────────────────────────────────────────────────────
+-- Note : <C-l> masque le défaut, qui efface la surbrillance, retire les
+-- multi-curseurs (|Q|) et rafraîchit les diffs. Utiliser <C-w>l pour le récupérer.
+map("n", "<C-h>", "<C-w>h", { desc = "Fenêtre de gauche" })
+map("n", "<C-j>", "<C-w>j", { desc = "Fenêtre du bas" })
+map("n", "<C-k>", "<C-w>k", { desc = "Fenêtre du haut" })
+map("n", "<C-l>", "<C-w>l", { desc = "Fenêtre de droite" })
 
--- Resize window using <ctrl> arrow keys
-map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
-map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
-map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
-map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
+map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Agrandir en hauteur" })
+map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Réduire en hauteur" })
+map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Réduire en largeur" })
+map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Agrandir en largeur" })
 
--- Move Lines
-map("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
-map("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
-map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
-map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
-map("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
-map("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
+-- ── Déplacement de lignes ──────────────────────────────────────────────────
+map("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Descendre la ligne" })
+map("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Monter la ligne" })
+map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Descendre la ligne" })
+map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Monter la ligne" })
+map("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Descendre la sélection" })
+map("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Monter la sélection" })
 
--- buffers
-map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
-map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
-map("n", "<leader>bd", "<cmd>bprevious | bd #<cr>", { desc = "Delete Buffer keep Window" })
-map("n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
+-- ── Buffers ────────────────────────────────────────────────────────────────
+-- Alias ergonomiques de ]b / [b, qui existent maintenant par défaut.
+map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Buffer suivant" })
+map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Buffer précédent" })
+map("n", "<leader>bd", "<cmd>bprevious | bd #<cr>", { desc = "Fermer le buffer, garder la fenêtre" })
+map("n", "<leader>bD", "<cmd>bd<cr>", { desc = "Fermer le buffer et la fenêtre" })
 
--- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
-map("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next Search Result" })
-map("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next Search Result" })
-map("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next Search Result" })
-map("n", "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Prev Search Result" })
-map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
-map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
+-- ── Explorateur (plugin natif `dir`) ───────────────────────────────────────
+-- `-` remonte d'un niveau, c'est un mapping global par défaut.
+map("n", "<leader>E", function()
+  local dir = vim.fn.expand("%:h")
+  vim.cmd.vsplit(dir ~= "" and dir or vim.fn.getcwd())
+end, { desc = "Explorateur (split vertical)" })
 
-map('i', '<c-space>', '<c-x><c-o>', { desc = "Trigger completion" })
+-- ── LSP (cœur, pas un plugin) ──────────────────────────────────────────────
+map("n", "<leader>bf", function() vim.lsp.buf.format() end, { desc = "Formater le buffer" })
 
--- Terminal
-map('t', '<C-g>', '<C-\\><C-n>', { desc = "Exit terminal mode" })
-map('t', '<C-h>', '<C-\\><C-n><C-w>h', { desc = "Go to Left Window" })
-map('t', '<C-j>', '<C-\\><C-n><C-w>j', { desc = "Go to Lower Window" })
-map('t', '<C-k>', '<C-\\><C-n><C-w>k', { desc = "Go to Upper Window" })
-map('t', '<C-l>', '<C-\\><C-n><C-w>l', { desc = "Go to Right Window" })
+-- ── Terminal ───────────────────────────────────────────────────────────────
+map("t", "<C-g>", "<C-\\><C-n>", { desc = "Sortir du mode terminal" })
+map("t", "<C-h>", "<C-\\><C-n><C-w>h", { desc = "Fenêtre de gauche" })
+map("t", "<C-j>", "<C-\\><C-n><C-w>j", { desc = "Fenêtre du bas" })
+map("t", "<C-k>", "<C-\\><C-n><C-w>k", { desc = "Fenêtre du haut" })
+map("t", "<C-l>", "<C-\\><C-n><C-w>l", { desc = "Fenêtre de droite" })

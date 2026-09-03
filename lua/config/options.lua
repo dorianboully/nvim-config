@@ -1,25 +1,44 @@
+-- Socle : rien ici ne dépend d'un plugin.
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-local opt = vim.opt
+local o = vim.o
 
-opt.cursorline = true     -- Enable highlighting of the current line
-opt.ruler = false         -- Disable the default ruler
-opt.signcolumn = "yes"    -- Always show the signcolumn, otherwise it would shift the text each time
-opt.relativenumber = true -- Relative line numbers
-opt.number = true         -- Show line number
-opt.scrolloff = 8         -- Lines of context
-opt.sidescrolloff = 8     -- Columns of context
-opt.winborder = "single"
-opt.expandtab = true      -- Use spaces instead of tabs
-opt.wrap = false          -- Disable line wrap
-opt.shiftwidth = 2        -- Size of an indent
-opt.tabstop = 2           -- Number of spaces tabs count for
-opt.smartindent = true    -- Insert indents automatically
-opt.ignorecase = true     -- Case insensitive search
-opt.smartcase = true      -- Don't ignore case with capitals
-opt.completeopt = "noinsert,menuone,popup"
+-- ── Interface ──────────────────────────────────────────────────────────────
+o.cursorline = true
+o.number = true
+o.relativenumber = true
+o.signcolumn = "yes" -- évite le décalage du texte quand un signe apparaît
+o.ruler = false      -- la statusline par défaut affiche déjà la position
+o.scrolloff = 8
+o.sidescrolloff = 8
+o.winborder = "single"
+o.pumborder = "single" -- 0.12 : le menu de complétion suit le style des flottantes
+o.pummaxwidth = 60
 
-opt.swapfile = false
-opt.backup = false
-opt.undofile = true
+-- ── Indentation ────────────────────────────────────────────────────────────
+o.expandtab = true
+o.shiftwidth = 2
+o.tabstop = 2
+o.smartindent = true
+o.wrap = false
+
+-- ── Recherche ──────────────────────────────────────────────────────────────
+o.ignorecase = true
+o.smartcase = true
+
+-- ── Complétion ─────────────────────────────────────────────────────────────
+-- Native depuis 0.12 : plus besoin de vim.lsp.completion.enable(autotrigger)
+-- sur LspAttach. Les sources viennent de 'complete', dans l'ordre, avec un
+-- budget de temps dégressif ; `o` délègue à 'omnifunc', que le LSP pose lui-même.
+-- Le `^N` plafonne le nombre de candidats par source.
+o.autocomplete = true
+o.autocompletedelay = 60 -- laisse passer une frappe rapide sans ouvrir le menu
+o.complete = ".^10,o^10,w^5,b^5,kspell"
+o.completeopt = "menuone,noinsert,popup,fuzzy"
+
+-- ── Fichiers ───────────────────────────────────────────────────────────────
+o.swapfile = false
+o.backup = false
+o.undofile = true
