@@ -1,0 +1,1113 @@
+[
+  {
+    "trigger": "kk",
+    "description": "superscript",
+    "body": "^($1)",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": "jj",
+    "description": "subscript",
+    "body": "_($1)",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": "sbp",
+    "description": "subscript and superscript",
+    "body": "_($1)^($2) $0",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": "tp",
+    "description": "transpose",
+    "body": "^(top)$0",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": "st",
+    "description": "star",
+    "body": "^(*)$0",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": "inv",
+    "description": "inverse",
+    "body": "^(-1)$0",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": "ort",
+    "description": "orthogonal (perp)",
+    "body": "^(perp)$0",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": "ttl",
+    "description": "env title",
+    "body": "(title: [$1])",
+    "inWord": true,
+    "semicolon": true
+  },
+  {
+    "trigger": "eq",
+    "description": "Equation",
+    "body": "#equation(id: \"eq$1\")[\n\t$0\n]",
+    "semicolon": true
+  },
+  {
+    "trigger": "def",
+    "description": "Definition",
+    "body": "#definition$1[\n\t$0\n]",
+    "semicolon": true
+  },
+  {
+    "trigger": "rem",
+    "description": "Remark",
+    "body": "#remark$1[\n\t$0\n]",
+    "semicolon": true
+  },
+  {
+    "trigger": "thm",
+    "description": "Theorem",
+    "body": "#theorem$1[\n\t$0\n]",
+    "semicolon": true
+  },
+  {
+    "trigger": "lem",
+    "description": "Lemma",
+    "body": "#lemma$1[\n\t$0\n]",
+    "semicolon": true
+  },
+  {
+    "trigger": "cor",
+    "description": "Corollary",
+    "body": "#corollary$1[\n\t$0\n]",
+    "semicolon": true
+  },
+  {
+    "trigger": "exr",
+    "description": "Exercise",
+    "body": "#exercise$1[\n\t$0\n]",
+    "semicolon": true
+  },
+  {
+    "trigger": "exp",
+    "description": "Example",
+    "body": "#example$1[\n\t$0\n]",
+    "semicolon": true
+  },
+  {
+    "trigger": "prp",
+    "description": "Proposition",
+    "body": "#proposition$1[\n\t$0\n]",
+    "semicolon": true
+  },
+  {
+    "trigger": "prt",
+    "description": "Property",
+    "body": "#property$1[\n\t$0\n]",
+    "semicolon": true
+  },
+  {
+    "trigger": "conj",
+    "description": "Conjecture",
+    "body": "#conjecture$1[\n\t$0\n]",
+    "semicolon": true
+  },
+  {
+    "trigger": "prf",
+    "description": "Proof env",
+    "body": "#proof[\n\t$0\n]",
+    "semicolon": true
+  },
+  {
+    "trigger": "sol",
+    "description": "Solution env",
+    "body": "#proof(title:\"Solution\")[\n\t$0\n]",
+    "semicolon": true
+  },
+  {
+    "trigger": "ils",
+    "description": "Roman item list",
+    "body": "#ilist[\n\t+ $0\n]",
+    "semicolon": true
+  },
+  {
+    "trigger": "diag",
+    "description": "Commutative diagram environment",
+    "body": "#diagram[\n\t$0\n]",
+    "semicolon": true
+  },
+  {
+    "trigger": ";a",
+    "description": "alpha",
+    "body": "alpha",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";b",
+    "description": "beta",
+    "body": "beta",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";g",
+    "description": "gamma",
+    "body": "gamma",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";d",
+    "description": "delta",
+    "body": "delta",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";e",
+    "description": "epsilon",
+    "body": "epsilon",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";ev",
+    "description": "epsilon (variant)",
+    "body": "epsilon.alt",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";z",
+    "description": "zeta",
+    "body": "zeta",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";h",
+    "description": "eta",
+    "body": "eta",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";q",
+    "description": "theta",
+    "body": "theta",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";qv",
+    "description": "theta (variant)",
+    "body": "theta.alt",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";i",
+    "description": "iota",
+    "body": "iota",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";k",
+    "description": "kappa",
+    "body": "kappa",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";l",
+    "description": "lambda",
+    "body": "lambda",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";m",
+    "description": "mu",
+    "body": "mu",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";n",
+    "description": "nu",
+    "body": "nu",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";x",
+    "description": "xi",
+    "body": "xi",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";o",
+    "description": "omicron",
+    "body": "omicron",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";p",
+    "description": "pi",
+    "body": "pi",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";pv",
+    "description": "pi (variant)",
+    "body": "pi.alt",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";r",
+    "description": "rho",
+    "body": "rho",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";rv",
+    "description": "rho (variant)",
+    "body": "rho.alt",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";s",
+    "description": "sigma",
+    "body": "sigma",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";sv",
+    "description": "sigma (final)",
+    "body": "sigma.alt",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";t",
+    "description": "tau",
+    "body": "tau",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";u",
+    "description": "upsilon",
+    "body": "upsilon",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";f",
+    "description": "phi",
+    "body": "phi",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";fv",
+    "description": "phi (variant)",
+    "body": "phi.alt",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";c",
+    "description": "chi",
+    "body": "chi",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";y",
+    "description": "psi",
+    "body": "psi",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";w",
+    "description": "omega",
+    "body": "omega",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";B",
+    "description": "Beta",
+    "body": "Beta",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";G",
+    "description": "Gamma",
+    "body": "Gamma",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";D",
+    "description": "Delta",
+    "body": "Delta",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";Z",
+    "description": "Zeta",
+    "body": "Zeta",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";H",
+    "description": "Eta",
+    "body": "Eta",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";Q",
+    "description": "Theta",
+    "body": "Theta",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";I",
+    "description": "Iota",
+    "body": "Iota",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";K",
+    "description": "Kappa",
+    "body": "Kappa",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";L",
+    "description": "Lambda",
+    "body": "Lambda",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";M",
+    "description": "Mu",
+    "body": "Mu",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";N",
+    "description": "Nu",
+    "body": "Nu",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";X",
+    "description": "Xi",
+    "body": "Xi",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";O",
+    "description": "Omicron",
+    "body": "Omicron",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";P",
+    "description": "Pi",
+    "body": "Pi",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";R",
+    "description": "Rho",
+    "body": "Rho",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";S",
+    "description": "Sigma",
+    "body": "Sigma",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";T",
+    "description": "Tau",
+    "body": "Tau",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";U",
+    "description": "Upsilon",
+    "body": "Upsilon",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";F",
+    "description": "Phi",
+    "body": "Phi",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";C",
+    "description": "Chi",
+    "body": "Chi",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";Y",
+    "description": "Psi",
+    "body": "Psi",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";W",
+    "description": "Omega",
+    "body": "Omega",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": "hb",
+    "description": "Reduced Planck constant (h-bar)",
+    "body": "planck.reduce",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "nb",
+    "description": "Nabla/Del (gradient)",
+    "body": "nabla",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "pt",
+    "description": "Partial derivative",
+    "body": "partial",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "oo",
+    "description": "Infinity",
+    "body": "infinity",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "cp",
+    "description": "Composition",
+    "body": "compose",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": ";A",
+    "description": "Universal quantifier (forall)",
+    "body": "forall",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ";E",
+    "description": "Existential quantifier (exists)",
+    "body": "exists",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": "ni",
+    "description": "Element of (reverse)",
+    "body": "in.rev",
+    "math": true,
+    "semicolon": true
+  },
+  {
+    "trigger": "nin",
+    "description": "Not element of",
+    "body": "in.not",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "sub",
+    "description": "Subset",
+    "body": "subset",
+    "math": true,
+    "semicolon": true
+  },
+  {
+    "trigger": "sup",
+    "description": "Superset",
+    "body": "supset",
+    "math": true,
+    "semicolon": true
+  },
+  {
+    "trigger": "sube",
+    "description": "Subset or equal",
+    "body": "subset.eq",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "supe",
+    "description": "Superset or equal",
+    "body": "supset.eq",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "nsub",
+    "description": "Not subset",
+    "body": "subset.not",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "nsup",
+    "description": "Not superset",
+    "body": "superset.not",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "cap",
+    "description": "Intersection",
+    "body": "inter",
+    "math": true,
+    "semicolon": true
+  },
+  {
+    "trigger": "cup",
+    "description": "Union",
+    "body": "union",
+    "math": true,
+    "semicolon": true
+  },
+  {
+    "trigger": "not",
+    "description": "Logical NOT",
+    "body": "not",
+    "math": true,
+    "semicolon": true
+  },
+  {
+    "trigger": "nt",
+    "description": "Empty set",
+    "body": "nothing",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "le",
+    "description": "Less than or equal",
+    "body": "lt.eq.slant",
+    "math": true,
+    "semicolon": true
+  },
+  {
+    "trigger": "ge",
+    "description": "Greater than or equal",
+    "body": "gt.eq.slant",
+    "math": true,
+    "semicolon": true
+  },
+  {
+    "trigger": "<<",
+    "description": "Much less than",
+    "body": "lt.double",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": ">>",
+    "description": "Much greater than",
+    "body": "gt.double",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": "ne",
+    "description": "Not equal",
+    "body": "eq.not",
+    "math": true,
+    "semicolon": true
+  },
+  {
+    "trigger": "teq",
+    "description": "Simeq (similar and equal)",
+    "body": "tilde.eq",
+    "math": true,
+    "semicolon": true,
+    "semicolonPriority": 1
+  },
+  {
+    "trigger": "teqq",
+    "description": "Congruent (tilde.equiv)",
+    "body": "tilde.equiv",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "eqq",
+    "description": "Equivalent",
+    "body": "equiv",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "orth",
+    "description": "Perpendicular",
+    "body": "perp",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "para",
+    "description": "Parallel",
+    "body": "parallel",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "pm",
+    "description": "Plus or minus",
+    "body": "plus.minus",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "mp",
+    "description": "Minus or plus",
+    "body": "minus.plus",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "xx",
+    "description": "Multiplication",
+    "body": "times",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "cd",
+    "description": "Centered horizontal dots",
+    "body": "dots.c",
+    "math": true,
+    "semicolon": true
+  },
+  {
+    "trigger": "wo",
+    "description": "Set difference",
+    "body": "without",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "to",
+    "description": "Tensor product",
+    "body": "times.o",
+    "math": true,
+    "semicolon": true
+  },
+  {
+    "trigger": "po",
+    "description": "Direct sum",
+    "body": "plus.o",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "do",
+    "description": "Odot",
+    "body": "dot.o",
+    "math": true,
+    "semicolon": true
+  },
+  {
+    "trigger": "cl",
+    "description": "Circle",
+    "body": "circle($1)$0",
+    "math": true,
+    "semicolon": true
+  },
+  {
+    "trigger": "iff",
+    "description": "If and only if",
+    "body": "arrow.l.r.double.long",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "ab",
+    "description": "Maps to",
+    "body": "arrow.r.bar",
+    "math": true,
+    "semicolon": true
+  },
+  {
+    "trigger": "abl",
+    "description": "Long maps to",
+    "body": "arrow.r.long.bar",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "ah",
+    "description": "Hook arrow",
+    "body": "arrow.r.hook",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "al",
+    "description": "Long arrow (choice: fixed or stretched)",
+    "body": "${1|arrow.r.long,stretch(arrow)|}",
+    "math": true,
+    "semicolon": true
+  },
+  {
+    "trigger": "sl",
+    "description": "Slash (quotient sets)",
+    "body": "slash",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "lra",
+    "description": "Angle brackets / chevrons",
+    "body": "chevron.l $1 chevron.r$0",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "lrc",
+    "description": "Curly braces",
+    "body": "{ $1 }$0",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "md",
+    "description": "Mid bar delimiter",
+    "body": "mid(|)",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": ";;",
+    "description": "Thick semicolon delimiter",
+    "body": "thick ; thick",
+    "math": true,
+    "automatic": true,
+    "inWord": true
+  },
+  {
+    "trigger": "mm",
+    "description": "Inline math mode",
+    "body": "\\$$1\\$$0",
+    "semicolon": true
+  },
+  {
+    "trigger": "dm",
+    "description": "Display math mode",
+    "body": "\\$\n\t$0\n\\$",
+    "semicolon": true
+  },
+  {
+    "trigger": "set",
+    "description": "Mathematical set with |",
+    "body": "{ $1 mid(|) $2 }$0",
+    "math": true,
+    "semicolon": true
+  },
+  {
+    "trigger": "binom",
+    "description": "Binomial coefficient",
+    "body": "binom(${1:n}, ${2:k})$0",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "sm",
+    "description": "Summation",
+    "body": "sum",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "pr",
+    "description": "Product",
+    "body": "product",
+    "math": true,
+    "semicolon": true
+  },
+  {
+    "trigger": "cpr",
+    "description": "Coproduct",
+    "body": "product.co",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "bop",
+    "description": "Direct sum (big)",
+    "body": "op(plus.o)",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "bcap",
+    "description": "Big intersection",
+    "body": "sect.big",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "bcup",
+    "description": "Big union",
+    "body": "union.big",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "bwe",
+    "description": "Big wedge",
+    "body": "and.big",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "bve",
+    "description": "Big vee",
+    "body": "or.big",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "int",
+    "description": "Integral",
+    "body": "integral",
+    "math": true,
+    "semicolon": true
+  },
+  {
+    "trigger": "bar",
+    "description": "Bar accent",
+    "body": "bar($1)$0",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "hat",
+    "description": "Hat accent",
+    "body": "hat($1)$0",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "ar",
+    "description": "Vector accent",
+    "body": "arrow($1)$0",
+    "math": true,
+    "semicolon": true
+  },
+  {
+    "trigger": "tl",
+    "description": "Tilde accent",
+    "body": "tilde($1)$0",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "ov",
+    "description": "Overline accent",
+    "body": "overline($1)$0",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "sqr",
+    "description": "Root",
+    "body": "sqrt(${1:n})$0",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "abs",
+    "description": "Absolute value",
+    "body": "abs($1)$0",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "norm",
+    "description": "Norm",
+    "body": "norm($1)$0",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "mc",
+    "description": "Calligraphic font",
+    "body": "cal($1)$0",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "mb",
+    "description": "Bold font",
+    "body": "bold($1)$0",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "mi",
+    "description": "Italic font",
+    "body": "italic($1)$0",
+    "math": true,
+    "semicolon": true
+  },
+  {
+    "trigger": "mf",
+    "description": "Fraktur font",
+    "body": "frak($1)$0",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "ms",
+    "description": "Script font",
+    "body": "scr($1)$0",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "bb",
+    "description": "Double-struck font",
+    "body": "bb($1)$0",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "mr",
+    "description": "Roman (upright) font",
+    "body": "upright($1)$0",
+    "math": true,
+    "automatic": true
+  },
+  {
+    "trigger": "lb",
+    "description": "Label",
+    "body": "<$1>",
+    "semicolon": true
+  }
+]
