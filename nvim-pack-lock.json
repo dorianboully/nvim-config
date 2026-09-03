@@ -1,13 +1,5 @@
 {
   "plugins": {
-    "claudecode": {
-      "rev": "432121f0f5b9bda041030d1e9e83b7ba3a93dd8f",
-      "src": "https://github.com/coder/claudecode.nvim"
-    },
-    "copilot": {
-      "rev": "f89e977c87180519ba3b942200e3d05b17b1e2fc",
-      "src": "https://github.com/github/copilot.vim"
-    },
     "copilot.lua": {
       "rev": "7e6723aabea044519462958ffcea68d7985c5ed0",
       "src": "https://github.com/zbirenbaum/copilot.lua"
@@ -15,10 +7,6 @@
     "lean": {
       "rev": "499ceb094d4336c532966ee8a0a5b2c25f1a91ef",
       "src": "https://github.com/Julian/lean.nvim"
-    },
-    "lualine": {
-      "rev": "3946f0122255bc377d14a59b27b609fb3ab25768",
-      "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "luasnip": {
       "rev": "3732756842a2f7e0e76a7b0487e9692072857277",
