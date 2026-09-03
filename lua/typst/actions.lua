@@ -35,20 +35,11 @@ function M.compile()
   end)
 end
 
---- Seul état conservé : le chemin épinglé, pour que la commande fasse bascule.
---- Il ne sert à rien d'autre — compile et view portent sur le buffer courant.
----@type string?
-local pinned = nil
-
---- Épingle le buffer courant comme document principal, ou le détache s'il
---- l'est déjà. vim.NIL s'encode en `null`, que tinymist lit comme un détachement.
+--- Épingle le buffer courant comme document principal de tinymist.
 function M.pin()
   local path = vim.api.nvim_buf_get_name(0)
-  local detach = pinned == path
-
-  request("tinymist.pinMain", { detach and vim.NIL or path }, function()
-    pinned = (not detach) and path or nil
-    vim.notify(detach and "Document principal détaché" or ("Document principal : " .. path))
+  request("tinymist.pinMain", { path }, function()
+    vim.notify("Document principal : " .. path)
   end)
 end
 
