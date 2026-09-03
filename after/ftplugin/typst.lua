@@ -34,7 +34,7 @@ if not vim.g.vscode then
       "Créer un projet depuis un template",
     },
     ["<localleader>m"] = { actions.pin, "Épingler le document principal" },
-    ["<localleader>p"] = { "<cmd>TypstPreviewToggle<cr>", "Basculer la prévisualisation" },
+    ["<localleader>p"] = { "<cmd>TypstPreview<cr>", "Ouvrir une prévisualisation" },
     ["<localleader>v"] = { actions.view, "Ouvrir le PDF" },
   }) do
     vim.keymap.set("n", lhs, mapping[1], { buffer = 0, desc = mapping[2] })
