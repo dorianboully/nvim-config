@@ -45,7 +45,7 @@ o.smartcase = true
 -- Le `^N` plafonne le nombre de candidats par source.
 o.autocomplete = true
 o.autocompletedelay = 60 -- laisse passer une frappe rapide sans ouvrir le menu
-o.complete = ".^10,o^10,w^5,b^5,kspell"
+o.complete = "o"
 o.completeopt = "menuone,noinsert,popup,fuzzy"
 
 -- ── Fichiers ───────────────────────────────────────────────────────────────
