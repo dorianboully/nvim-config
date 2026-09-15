@@ -2,7 +2,7 @@
 -- l'ftplugin est rejoué à chaque buffer, et `vim.b.undo_ftplugin` permet
 -- à Neovim de défaire proprement ces réglages si le filetype change.
 
-vim.bo.textwidth = 80
+vim.bo.textwidth = 90
 
 local w = vim.wo[0][0]
 w.linebreak = true
