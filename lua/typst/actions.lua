@@ -55,17 +55,6 @@ function M.compile()
   end)
 end
 
---- Lance la preview native de tinymist. typst-preview.nvim ne faisait ici que
---- démarrer cette même commande ; ses fonctions supplémentaires (notamment le
---- suivi du curseur) ne sont pas utilisées par la configuration.
-function M.preview()
-  local source = main()
-  vim.system({ "tinymist", "preview", source }, {
-    cwd = vim.fs.dirname(source),
-    detach = true,
-  })
-end
-
 function M.view(viewer)
   local source = main()
   local pdf = source:gsub("%.typ$", ".pdf")

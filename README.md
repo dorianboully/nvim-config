@@ -27,11 +27,6 @@ auprès de tinymist à chaque entrée dans un buffer, et c'est lui que visent
 Pour une entrée qui ne suit pas la convention, `<localleader>m` impose le fichier
 courant comme principal de son projet, et `<localleader>M` revient à la détection.
 
-La preview ne nécessite pas de plugin Neovim : `<localleader>p` lance directement
-`tinymist preview` en arrière-plan sur ce principal. Cela conserve la preview web
-et son actualisation, mais volontairement pas la synchronisation du curseur entre
-Neovim et le navigateur ni les commandes stop/toggle de `typst-preview.nvim`.
-
 Le mode `projectResolution = "lockDatabase"` de tinymist vise le même but, mais il
 ne relie un chapitre à son document qu'après un export réussi, via une table de
 routes stockée dans le cache utilisateur ; tant qu'elle est vide, chaque fichier

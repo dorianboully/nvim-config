@@ -35,7 +35,7 @@ if not vim.g.vscode then
     },
     ["<localleader>m"] = { actions.pin, "Imposer ce fichier comme document principal" },
     ["<localleader>M"] = { actions.unpin, "Redétecter le document principal" },
-    ["<localleader>p"] = { actions.preview, "Ouvrir une prévisualisation" },
+    ["<localleader>p"] = { "<cmd>TypstPreview<cr>", "Ouvrir une prévisualisation" },
     ["<localleader>v"] = { actions.view, "Ouvrir le PDF" },
   }) do
     vim.keymap.set("n", lhs, mapping[1], { buffer = 0, desc = mapping[2] })
