@@ -8,6 +8,10 @@ return {
     get_main_file = function(path)
       return require("typst.project").main(path)
     end,
+
+    dependencies_bin = {
+      tinymist = "tinymist",
+    },
   },
   config = true,
 }
