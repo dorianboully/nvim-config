@@ -10,7 +10,7 @@ return {
     end,
 
     dependencies_bin = {
-      tinymist = require("typst.tinymist"),
+      tinymist = "tinymist",
     },
   },
   config = true,

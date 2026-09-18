@@ -2,25 +2,29 @@ Neovim config, mainly to write mathematics using typst.
 
 ## Version de Tinymist
 
-Le LSP et la prévisualisation utilisent **Tinymist 0.15.2** (Typst embarqué
-0.15.0), installé séparément du paquet système. Les versions 0.15.4, 0.15.6
-et 0.15.8 reproduisent une saturation mémoire pendant la frappe dans le projet
-Bible ; 0.15.2 termine le même essai de quatre minutes avec la coloration
-sémantique active.
+Le LSP et la prévisualisation utilisent le `tinymist` du PATH, géré par pacman.
+La version retenue est **0.15.2** (Typst embarqué 0.15.0) : les versions 0.15.4,
+0.15.6 et 0.15.8 reproduisent une saturation mémoire pendant la frappe dans
+le projet Bible.
 
-Sur Arch Linux x86_64, y compris sous WSL, depuis ce dépôt :
+Sur Arch Linux x86_64, y compris sous WSL, revenir au paquet archivé :
 
 ```sh
-bash scripts/install_tinymist.sh
+sudo pacman -U 'https://archive.archlinux.org/packages/t/tinymist/tinymist-1%3A0.15.2-1-x86_64.pkg.tar.zst'
+pacman -Q tinymist # attendu : tinymist 1:0.15.2-1
 ```
 
-Le script télécharge le paquet Arch archivé, vérifie son SHA-256 et installe
-uniquement le binaire dans le répertoire de données Neovim
-(`~/.local/share/nvim/tinymist_0_15_2/tinymist` par défaut). Il respecte
-`XDG_DATA_HOME` et `NVIM_APPNAME`. Il nécessite `curl`, `tar`, `zstd` et
-`sha256sum`, ainsi que les bibliothèques système Arch utilisées par Tinymist.
-Un paquet déjà téléchargé peut être passé en argument. Relancer Neovim après
-l'installation ; aucun repli vers le Tinymist système n'est prévu.
+Pour conserver temporairement cette version, ajouter `tinymist` à `IgnorePkg`
+dans la section `[options]` de `/etc/pacman.conf`, en gardant les éventuels
+autres paquets déjà exclus :
+
+```ini
+IgnorePkg = tinymist
+```
+
+Retirer cette exclusion lorsqu'une version corrigée aura été validée.
+Redémarrer Neovim après le changement de paquet. Aucun binaire séparé ni
+script d'installation n'est nécessaire.
 
 Le modèle local `mathdoc:0.2.0` doit déclarer `compiler = "0.15.0"` dans son
 `typst.toml`. Le programme `typst` autonome peut rester en version 0.15.1.
