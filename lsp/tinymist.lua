@@ -1,6 +1,6 @@
 ---@type vim.lsp.Config
 return {
-  cmd = { 'tinymist' },
+  cmd = { require("typst.tinymist") },
 
   filetypes = { 'typst' },
 

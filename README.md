@@ -1,5 +1,30 @@
 Neovim config, mainly to write mathematics using typst.
 
+## Version de Tinymist
+
+Le LSP et la prévisualisation utilisent **Tinymist 0.15.2** (Typst embarqué
+0.15.0), installé séparément du paquet système. Les versions 0.15.4, 0.15.6
+et 0.15.8 reproduisent une saturation mémoire pendant la frappe dans le projet
+Bible ; 0.15.2 termine le même essai de quatre minutes avec la coloration
+sémantique active.
+
+Sur Arch Linux x86_64, y compris sous WSL, depuis ce dépôt :
+
+```sh
+bash scripts/install_tinymist.sh
+```
+
+Le script télécharge le paquet Arch archivé, vérifie son SHA-256 et installe
+uniquement le binaire dans le répertoire de données Neovim
+(`~/.local/share/nvim/tinymist_0_15_2/tinymist` par défaut). Il respecte
+`XDG_DATA_HOME` et `NVIM_APPNAME`. Il nécessite `curl`, `tar`, `zstd` et
+`sha256sum`, ainsi que les bibliothèques système Arch utilisées par Tinymist.
+Un paquet déjà téléchargé peut être passé en argument. Relancer Neovim après
+l'installation ; aucun repli vers le Tinymist système n'est prévu.
+
+Le modèle local `mathdoc:0.2.0` doit déclarer `compiler = "0.15.0"` dans son
+`typst.toml`. Le programme `typst` autonome peut rester en version 0.15.1.
+
 ## Typst snippets
 
 `snippets/typst/data.json` is the single source of truth. LuaSnip reads it at
